@@ -1,0 +1,12 @@
+1.allocate dataset(ZA0917.jcl.abd) tracks space(2,1) recfm(f) lrecl(80) dsorg(ps)
+2.rename 'ZA0917.ZA0917.jcl.abf' 'ZA0917.ZA0917.jcl.abc' 
+ 
+3.listds 'ZA0917.ZA0917.jcl.abc'      
+  ZA0917.ZA0917.JCL.ABC              
+  --RECFM-LRECL-BLKSIZE-DSORG        
+    F     80    80      PS           
+  --VOLUMES--                        
+    VPWRKY
+
+4.listalc  
+5.delete 'ZA0917.ZA0917.jcl.abc'  
