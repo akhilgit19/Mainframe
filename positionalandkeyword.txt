@@ -1,0 +1,21 @@
+EDIT       ZA0917.B13.JCLS.PDS(SORT) - 01.06               Columns 00001 00072 
+****** ***************************** Top of Data ******************************
+000010 ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
+000100 //SORTJOB JOB (71828),AKHIL,  /*POSITIONAL PARAMETERS                   
+000200 //            CLASS=A, /* KEYWORD PARAMETERS                            
+000300 //            PRTY=15,                                                  
+000310 //            NOTIFY=&SYSUID,                                           
+000320 //            MSGCLASS=A,                                               
+000330 //            MSGLEVEL=(2,1),                                           
+000340 //            TYPRUN=SCAN,                                              
+000350 //            TIME=(50,00),                                             
+000360 //            REGION=5K                                                 
+000370 //STEP1 EXEC PGM=SORT                                                   
+000380 //SORTFILE DD DSN=ZA0917.SORT.INPUT.FILE,                               
+000390 //            DISP=(SHR,CATLG,DELETE),                                  
+000400 //            UNIT=SYSDA,                                               
+000500 //            VOL=SER=3390,                                             
+000600 //            SPACE=(TRK,(20,30,3),RLSE),                               
+000700 //            DCB=(RECL=80,RECFM=FB,BLKSIZE=800,DSORG=PO)               
+000800 //SYSOUT    DD SYSOUT=*                                                 
+****** **************************** Bottom of Data ****************************
