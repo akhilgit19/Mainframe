@@ -1,0 +1,13 @@
+ EDIT       ZA0917.B13.JCLS.PDS(MEM2) - 01.00               Columns 00001 00072 
+ =COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
+ ****** ***************************** Top of Data ******************************
+ 000001 //ZA0917 JOB CLASS=A,MSGCLASS=A,NOTIFY=&SYSUID, MSGLEVEL=(1,1),         
+ 000002 //          PRTY=15                                                     
+ 000003 //STEP1 EXEC PGM=IKJEFT01                                               
+ 000004 //SYSTSPRT DD SYSOUT=*                                                  
+ 000005 //SYSEXEC  DD DUMMY                                                     
+ 000006 //SYSPRINT DD SYSOUT=*                                                  
+ 000007 //SYSTSIN  DD *                                                         
+ 000008            TIME                                                         
+ 000009 /*                                                                      
+ ****** **************************** Bottom of Data ****************************
