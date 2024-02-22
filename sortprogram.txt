@@ -1,0 +1,16 @@
+***************************** Top of Data ******************************
+//SORTFILE JOB CLASS=A,                                                 
+//             MSGCLASS=A,                                              
+//             MSGLEVEL=(2,1),                                          
+//             NOTIFY=&SYSUID                                           
+//STEP010 EXEC PGM=SORT                                                 
+//SORTIN DD DSN=ZA0917.SORT.INPUT.FILE,                                 
+//          DISP=SHR                                                    
+//SORTOUT DD DSN=ZA0917.SORT.OUTPUT.FILE,                               
+//           DISP=(OLD,CATLG,DELETE),                                   
+//           DCB=(LRECL=80,RECFM=FB,BLKSIZE=800,DSORG=PS),              
+//           SPACE=(TRK,(100,100),RLSE)                                 
+//SYSOUT DD SYSOUT=*                                                    
+//SYSIN DD *                                                            
+        SORT FIELDS=(1,8,CH,D)                                          
+/*                                                                      
