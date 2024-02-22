@@ -1,0 +1,15 @@
+-------------------------------------------------------------------------------
+EDIT       ZA0917.B13.JCLS.PDS(COBRUN) - 01.00             Columns 00001 00072 
+****** ***************************** Top of Data ******************************
+000100 //COBRUN     JOB CLASS=A,MSGCLASS=A,NOTIFY=&SYSUID,MSGLEVEL(1,1)        
+000200 //JOBLIB     DD  DSN=AKHIL.COURSE.LOAD,DISP=SHR                         
+000300 //STEP1      EXEC PGM=ARITHM                                            
+000400 //SYSPRINT   DD   SYSOUT=*                                              
+000500 //SYSIN      DD   *                                                     
+000600 43                                                                      
+000700 23                                                                      
+000800 //STEP2 EXEC PGM=PGMA                                                   
+000900 //STEPLIB DD DSN=AKHIL.COURSE.LOAD1,DISP=SHR                            
+001000 //STEP3 EXEC PGM=PGMB                                                   
+001100 //STEP4 EXEC PGM=PGMC                                                   
+****** **************************** Bottom of Data ****************************
