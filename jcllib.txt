@@ -1,0 +1,11 @@
+ EDIT       ZA0917.COURSE.JCLLIB(C2PRC) - 01.01             Columns 00001 00072 
+ ****** ***************************** Top of Data ******************************
+ 000100 //C2PRC PROC                                                            
+ 000200 //STEP1 EXEC PGM=IEFBR14                                                
+ 000300 //DD1 DD DSN=&DNAME,                                                    
+ 000400 // SPACE=(TRK,(100,100),RLSE),                                          
+ 000500 // DISP=(NEW,CATLG,DELETE),                                             
+ 000600 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)                         
+ 000700 //      PEND                                                            
+ ****** **************************** Bottom of Data ****************************
+                                                                                
