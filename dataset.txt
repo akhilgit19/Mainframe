@@ -1,0 +1,4 @@
+Data Set Naming Rules:
+1. A data set name consists of one or more parts connected by periods.Each part is called 
+   a qualifier.For example MY.PROD.FILE.Here MY PROD and File are called the qualifiers
+2. 
