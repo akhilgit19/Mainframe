@@ -1,0 +1,11 @@
+TSO/ISPF -COMMANDS
+======================
+1. To view the content of the dataset - Option 1 in the ISPF primary option menu-
+    - 1  View          Display source data or listings  
+2. To edit the content of the dataset-  Option 2 in the ISPF primary option menu-
+    - 2  Edit          Create or change source data 
+3. To perform function on the dataset - Option 3 in the ISPF primary option menu-
+    -3  Utilities     Perform utility functions  
+4. START Command to open new screen
+5. SWAP LIST to list out all the screens
+6. To go a specific screnn  give screen no and press f9.
