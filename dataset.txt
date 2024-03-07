@@ -9,3 +9,10 @@ Data Set Naming Rules:
 7.Data set name should not end with a period
 
 
+TYPES OF DATASETS ON MAINFRAMES
+1. PS-  SEQUENTIAL DATASET--(
+2. PDS- PARTITIONED DATASET
+3. Generation Data Set--(Maximum no of genearations(255))
+4. PDS Extended
+5. VSAM Datasets
+
