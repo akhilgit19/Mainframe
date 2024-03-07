@@ -16,3 +16,6 @@ TYPES OF DATASETS ON MAINFRAMES
 4. PDS Extended
 5. VSAM Datasets
 
+
+Block size= no of records * record length;
+
