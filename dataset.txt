@@ -1,4 +1,11 @@
 Data Set Naming Rules:
 1. A data set name consists of one or more parts connected by periods.Each part is called 
    a qualifier.For example MY.PROD.FILE.Here MY PROD and File are called the qualifiers
-2. 
+2. The first Qualifier is called the High Level Qualifier and the last is called the low level Qualifier
+3. Each Qualifier must have 1-8 characters.
+4. Alphabets,numeric,hyphen(-) and special characters(@#$) are allowed.
+5. The maximum size of a data set name is 44 characters,including the periods.
+6. You can use as many qualifiers as will fit within the 44 character overall size limitation
+7.Data set name should not end with a period
+
+
