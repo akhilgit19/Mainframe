@@ -63,5 +63,9 @@ TO MOVE A MEMBER FROM ONE PS TO PDS
 
 
 
+TO MOVE A MEMBER FROM ONE PDS TO PDS 
+=======================================
+1. The data in the PDS mem1  will be replace to PDS member2 and cannot be appended and the pds mem1 file will be deleted.
+
 
 
