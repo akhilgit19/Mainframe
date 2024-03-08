@@ -53,5 +53,9 @@ TO MOVE A DATASET FROM ONE PS TO ANOTHER PS
 1. Option need to give is 3.3 and select MPS1 TO PS2. If PS2 contains data , PS1 data will be apended to PS2 and PS1 will be deleted 
 
 
+TO MOVE A MEMBER FROM ONE PDS TO PS
+=======================================
+1. The data in the PDS member will be appended to PS FILE and the member will be deleted in the PDS
+
 
 
