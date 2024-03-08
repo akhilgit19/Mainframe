@@ -69,3 +69,8 @@ TO MOVE A MEMBER FROM ONE PDS TO PDS
 
 
 
+TO COMPARE DATASETS
+=======================
+
+3.12 OPTION
+
