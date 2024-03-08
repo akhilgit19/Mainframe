@@ -18,4 +18,4 @@ TYPES OF DATASETS ON MAINFRAMES
 
 
 Block size= no of records * record length;
-
+Tota no of bytes = PQ +(SQ*15)
