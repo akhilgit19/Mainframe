@@ -35,3 +35,7 @@ TO COPY A DATASET FROM ONE PS TO PDS
 1. Either you can copy to new member or if you want to copy in the existing member you need to select option 
    replace so the entire data in the member is replaced by the ps1 data.
 
+
+TO COPY A DATASET FROM ONE PDS TO PS
+=======================================
+1.PDS TO PS1. If PS1 contains data , PDS data will be apended to PS1.
