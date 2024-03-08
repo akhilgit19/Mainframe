@@ -57,5 +57,11 @@ TO MOVE A MEMBER FROM ONE PDS TO PS
 =======================================
 1. The data in the PDS member will be appended to PS FILE and the member will be deleted in the PDS
 
+TO MOVE A MEMBER FROM ONE PS TO PDS
+=======================================
+1. The data in the PS will be replace to PDS member and cannot be appended and the ps file will be deleted.
+
+
+
 
 
