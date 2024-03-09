@@ -120,3 +120,8 @@ To move a line in the datset
 To exclude a line in the datset
 ================================
 1. x, x4 , xx  
+
+
+To show a line in the datset
+================================
+1. s4
