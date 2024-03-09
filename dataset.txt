@@ -92,3 +92,20 @@ Dataset Commands
 11. To check how space dataset is occupying is VS
 12. Attribute view - VA
 13. to view all command- VT
+
+
+
+To inser a line in the datset
+================================
+1. i, i4
+
+To delete a line in the datset
+================================
+1. d, d4, dd
+
+To repeat a line in the datset
+================================
+1. r, r4, rr  after a or before b
+
+
+
