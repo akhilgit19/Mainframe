@@ -129,9 +129,9 @@ To show a line in the datset
 
 To uppercase a line in the datset
 ================================
-1. uc, uc4 uu
+1. uc, uc4 ucc
 
 
 To lowercase a line in the datset
 ================================
-1. lc, lc4 ll
+1. lc, lc4 lcc
