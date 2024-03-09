@@ -89,4 +89,5 @@ Dataset Commands
 8. You can cut and save to another cut board like code1 and you can see the display like cut display
 9. you can delete all the exluded lines by- delete all x
 10.you can delete all the lines by del nx all
+11. To check how space dataset is occupying is vs
 
