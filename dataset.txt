@@ -112,3 +112,6 @@ To copy a line in the datset
 ================================
 1. c, c4 , cc  after a or before b
 
+To move a line in the datset
+================================
+1. m, m4 , mm  after a or before b
