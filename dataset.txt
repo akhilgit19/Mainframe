@@ -75,3 +75,14 @@ TO COMPARE DATASETS
 3.12 OPTION
 
 3.13 OPTION FOR extended options
+
+
+Dataset Commands
+==================
+1. f character or string ( to find )
+2. f c'character' or 'string ( to find with case sensitive)
+3. exclude  give x in the line
+4. change characterorstring characterorstring
+5. change id my all
+6. SORT columnno to columnno A or D--( SORT 5 9 A)
+7
