@@ -125,3 +125,13 @@ To exclude a line in the datset
 To show a line in the datset
 ================================
 1. s4
+
+
+To uppercase a line in the datset
+================================
+1. uc, uc4 uu
+
+
+To lowercase a line in the datset
+================================
+1. lc, lc4 ll
