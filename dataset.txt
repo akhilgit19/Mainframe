@@ -90,4 +90,4 @@ Dataset Commands
 9. you can delete all the exluded lines by- delete all x
 10.you can delete all the lines by del nx all
 11. To check how space dataset is occupying is vs
-
+12. Attribute view - va
