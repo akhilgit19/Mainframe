@@ -108,4 +108,7 @@ To repeat a line in the datset
 1. r, r4, rr  after a or before b
 
 
+To copy a line in the datset
+================================
+1. c, c4 , cc  after a or before b
 
