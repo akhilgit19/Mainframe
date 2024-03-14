@@ -140,4 +140,7 @@ To show lines first and last lines when u exclude
 ====================================================
 1. if you exclude lines to show the lines you can press f1,f2,f3 to show first lines same as with last lines- l1,l2,l3
 
+Text split command
+======================
+1. You can give ts in the in the start of line and press enter where you want to split the line
 
