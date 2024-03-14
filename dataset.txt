@@ -154,5 +154,6 @@ Column shift Command
 1. Right shift- ), )2, ))
 2. left shift-(,(3,((
 
-
-
+To convert msg into md line
+==============================
+1.You can convert mess into md line by giving md in the mess line.
