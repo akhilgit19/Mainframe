@@ -147,12 +147,12 @@ Text split command
 
 Column Command
 ================
-COLS
+1.COLS
 
 Column shift Command
 =====================
- Right shift- ), )2, ))
- left shift-(,(3,((
+1. Right shift- ), )2, ))
+2. left shift-(,(3,((
 
 
 
