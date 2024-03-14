@@ -136,8 +136,8 @@ To lowercase a line in the datset
 ================================
 1. lc, lc4 lcc
 
-To show lines first and last command
-======================================
+To show lines first and last lines when u exclude
+====================================================
 1. if you exclude lines to show the lines you can press f1,f2,f3 to show first lines same as with last lines- l1,l2,l3
 
 
