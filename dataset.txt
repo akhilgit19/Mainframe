@@ -77,8 +77,8 @@ TO COMPARE DATASETS
 3.13 OPTION FOR extended options
 
 
-Dataset Commands
-==================
+Dataset Edit line Commands
+===========================
 1. f character or string ( to find )
 2. f c'character' or 'string ( to find with case sensitive)
 3. exclude  give x in the line
@@ -157,3 +157,7 @@ Column shift Command
 To convert msg into md line
 ==============================
 1.You can convert mess into md line by giving md in the mess line.
+
+TABS AND MASK Command
+========================
+TABS, MASK in the line.
