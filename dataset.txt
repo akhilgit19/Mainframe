@@ -172,4 +172,5 @@ ISPF: DSLIST UTILITY PRIMARY COMMANDS
 3.exclude the datsets -exclude ksds all 
 4. Sort by volume .sort by tracks d or a, sort dsorg d  in the command line 
 5. To find the memebers in we can give mvm command as mem copy, mem cproc
-5. To save the members in the another dataset is save cproc2
+6. To save the members in the another dataset is save cproc2
+7. srchfor 
