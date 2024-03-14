@@ -170,5 +170,5 @@ ISPF: DSLIST UTILITY PRIMARY COMMANDS
 2.APPEND 'IBMUSER.*'- it will append all the datsets to the existing user datasets, If you give
   ref evrything comes back.
 3.exclude the datsets -exclude ksds all 
-4. Sort by volume .sort by tracks d or a  in the command line 
+4. Sort by volume .sort by tracks d or a, sort dsorg d  in the command line 
 
