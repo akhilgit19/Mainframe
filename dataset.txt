@@ -161,3 +161,9 @@ To convert msg into md line
 TABS AND MASK Command
 ========================
 TABS, MASK in the line.
+
+
+
+ISPF: DSLIST UTILITY PRIMARY COMMANDS
+========================================
+1.REFRESH
