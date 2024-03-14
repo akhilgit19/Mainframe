@@ -169,3 +169,5 @@ ISPF: DSLIST UTILITY PRIMARY COMMANDS
 1.REFRESH
 2.APPEND 'IBMUSER.*'- it will append all the datsets to the existing user datasets, If you give
   ref evrything comes back.
+3.exclude the datsets -exclude ksds all 
+
