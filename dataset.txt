@@ -16,7 +16,7 @@ TYPES OF DATASETS ON MAINFRAMES
 2. PDS- PARTITIONED DATASET
 3. Generation Data Set--(Maximum no of genearations(255))
 4. PDS Extended
-5. VSAM Datasets
+5. VSAM Datasets-- ESDS,KSDS,RRDS,LDS
 
 
 Block size= no of records * record length;
