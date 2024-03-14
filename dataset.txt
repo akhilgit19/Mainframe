@@ -167,3 +167,4 @@ TABS, MASK in the line.
 ISPF: DSLIST UTILITY PRIMARY COMMANDS
 ========================================
 1.REFRESH
+2.APPEND 'IBMUSER.*'
