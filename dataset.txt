@@ -144,3 +144,15 @@ Text split command
 ======================
 1. You can give ts in the in the start of line and press enter where you want to split the line
 
+
+Column Command
+================
+COLS
+
+Column shift Command
+=====================
+ Right shift- ), )2, ))
+ left shift-(,(3,((
+
+
+
