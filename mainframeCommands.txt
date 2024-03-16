@@ -9,4 +9,4 @@ TSO/ISPF -COMMANDS
 4. START Command to open new screen
 5. SWAP LIST to list out all the screens
 6. To go a specific screnn  give screen no and press f9.
-7. PFSHOWON AND PFSHOWOFF for function keys
+
