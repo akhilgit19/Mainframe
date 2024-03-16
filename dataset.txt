@@ -174,3 +174,8 @@ ISPF: DSLIST UTILITY PRIMARY COMMANDS
 5. To find the memebers in we can give mvm command as mem copy, mem cproc
 6. To save the members in the another dataset is save cproc2
 7. srchfor 
+
+
+
+PROFILE PASSWORDS IN MAINFRAME:
+1.PROFILE in the Command line
