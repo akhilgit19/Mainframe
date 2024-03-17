@@ -178,5 +178,33 @@ ISPF: DSLIST UTILITY PRIMARY COMMANDS
 
 
 PROFILE PASSWORDS IN MAINFRAME:
+==================================
 1.PROFILE in the Command line
 2.PFSHOWON AND PFSHOWOFF for function keys
+
+
+
+
+Allocating a dataset:
+=====================
+ Data Set Name . . . . : ZA0917.SAMPLE.PS                                    
+                                                                             
+ General Data                           Current Allocation                   
+  Management class . . : **None**        Allocated kilobytes : 18            
+  Storage class  . . . : **None**        Allocated extents . : 1             
+   Volume serial . . . : VPWRKF                                              
+   Device type . . . . : 3390                                                
+  Data class . . . . . : **None**                                            
+   Organization  . . . : PS             Current Utilization                  
+   Record format . . . : FB              Used kilobytes  . . : 0             
+   Record length . . . : 33              Used extents  . . . : 0             
+   Block size  . . . . : 330                                                 
+   1st extent kilobytes: 18                                                  
+   Secondary kilobytes : 2              Dates                                
+   Data set name type  :                 Creation date . . . : 2024/03/17    
+   Data set encryption : NO              Referenced date . . : 2024/03/17    
+                                         Expiration date . . : ***None***    
+                                                                             
+   SMS Compressible  . : NO  
+
+
