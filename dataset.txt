@@ -92,6 +92,7 @@ Dataset Edit line Commands
 11. To check how space dataset is occupying is VS
 12. Attribute view - VA
 13. to view all command- VT
+14. Num off -to restrict generating last 8 digits.
 
 
 
