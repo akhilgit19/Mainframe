@@ -83,7 +83,7 @@ Dataset Edit line Commands
 2. f c'character' or 'string ( to find with case sensitive)
 3. exclude  give x in the line
 4. change characterorstring characterorstring
-5. change id my all
+5. change id my all OR C 'TSO' '***' ALL
 6. SORT columnno to columnno A or D--( SORT 5 9 A)
 7. cut commmand to cut the lines and you can paste in the another dataset(basically COPY)
 8. You can cut and save to another cut board like code1 and you can see the display like cut display
