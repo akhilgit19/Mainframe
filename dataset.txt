@@ -209,3 +209,6 @@ Allocating a dataset:
    SMS Compressible  . : NO  
 
 
+To Compress a pdf command is z:
+==================================
+
