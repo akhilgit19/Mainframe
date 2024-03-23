@@ -212,3 +212,8 @@ Allocating a dataset:
 To Compress a pdf command is z:
 ==================================
 
+To Copy all the lines and created a memember in a PDS from the command line:
+=============================================================================
+CC CC AND give in the command line -Create .zf .zl mem3
+
+
