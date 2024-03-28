@@ -14,7 +14,7 @@ EDIT       ZA0917.B13.JCLS.PDS(SORT) - 01.06               Columns 00001 00072
 000340 //            TYPRUN=SCAN,                                              
 000350 //            TIME=(50,00),                                             
 000360 //            REGION=5K                                                 
-000370 //STEP1 EXEC PGM=SORT, (PARM ='SUB 122 321')                                                  
+000370 //STEP1 EXEC PGM=SORT, ACCT=, (PARM ='SUB 122 321'), TIME=, REGION=                                             
 000380 //SORTFILE DD DSN=ZA0917.SORT.INPUT.FILE,                               
 000390 //            DISP=(SHR,CATLG,DELETE),                                  
 000400 //            UNIT=SYSDA,                                               
