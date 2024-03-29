@@ -11,3 +11,38 @@
  000008            TIME                                                         
  000009 /*                                                                      
  ****** **************************** Bottom of Data ****************************
+
+
+EDIT       ZA0917.B13.JCLS.PDS(CPSPDS) - 01.03             Columns 00001 00072 
+****** ***************************** Top of Data ******************************
+000001 //ZA09170B JOB 8179332273,'AKHIL',NOTIFY=&SYSUID,                       
+000002 // TIME=(1,0),REGION=0M,CLASS=A,MSGLEVEL=(1,1),RESTART=STEP3            
+000003 //STEP1 EXEC PGM=IEFBR14                                                
+000004 //DD1 DD DSN=ZA0917.NEW.JCL.PS,                                         
+000005 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,1),RLSE),                      
+000006 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)                         
+000007 //STEP2 EXEC PGM=IEFBR14                                                
+000008 //DD1 DD DSN=ZA0917.NEW.JCL.PDS,                                        
+000009 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,1,1)),                         
+000010 // DCB=(LRECL=100,BLKSIZE=1000,RECFM=FB,DSORG=PO)                       
+000011 //STEP3 EXEC PGM=IEFBR14                                                
+000012 //DD1 DD DSN=ZA0917.NEW.JCL.PDS,DISP=(OLD,DELETE,DELETE)                
+000013 HELLO WORLD                                                             
+****** **************************** Bottom of Data ****************************
+
+
+
+EDIT       ZA0917.B13.JCLS.PDS(IEBGENER) - 01.00           Columns 00001 00072 
+****** ***************************** Top of Data ******************************
+000001 //ZA0917 JOB 8179332273,'AKHIL',NOTIFY=&SYSUID,                         
+000002 // TIME=(1,10),REGION=0M,CLASS=A                                        
+000003 //*COPYING DATA FROM PS TO ANOTHER PS FILE                              
+000004 // SET IFILE=ZA0917.NEW.JCL.PS                                          
+000005 //STEP1 EXEC PGM=IEBGENER                                               
+000006 //SYSPRINT DD SYSOUT=*                                                  
+000007 //SYSUT1 DD DISP=SHR,DSN=&IFILE                                         
+000008 //SYSUT2 DD DSN=ZA0917.NEW.CPY.PS,                                      
+000009 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(2,2),RLSE),                      
+000010 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)                         
+000011 //SYSIN DD DUMMY                                                        
+****** **************************** Bottom of Data ****************************
