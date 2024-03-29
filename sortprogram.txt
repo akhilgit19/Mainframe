@@ -1,18 +1,19 @@
- =COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
+ -------------------------------------------------------------------------------
+ EDIT       ZA0917.B13.JCLS.PDS(SORTFILE) - 01.11         Member SORTFILE saved 
  ****** ***************************** Top of Data ******************************
  000100 //SORTFILE JOB CLASS=A,                                                 
  000110 //             PRTY=15,                                                 
  000200 //             MSGCLASS=A,                                              
- 000300 //             MSGLEVEL=(1,1),                                          
+ 000300 //             MSGLEVEL=(2,1),                                          
  000400 //             NOTIFY=&SYSUID                                           
  000500 //STEP010 EXEC PGM=SORT                                                 
- 000600 //SORTIN DD DSN=ZA0917.SORT.INPUT.FILE,                                 
+ 000600 //SORTIN DD DSN=ZA0917.SAMPLE.PS,                                       
  000700 //          DISP=SHR                                                    
  000800 //SORTOUT DD DSN=ZA0917.SORT.OUTPUT.FILE,                               
- 000900 //           DISP=(OLD,CATLG,DELETE),                                   
+ 000900 //           DISP=(NEW,CATLG,DELETE),                                   
  001000 //           DCB=(LRECL=80,RECFM=FB,BLKSIZE=800,DSORG=PS),              
  001100 //           SPACE=(TRK,(100,100),RLSE)                                 
  001200 //SYSOUT DD SYSOUT=*                                                    
  001210 //SYSIN DD *                                                            
- 001300         SORT FIELDS=(1,8,CH,D)                                          
+ 001300         SORT FIELDS=(1,5,ZD,D)                                          
  001400 /*                                                                      
