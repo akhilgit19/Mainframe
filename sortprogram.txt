@@ -15,5 +15,6 @@
  001100 //           SPACE=(TRK,(100,100),RLSE)                                 
  001200 //SYSOUT DD SYSOUT=*                                                    
  001210 //SYSIN DD *                                                            
- 001300         SORT FIELDS=(1,5,ZD,D)                                          
+ 001300         SORT FIELDS=(1,5,ZD,D) or                                        
+ 001300         SORT FIELDS=(1,5,CH,A)                                        
  001400 /*                                                                      
