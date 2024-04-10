@@ -46,3 +46,412 @@ EDIT       ZA0917.B13.JCLS.PDS(IEBGENER) - 01.00           Columns 00001 00072
 000010 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)                         
 000011 //SYSIN DD DUMMY                                                        
 ****** **************************** Bottom of Data ****************************
+
+
+
+========================================================                                       
+ 000002 //*SAMPLE JCL PROGRAM TO NOTIFY THE USER    
+ ========================================================                            
+ 000003 //VENKATB JOB (8179332273),'AKHIL',NOTIFY=&SYSUID,                      
+ 000004 // TIME=(1,0),CLASS=A,REGION=0M,RESTART=STEP12                          
+ 000005 //STEP1 EXEC PGM=IEFBR14          
+ 
+ =================================================================                                      
+ 000006 //*SAMPLE JCL PROGRAM TO CREATE A PS(SEQUENTIAL DATA SET)  
+ =================================================================             
+ 000007 //STEP2 EXEC PGM=IEFBR14                                                
+ 000008 //DD1 DD DSN=VENKATB.B13.JCLS.PS2,                                      
+ 000009 // SPACE=(TRK,(1,1)),                                                   
+ 000010 // DISP=(NEW,CATLG,DELETE),                                             
+ 000011 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)
+ 
+ ========================================================================
+ 000012 //*SAMPLE JCL PROGRAM TO CREATE PS AND PDS FILE       
+ =======================================================================
+ 000013 //STEP3 EXEC PGM=IEFBR14                              
+ 000014 //DD1 DD DSN=VENKATB.B13.JCLS.PS4,                    
+ 000015 // SPACE=(TRK,(1,1)),                                 
+ 000016 // DISP=(NEW,CATLG,DELETE),                           
+ 000017 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)
+ 000018 //DD2 DD DSN=VENKATB.B13.JCLS.PDS2,                                     
+ 000019 // SPACE=(TRK,(1,1,1)),                                                 
+ 000020 // DISP=(NEW,CATLG,DELETE),                                             
+ 000021 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB)  
+  
+ ==============================================================                               
+ 000022 //*SAMPLE JCL PROGRAM TO DETELE A PS DATA SET          
+ ==============================================================                 
+ 000023 //STEP4 EXEC PGM=IEFBR14                                                
+ 000024 //DD1 DD DSN=VENKATB.B13.JCLS.PS4,                                      
+ 000025 // DISP=(OLD,DELETE,DELETE)       
+ 
+ ======================================================================                                      
+ 000026 //*SAMPLE JCL PROGRAM TO COPY A DATASET TO ANOTHER PS DATASET    
+ =======================================================================       
+ 000027 // SET IFILE=VENKATB.B13.JCLS.PS2                                       
+ 000028 //STEP5 EXEC PGM=IEBGENER                                               
+ 000029 //SYSPRINT DD SYSOUT=*                                                  
+ 000030 //SYSUT1 DD DISP=SHR,DSN=&IFILE
+ 000031 //SYSUT2 DD DSN=VENKATB.B13.JCLS.PS5,                        
+ 000032 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,1)),                
+ 000033 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)              
+ 000034 //SYSIN DD DUMMY                     
+ 
+ ===================================================================                        
+ 000035 //*SAMPLE JCL PROGRAM TO COPY THE DATE FROM PS TO PS  USING OLD,MOD,SHR  
+ =================================================================   
+ 000036 //STEP6 EXEC PGM=IEFBR14
+ 000037 //DD1 DD DSN=VENKATB.B13.JCLS.PS9,                               
+ 000038 // SPACE=(TRK,(1,1)),                                            
+ 000039 // DISP=(NEW,CATLG,DELETE),                                      
+ 000040 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)                  
+ 000041 //STEP7 EXEC PGM=IEBGENER                                        
+ 000042 //SYSPRINT DD SYSOUT=*                                           
+ 000043 //SYSIN DD DUMMY                                                 
+ 000044 //SYSUT1 DD DSN=VENKATB.B13.JCLS.PS5,DISP=SHR                    
+ 000045 //SYSUT2 DD DSN=VENKATB.B13.JCLS.PS9,DISP=OLD      
+ 
+ ============================================================              
+ 000046 //*SAMPLE JCL PROGRAM TO COPY FROM PS TO PDS MEMBER    
+ ============================================================          
+ 000047 //STEP8 EXEC PGM=IEBGENER                                        
+ 000048 //SYSPRINT DD SYSOUT=*                                           
+ 000049 //SYSIN DD DUMMY                                                 
+ 000050 //SYSUT1 DD DSN=VENKATB.B13.JCLS.PS5,DISP=SHR                    
+ 000051 //SYSUT2 DD DSN=VENKATB.B13.JCLS.PDS2(M1),DISP=SHR  
+ 
+ =============================================================             
+ 000052 //*SAMPLE JCL PROGRAM TO COPY FROM PDS MEMBER TO PS     
+ ==============================================================         
+ 000053 //STEP9 EXEC PGM=IEBGENER                                        
+ 000054 //SYSPRINT DD SYSOUT=*                                           
+ 000055 //SYSIN DD DUMMY
+ 000056 //SYSUT2 DD DSN=VENKATB.B13.JCLS.PS5,DISP=MOD                          
+ 000057 //SYSUT1 DD DSN=VENKATB.B13.JCLS.PDS2(M1),DISP=SHR   
+ 
+ ==================================================================                  
+ 000058 //*COPYING THE DATA FROM INSTREAM TO OUTPUT FILE         
+ ====================================================================              
+ 000059 //STEP10 EXEC PGM=IEBGENER                                             
+ 000060 //SYSPRINT DD SYSOUT=*                                                 
+ 000061 //SYSIN DD DUMMY                                                       
+ 000062 //SYSUT1 DD *                                                          
+ 000063 HELLO,WELCOME TO JCL MODULE                                            
+ 000064 PLS DO HAND-ON BEFORE WE START SORT                                    
+ 000065 /*                                                                     
+ 000066 //SYSUT2 DD DSN=VENKATB.B13.JCLS.PS5,DISP=OLD                          
+ 000067 //STEP11 EXEC PGM=IEBGENER                                             
+ 000068 //SYSPRINT DD SYSOUT=*                                                 
+ 000069 //SYSIN DD DUMMY                                                       
+ 000070 //SYSUT1 DD DATA,DLM=AA                                                
+ 000071 1111111111111111111111                                                 
+ 000072 2333333333333333333333                                                 
+ 000073 /*                                                                     
+ 000074 AA
+ 000075 //SYSUT2 DD DSN=VENKATB.B13.JCLS.PS9,DISP=OLD  
+==============================================================           
+ 000076 //* TO COPY 3 DATA FILES TO ONE DATA SET USING IEBGENER 
+================================================================  
+ 000077 //STEP12 EXEC PGM=IEBGENER                                
+ 000078 //SYSPRINT DD SYSOUT=*                                    
+ 000079 //SYSIN DD DUMMY                                          
+ 000080 //SYSUT1 DD DISP=SHR,DSN=VENKATB.B13.JCLS.PDS2(M1)        
+ 000081 //       DD DISP=SHR,DSN=VENKATB.B13.JCLS.PS5             
+ 000082 //       DD DISP=SHR,DSN=VENKATB.B13.JCLS.PS9             
+ 000083 //SYSUT2 DD DSN=VENKATB.B13.JCLS.PDS3(M1),                
+ 000084 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,1,2),RLSE),      
+ 000085 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PO)
+ 
+
+ 
+ 
+ 000001 //VENKATB JOB (89999),'AKHIL',NOTIFY=&SYSUID,TIME=(1,0),  
+ 000002 // CLASS=A,PRTY=1,MSGCLASS=A,MSGLEVEL=(1,1),REGION=0M,    
+ 000003 // RESTART=STEP5    
+ ================================================================                                      
+ 000004 //*COPY ALL THE MEMBERS FROM ONE PDS TO ANOTHER PDSS     
+ ==================================================================== 
+ 000005 //STEP1 EXEC PGM=IEFBR14                                  
+ 000006 //DD1 DD DSN=VENKATB.B13.JCLS.PDS4,                       
+ 000007 // DISP=(NEW,CATLG,DELETE),                               
+ 000008 // SPACE=(TRK,(1,1,3),RLSE),                              
+ 000009 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PO)           
+ 000010 //STEP2 EXEC PGM=IEBCOPY                                  
+ 000011 //SYSPRINT DD SYSOUT=*                                    
+ 000012 //DD1 DD DSN=VENKATB.B13.JCLS.PDS2,DISP=SHR               
+ 000013 //DD2 DD DSN=VENKATB.B13.JCLS.PDS4,DISP=SHR               
+ 000014 //SYSIN DD *                                              
+ 000015   COPY INDD=DD1,OUTDD=DD2                                 
+ 000016 /*                                                        
+ 000017 //STEP3 EXEC PGM=IEBCOPY                                  
+ 000018 //SYSPRINT DD SYSOUT=*
+ 000019 //X DD DISP=SHR,DSN=VENKATB.B13.JCLS.PDS2                   
+ 000020 //Y DD DISP=SHR,DSN=VENKATB.B13.JCLS.PDS4                   
+ 000021 //SYSIN DD *                                                
+ 000022   COPY INDD=X,OUTDD=Y                                       
+ 000023   SELECT MEMBER=(M1,M3)                                     
+ 000024 /*                                                          
+ 000025 //STEP4 EXEC PGM=IEBCOPY                                    
+ 000026 //SYSPRINT DD SYSOUT=*                                      
+ 000027 //SYSUT1 DD DISP=SHR,DSN=VENKATB.B13.JCLS.PDS2              
+ 000028 //SYSUT2 DD DISP=SHR,DSN=VENKATB.B13.JCLS.PDS4              
+ 000029 //SYSIN DD *                                                
+ 000030   COPY INDD=SYSUT1,OUTDD=SYSUT2                             
+ 000031   EXCLUDE MEMBER=(M1,M3,M5)                                 
+ 000032 /*                                                          
+ 000033 //STEP5 EXEC PGM=IEBCOPY                                    
+ 000034 //SYSPRINT DD SYSOUT=*                                      
+ 000035 //SYSUT1 DD DISP=SHR,DSN=VENKATB.B13.JCLS.PDS2              
+ 000036 //SYSUT2 DD DISP=SHR,DSN=VENKATB.B13.JCLS.PDS4              
+ 000037 //SYSIN DD *
+ 000038   COPY INDD=SYSUT1,OUTDD=SYSUT2                        
+ 000039   SELECT MEMBER=((M1,,R),(M2,M88,R),(M3,,R))           
+ 000040 /*
+ 
+ 
+ ================================
+SORT PROGRAMS
+==================================
+
+****** ***************************** Top of Data *****************
+000001 //VENKATB JOB (8179332273),'AKHIL',NOTIFY=&SYSUID,         
+000002 // TIME=(1,5),CLASS=A,REGION=0M,RESTART=STEP9              
+000003 //STEP1 EXEC PGM=IEFBR14                                   
+000004 //DD1 DD DSN=VENKATB.B13.JCLS.SORTIN,                      
+000005 // DISP=(NEW,CATLG,DELETE),                                
+000006 // SPACE=(TRK,(1,2)),                                      
+000007 // DCB=(LRECL=54,BLKSIZE=540,RECFM=FB,DSORG=PS)            
+000008 // SET IFILE=VENKATB.B13.JCLS.SORTIN                       
+000009 //STEP2 EXEC PGM=SORT                                      
+000010 //SYSOUT DD SYSOUT=*                                       
+000011 //SORTIN DD DISP=SHR,DSN=&IFILE                            
+000012 //SORTOUT DD DSN=VENKATB.B13.JCLS.SORTOUT,                 
+000013 // DISP=(NEW,CATLG,DELETE),                                
+000014 // SPACE=(TRK,(1,1)),                                      
+000015 // DCB=(LRECL=54,BLKSIZE=540,RECFM=FB,DSORG=PS)            
+000016 //SYSIN DD *                                               
+000017   SORT FIELDS=COPY                                      
+000018 /*                                                      
+000019 //STEP3 EXEC PGM=SORT                                   
+000020 //SYSOUT DD SYSOUT=*                                    
+000021 //SORTIN DD DISP=SHR,DSN=&IFILE                         
+000022 //SORTOUT DD DSN=VENKATB.B13.JCLS.SORTOUT,DISP=OLD      
+000023 //SYSIN DD *                                            
+000024   SORT FIELDS=(1,5,ZD,A)                                
+000025 /*                                                      
+000026 //STEP4 EXEC PGM=SORT                                   
+000027 //SYSOUT DD SYSOUT=*                                    
+000028 //SORTIN DD DISP=SHR,DSN=&IFILE                         
+000029 //SORTOUT DD DSN=VENKATB.B13.JCLS.SORTOUT,DISP=OLD      
+000030 //SYSIN DD *                                            
+000031   SORT FIELDS=(46,8,ZD,D)                               
+000032 /*                                                      
+000033 //STEP5 EXEC PGM=SORT                                   
+000034 //SYSOUT DD SYSOUT=*                                        
+000035 //SORTIN DD DISP=SHR,DSN=&IFILE                             
+000036 //SORTOUT DD DSN=VENKATB.B13.JCLS.SORTOUT,DISP=OLD          
+000037 //SYSIN DD *                                                
+000038   SORT FIELDS=(46,8,ZD,D)                                   
+000039   INCLUDE COND=(26,20,CH,EQ,C'VIZAG')                       
+000040 /*                                                          
+000041 //STEP6 EXEC PGM=SORT                                       
+000042 //SYSOUT DD SYSOUT=*                                        
+000043 //SORTIN DD DISP=SHR,DSN=&IFILE                             
+000044 //SORTOUT DD DSN=VENKATB.B13.JCLS.SORTOUT,DISP=OLD          
+000045 //SYSIN DD *                                                
+000046   SORT FIELDS=COPY                                          
+000047   INCLUDE COND=(46,8,ZD,GT,32000,AND,26,20,CH,EQ,C'VIZAG')  
+000048 /*                                                          
+000049 //STEP7 EXEC PGM=SORT                                       
+000050 //SYSOUT DD SYSOUT=*                                        
+000051 //SORTIN DD DISP=SHR,DSN=&IFILE                            
+000052 //SORTOUT DD DSN=VENKATB.B13.JCLS.SORTOUT,DISP=OLD         
+000053 //SYSIN DD *                                               
+000054   SORT FIELDS=COPY                                         
+000055   INCLUDE COND=(46,8,ZD,GT,32000,OR,26,20,CH,EQ,C'CHENNAI')
+000056 /*                                                         
+000057 //STEP8 EXEC PGM=SORT                                      
+000058 //SYSOUT DD SYSOUT=*                                       
+000059 //SORTIN DD DISP=SHR,DSN=&IFILE                            
+000060 //SORTOUT DD DSN=VENKATB.B13.JCLS.SORTOUT,DISP=OLD         
+000061 //SYSIN DD *                                               
+000062   SORT FIELDS=COPY                                         
+000063   OMIT COND=(26,20,CH,EQ,C'VIZAG')                         
+000064 /*                                                         
+000065 //STEP9 EXEC PGM=SORT                                      
+000066 //SYSOUT DD SYSOUT=*                                       
+000067 //SORTIN01 DD DISP=SHR,DSN=&IFILE                          
+000068 //SORTIN02 DD DISP=SHR,DSN=VENKATB.B13.JCLS.SORTOUT               
+000069 //SORTOUT DD DSN=VENKATB.B13.JCLS.MERGOUT,DISP=(NEW,CATLG,DELETE),
+000070 // SPACE=(TRK,(1,2)),                                             
+000071 // DCB=(LRECL=54,BLKSIZE=540,RECFM=FB,DSORG=PS)                   
+000072 //SYSIN DD *                                                      
+000073   MERGE FIELDS=(1,5,CH,A)                                         
+000074 /*                                                                
+ 
+ 
+ ====================================
+INSTREAM ADN CATLOG PROC
+===================================-===
+
+INSTREAM PROC
+****** ***************************** Top of Data *********************
+000001 //VENKATB JOB (8179332273),'AKHIL',NOTIFY=&SYSUID,             
+000002 // TIME=(1,5),CLASS=A,REGION=0M,RESTART=STEP2.PS1              
+000003 //M1 PROC                                                      
+000004 //PS1 EXEC PGM=IEFBR14                                         
+000005 //PDD1 DD DSN=&D1,DISP=(NEW,CATLG,DELETE),                     
+000006 // SPACE=(TRK,(1,1)),                                          
+000007 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)                
+000008 //   PEND                                                      
+000009 //STEP1 EXEC PROC=M1,D1=VENKATB.B13.JCLS.PS7                   
+000010 //M2 PROC                                                      
+000011 //PS1 EXEC PGM=IEFBR14                                         
+000012 //PDD1 DD DSN=&D1,DISP=(NEW,CATLG,DELETE),                     
+000013 // SPACE=(TRK,(1,2,1)),                                        
+000014 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PO)                
+000015 //   PEND                                                      
+000016 //STEP2 EXEC PROC=M2,D1=VENKATB.B13.JCLS.SRCLIB3               
+
+
+OVERRIDE AND RESTART IN PROC
+
+ ****** ***************************** Top of Data *****************************
+ 000001 //VENKATB JOB (8179332273),'AKHIL',NOTIFY=&SYSUID,                     
+ 000002 // TIME=(1,0),CLASS=A,REGION=0M,RESTART=STEP1.PRS2                     
+ 000003 //PR1 PROC                                                             
+ 000004 //PRS1 EXEC PGM=IEFBR14                                                
+ 000005 //PDD1 DD DSN=VENKATB.B13.JCLS.PS89,SPACE=(TRK,(1,2)),                 
+ 000006 // DISP=(NEW,CATLG,DELETE),                                            
+ 000007 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)                        
+ 000008 //PRS2 EXEC PGM=IEFBR14                                                
+ 000009 //PDD2 DD DSN=VENKATB.B13.JCLS.PS91,SPACE=(TRK,(1,2)),                 
+ 000010 // DISP=(NEW,CATLG,DELETE),                                            
+ 000011 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)                        
+ 000012 //PR1 PEND                                                             
+ 000013 //STEP1 EXEC PROC=PR1                                                  
+ 000014 //*PRS1.PDD1 DD DSN=VENKATB.B13.JCLS.PS90             
+
+
+
+CATALOG PROC
+
+ EDIT       VENKATB.B13.JCLS.SRCLIB2(PROC3) - 01.00         Columns 00001 00072 
+ Command ===>                                                  Scroll ===> CSR  
+ ****** ***************************** Top of Data ******************************
+ ==MSG> -Warning- The UNDO command is not available until you change            
+ ==MSG>           your edit profile using the command RECOVERY ON.              
+ 000001 //VENKATB JOB NOTIFY=&SYSUID                                            
+ 000002 // JCLLIB ORDER=VENKATB.B13.JCLS.SRCLIB2                                
+ 000003 //STEP1 EXEC PROC=CPROC,D1=VENKATB.B13.JCLS.PS89                        
+ ****** **************************** Bottom of Data ****************************
+
+ EDIT       VENKATB.B13.JCLS.SRCLIB2(CPROC) - 01.00         Columns 00001 00072 
+ Command ===>                                                  Scroll ===> CSR  
+ ****** ***************************** Top of Data ******************************
+ ==MSG> -Warning- The UNDO command is not available until you change            
+ ==MSG>           your edit profile using the command RECOVERY ON.              
+ 000001 //PR1 PROC                                                              
+ 000002 //PRS1 EXEC PGM=IEFBR14                                                 
+ 000003 //PDD1 DD DSN=&D1,SPACE=(TRK,(1,2)),                                    
+ 000004 // DISP=(NEW,CATLG,DELETE),                                             
+ 000005 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)                         
+ 000006 //PR1 PEND            
+
+
+====================
+COND JCL
+====================
+  ---------------------------------------------------
+  EDIT       VENKATB.B13.JCLS.SRCLIB2(COND) - 01.00  
+  Command ===>                                       
+  ****** ***************************** Top of Data **
+  000001 //VENKATB JOB NOTIFY=&SYSUID,RESTART=STEP3  
+  000002 //STEP1 EXEC PGM=IEFBR14                    
+  000003 //STEP2 EXEC PGM=IEFBR14                    
+  000004 //STEP3 EXEC PGM=IEFBR14                    
+  000005 //STEP4 EXEC PGM=IEFBR14                    
+  000006 //STEP5 EXEC PGM=IEFBR14                    
+  ****** **************************** Bottom of Data                                                                    
+
+
+ EDIT       VENKATB.B13.JCLS.SRCLIB2(COND) - 01.02          Columns 00001 00072 
+ Command ===>                                                  Scroll ===> CSR  
+ ****** ***************************** Top of Data ******************************
+ ==MSG> -Warning- The UNDO command is not available until you change            
+ ==MSG>           your edit profile using the command RECOVERY ON.              
+ 000001 //VENKATB JOB NOTIFY=&SYSUID                                            
+ 000002 //STEP1 EXEC PGM=IEBGENER                                               
+ 000003 //STEP2 EXEC PGM=IEFBR14,COND=(0,LE,STEP1) //* WILL NOT EXECUTE         
+ 000004 //STEP3 EXEC PGM=IEFBR14,COND=(12,NE,STEP1) //* WILL EXECUTE            
+ 000005 //STEP4 EXEC PGM=IEFBR14                                                
+ 000006 //STEP5 EXEC PGM=IEFBR14                                                
+ ****** **************************** Bottom of Data ****************************
+
+
+
+ EDIT       VENKATB.B13.JCLS.SRCLIB2(COND2) - 01.01         Columns 00001 0007
+ Command ===>                                                  Scroll ===> CSR
+ ****** ***************************** Top of Data ****************************
+ 000001 //VENKATB JOB NOTIFY=&SYSUID                                          
+ 000002 //STEP1 EXEC PGM=IEBGENER //*WILL EXECUTE WITH 12                     
+ 000003 //STEP2 EXEC PGM=IEFBR14,COND=(0,GE,STEP1) //*WILL EXECUTE            
+ 000004 //STEP3 EXEC PGM=IEFBR14,COND=(12,EQ,STEP1) //*WILL NOT EXE           
+ 000005 //STEP4 EXEC PGM=IEFBR14,COND=(0,GE,STEP1) //*WILL EXECUTE            
+ 000006 //STEP5 EXEC PGM=IEFBR14,COND=(0,GE,STEP1) //*WILL EXECUTE            
+ 000007 //STEP6 EXEC PGM=IEFBR14,COND=(12,NE,STEP1) //*WILL EXECUTE           
+ ****** **************************** Bottom of Data **************************
+
+
+  EDIT       VENKATB.B13.JCLS.SRCLIB3(COND3) - 01.00         Columns 00001 00072 
+  Command ===>                                                  Scroll ===> CSR  
+  ****** ***************************** Top of Data ******************************
+  000100 //VENKATB JOB NOTIFY=&SYSUID,COND=(0,EQ)                                
+  000200 //STEP1 EXEC PGM=IEBGENER  //*WILL      EXECUTE 12                      
+  000300 //STEP2 EXEC PGM=IEFBR14,COND=(12,EQ,STEP1) //*WILL  NOTEXECUTE         
+  000400 //STEP3 EXEC PGM=IEFBR14,COND=(12,NE,STEP1)  //*WILL  EXECUTE =0        
+  000500 //STEP4 EXEC PGM=IEFBR14  //*WILL NOT EXECUTE                           
+  000600 //STEP5 EXEC PGM=IEFBR14  //*WILL NOT EXECUTE                           
+  ****** **************************** Bottom of Data ****************************
+
+
+
+EDIT       VENKATB.B13.JCLS.SRCLIB3(CON4) - 01.00            Member CON4 saved
+Command ===>                                                  Scroll ===> CSR 
+****** ***************************** Top of Data *****************************
+000100 //VENKATB JOB NOTIFY=&SYSUID,COND=(0,EQ)                               
+000200 //STEP1 EXEC PGM=IEBGENER  //*WILL      EXECUTE 12                     
+000300 //STEP2 EXEC PGM=IEFBR14,COND=(12,EQ,STEP1) //*WILL NOT EXECUTE        
+000400 //STEP3 EXEC PGM=IEBGENER,COND=(12,EQ,STEP1)  //*WILL  EXECUTE =12     
+000500 //STEP4 EXEC PGM=IEFBR14  //*WILL    EXECUTE                           
+000600 //STEP5 EXEC PGM=IEFBR14  //*WILL NOT EXECUTE                          
+                                                                                 
+                                                                                 
+                                                                                 
+
+
+
+=========================
+
+
+GDG
+===================================
+ -------------------------------------------------------------------------------
+ EDIT       VENKATB.B13.JCLS.SRCLIB3(GDG) - 01.00              Member GDG saved 
+ Command ===>                                                  Scroll ===> CSR  
+ ****** ***************************** Top of Data ******************************
+ 000001 //VENKATB JOB NOTIFY=&SYSUID,RESTART=STEP2                              
+ 000002 //STEP1 EXEC PGM=IDCAMS                                                 
+ 000003 //SYSPRINT DD SYSOUT=*                                                  
+ 000004 //SYSIN DD *                                                            
+ 000005    DEFINE GDG (NAME(VENKATB.B13.JCLS.GDG) -                             
+ 000006                LIMIT(4) -                                               
+ 000007                EMPTY    -                                               
+ 000008                SCRATCH  -                                               
+ 000009               )                                                         
+ 000010 /*                                                                      
+ 000011 //STEP2 EXEC PGM=IEFBR14                                                
+ 000012 //DD1 DD DSN=VENKATB.B13.JCLS.GDG(+1),                                  
+ 000013 // DISP=(NEW,CATLG,DELETE),                                             
+ 000014 // SPACE=(TRK,(1,1)),                                                   
+ 000015 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)  
