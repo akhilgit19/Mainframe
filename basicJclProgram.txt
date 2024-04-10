@@ -458,5 +458,16 @@ GDG
 
  000011 //STEP3 EXEC PGM=IEFBR14                                                
  000012 //DD1 DD DSN=VENKATB.B13.JCLS.GDG(-2),                                  
- 000013 // DISP=(OLD,DELETE,DELETE),                                             
- 
+ 000013 // DISP=(OLD,DELETE,DELETE)
+
+
+ 000001 //DELGDG JOB CLASS=A,MSGCLASS=A,NOTIFY=&SYSUID,MSGLEVEL=(1,1),PRTY=15                        
+ 000002 //STEP1 EXEC PGM=IDCAMS                                                 
+ 000003 //SYSPRINT DD SYSOUT=*                                                  
+ 000004 //SYSIN DD *                                                            
+ 000005         DELETE (BANK.CUSTOMER.MONTHLY) GDG FORCE                      
+ 000010 /*   
+
+
+
+
