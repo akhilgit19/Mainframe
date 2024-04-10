@@ -469,5 +469,5 @@ GDG
  000010 /*   
 
 
-
-
+FORCE -means detele the generation if the retention period has expired
+PURGE -means delete the generation if the retention period has not expired
