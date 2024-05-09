@@ -553,3 +553,6 @@ PURGE -means delete the generation if the retention period has not expired
  001300                   CISZ(8192)              -                             
  001400                   VOLUME(VPWRKF))                                       
  001500 /*   
+
+
+1- LISTCAT ENTRIES (/) ALL
