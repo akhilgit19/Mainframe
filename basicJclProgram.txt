@@ -1,4 +1,5 @@
- EDIT       ZA0917.B13.JCLS.PDS(MEM2) - 01.00               Columns 00001 00072 
+
+EDIT       ZA0917.B13.JCLS.PDS(MEM2) - 01.00               Columns 00001 00072 
  =COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
  ****** ***************************** Top of Data ******************************
  000001 //ZA0917 JOB CLASS=A,MSGCLASS=A,NOTIFY=&SYSUID, MSGLEVEL=(1,1),         
@@ -493,4 +494,22 @@ PURGE -means delete the generation if the retention period has not expired
  001200                   TRACKS(50 30)           -                             
  001300                   CISZ(4096)              -                             
  001400                   VOLUME(VPWRKF))                                       
- 001500 /*                                                                      
+ 001500 /*                          
+
+
+ EDIT       ZA0917.B13.JCLS.PDS(CREESDS) - 01.00            Columns 00001 00072 
+ =COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
+ ****** ***************************** Top of Data ******************************
+ 000100 //CREESDS JOB CLASS=A,MSGLEVEL=(1,1),MSGCLASS=A,NOTIFY=&SYSUID,         
+ 000200 //            PRTY=15                                                   
+ 000300 //STEP010 EXEC PGM=IDCAMS                                               
+ 000400 //SYSPRINT DD SYSOUT=*                                                  
+ 000500 //SYSIN    DD *                                                         
+ 000600            DEFINE CLUSTER(                -                             
+ 000700                   NAME(AKHIL.COURSE.ESDS) -                                                 
+ 001000                   RECSZ(90 200)           -                             
+ 001100                   FREESPACE(10 20)        -                             
+ 001200                   TRACKS(20 20)           -                             
+ 001300                   CISZ(8192)              -                             
+ 001400                   VOLUME(VPWRKF))                                       
+ 001500 /*   
