@@ -471,3 +471,26 @@ GDG
 
 FORCE -means detele the generation if the retention period has expired
 PURGE -means delete the generation if the retention period has not expired
+
+
+
+
+
+ EDIT       ZA0917.B13.JCLS.PDS(CREKSDS) - 01.00            Columns 00001 00072 
+ =COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
+ ****** ***************************** Top of Data ******************************
+ 000100 //CREKSDS JOB CLASS=A,MSGLEVEL=(1,1),MSGCLASS=A,NOTIFY=&SYSUID,         
+ 000200 //            PRTY=15                                                   
+ 000300 //STEP010 EXEC PGM=IDCAMS                                               
+ 000400 //SYSPRINT DD SYSOUT=*                                                  
+ 000500 //SYSIN    DD *                                                         
+ 000600            DEFINE CLUSTER(                -                             
+ 000700                   NAME(AKHIL.COURSE.KSDS) -                             
+ 000800                   INDEXED                 -                             
+ 000900                   KEYS(5,0)               -                             
+ 001000                   RECSZ(90 200)           -                             
+ 001100                   FREESPACE(10 20)        -                             
+ 001200                   TRACKS(50 30)           -                             
+ 001300                   CISZ(4096)              -                             
+ 001400                   VOLUME(VPWRKF))                                       
+ 001500 /*                                                                      
