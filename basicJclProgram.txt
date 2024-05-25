@@ -830,6 +830,25 @@ COPYING FROM RRDS TO PS FILE AND DUPLICATES  ARE ACCEPTED
  ****** **************************** Bottom of Data ****************************
 
 
+
+SKIP PARAMETER:
+================
+
+  ****** ***************************** Top of Data ******************************
+ 000100 //ZA0917A JOB NOTIFY=&SYSUID,RESTART=STEP7                              
+ - - -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 50 Line(s) not Displayed 
+ 001780 //STEP7 EXEC PGM=IDCAMS                                                 
+ 001790 //SYSPRINT DD SYSOUT=*                                                  
+ 001791 //DD1 DD DISP=SHR,DSN=ZA0917.KSDS.JCL                                   
+ 001792 //DD2 DD DISP=SHR,DSN=ZA0917.VSAM.COPY.RRDS                             
+ 001793 //SYSIN DD *                                                            
+ 001794  REPRO INFILE(DD1)-                                                     
+ 001795        OUTFILE(DD2)-                                                    
+ 001796        SKIP(2)                                                          
+ 001798 /*                                                                      
+ 001800 //                                                                      
+ ****** **************************** Bottom of Data ****************************
+
  ***                                                        
  EDIT       ZA0917.B13.JCLS.PDS(CREKSDS) - 01.00            Columns 00001 00072 
  =COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
