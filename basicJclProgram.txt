@@ -779,7 +779,33 @@ EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(REPRO) - 01.04      Columns 00001 00072
  ****** ****  End of data  ****                                                 
 
 
-27:43
+COPYING FROM RRDS TO PS FILE AND DUPLICATES  ARE ACCEPTED
+==============================================================================
+
+****** ***************************** Top of Data ******************************
+000100 //ZA0917A JOB NOTIFY=&SYSUID,RESTART=STEP5                              
+- - -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 32 Line(s) not Displayed 
+001690 //STEP5 EXEC PGM=IDCAMS                                                 
+001691 //SYSPRINT DD SYSOUT=*                                                  
+001692 //DD1 DD DISP=SHR,DSN=ZA0917.KSDS.JCL                                   
+001693 //DD2 DD DISP=SHR,DSN=ZA0917.VSAM.COPY.RRDS                             
+001694 //SYSIN DD *                                                            
+001695  REPRO INFILE(DD1)-                                                     
+001696        OUTFILE(DD2)                                                     
+001699 /*                                                                      
+001700 //                                                                      
+****** **************************** Bottom of Data ****************************
+
+ EDIT       ZA0917.VSAM.COPY.RRDS                           Columns 00001 00055 
+ ****** ***************************** Top of Data ******************************
+ 000001 E0001VENKAT              INDIA               0987764321                 
+ 000002 E0001VENKAT              INDIA               0987764321                 
+ 000003 E0001VENKAT              INDIA               0987764321                 
+ 000004 E0001VENKAT              INDIA               0987764321                 
+ 000005 E0001VENKAT              INDIA               0987764321                 
+ ****** **************************** Bottom of Data ****************************
+
+
 
  ***                                                        
  EDIT       ZA0917.B13.JCLS.PDS(CREKSDS) - 01.00            Columns 00001 00072 
