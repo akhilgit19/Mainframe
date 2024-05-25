@@ -887,6 +887,23 @@ RELATIVE RECORD NUMBER - 4
 RELATIVE RECORD NUMBER - 5                                                     
 
 
+DUMP,HEX,CHAR
+===========================================================================
+
+ EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(PRINT) - 01.02      Columns 00001 00072 
+ ****** ***************************** Top of Data ******************************
+ 000010 //ZA0917A JOB NOTIFY=&SYSUID                                            
+ 000100 //STEP1 EXEC PGM=IDCAMS                                                 
+ 000200 //SYSPRINT DD SYSOUT=*                                                  
+ 000300 //DD1 DD DISP=SHR,DSN=ZA0917.KSDS.JCL                                   
+ 000400 //*D2 DD DISP=SHR,DSN=ZA0917.VSAM.COPY.RRDS                             
+ 000500 //SYSIN DD *                                                            
+ 000600  PRINT INFILE(DD1) DUMP                                                 
+ 000700  PRINT INFILE(DD1) HEX                                                  
+ 000800  PRINT INFILE(DD1) CHAR                                                 
+ 000900 /*                                                                      
+ 001000 //                                                                      
+ ****** **************************** Bottom of Data ****************************
 
  ***                                                        
  EDIT       ZA0917.B13.JCLS.PDS(CREKSDS) - 01.00            Columns 00001 00072 
