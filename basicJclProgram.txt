@@ -525,7 +525,7 @@ COMMAND TO CHECK THE PARAMETERS OR DETAILS OF THE DATASET-LISTCAT ENTRIES(/) ALL
  LISTCAT ENTRIES(/) ALL       
       ZA0917.ESDS.JCL.DATA    
 
-TOOLS: FILE MANAGER,FILE AID, DITTO
+
 
 STEP8:
 
@@ -606,6 +606,16 @@ CREATING LDS VSAM DATASET:
  001100 //                                                                      
  ****** **************************** Bottom of Data ****************************
 
+
+TO VIEW THE DATASET  OF VSAMS.
+================================
+TOOLS: FILE MANAGER,FILE AID, DITTO
+
+DITTO
+STEP1: OPTION 12 IN ISPF PANEL 
+STEP2: SELECT OPTION 6
+STEP3: TO EDIT OPTION 10
+STEP4: PROVIDE VSAME DATASET -'ZA0917.ESDS.JCL'
 
  EDIT       ZA0917.B13.JCLS.PDS(CREKSDS) - 01.00            Columns 00001 00072 
  =COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
