@@ -748,7 +748,8 @@ COPYING FROM ESDS TO KSDS AND  NO DUPLICATES SHOULD BE AVAILABLE
 
 
 
-KSDS TO KSDS 
+COPYING FROM KSDS TO KSDS AND  NO DUPLICATES SHOULD BE AVAILABLE
+==============================================================================
 
 EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(REPRO) - 01.04      Columns 00001 00072 
 ****** ***************************** Top of Data ******************************
