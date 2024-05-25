@@ -586,7 +586,7 @@ CREATING KSDS VSAM DATASET:
  001100 //                                                                      
  ****** **************************** Bottom of Data ****************************
 
-CREATING KSDS VSAM DATASET:
+CREATING LDS VSAM DATASET:
 ==============================
 
  EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(LDS) - 01.01        Columns 00001 00072 
