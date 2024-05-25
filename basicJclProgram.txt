@@ -977,6 +977,32 @@ IDC0002I IDCAMS PROCESSING COMPLETE. MAXIMUM CONDITION CODE WAS 0
 ******************************** BOTTOM OF DATA ********************************
                                                     
 
+TO CHECK IF FILE IS EMPTY:
+===============================
+
+****** ***************************** Top of Data ******************************
+000010 //ZA0917A JOB NOTIFY=&SYSUID                                            
+000100 //STEP1 EXEC PGM=IDCAMS                                                 
+000200 //SYSPRINT DD SYSOUT=*                                                  
+000300 //DD1 DD DISP=SHR,DSN=ZA0917.ESDS3.JCL                                  
+000500 //SYSIN DD *                                                            
+000600  PRINT INFILE(DD1) COUNT(1)                                             
+000900 /*                                                                      
+001000 //                                                                      
+****** **************************** Bottom of Data ****************************
+
+********************************* TOP OF DATA **********************************
+IDCAMS  SYSTEM SERVICES                                           TIME: 11:31:00
+                                                                                
+ PRINT INFILE(DD1) COUNT(1)                                             00060003
+IDC3300I  ERROR OPENING ZA0917.ESDS3.JCL                                        
+IDC3351I ** VSAM OPEN RETURN CODE IS 160                                        
+IDC0005I NUMBER OF RECORDS PROCESSED WAS 0                                      
+IDC3003I FUNCTION TERMINATED. CONDITION CODE IS 12                              
+                                                                                
+IDC0002I IDCAMS PROCESSING COMPLETE. MAXIMUM CONDITION CODE WAS 12              
+******************************** BOTTOM OF DATA ********************************
+
 
 1- LISTCAT ENTRIES (/) ALL
 2- PRINT IDS(/) CHAR
