@@ -851,7 +851,43 @@ SKIP AND COUNT PARAMETER:
  ****** **************************** Bottom of Data ****************************
 
 
-43:01 
+PRINT:
+======
+
+EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(PRINT) - 01.01       Member PRINT saved 
+****** ***************************** Top of Data ******************************
+000010 //ZA0917A JOB NOTIFY=&SYSUID                                            
+000100 //STEP1 EXEC PGM=IDCAMS                                                 
+000200 //SYSPRINT DD SYSOUT=*                                                  
+000300 //DD1 DD DISP=SHR,DSN=ZA0917.KSDS.JCL                                   
+000400 //*D2 DD DISP=SHR,DSN=ZA0917.VSAM.COPY.RRDS                             
+000500 //SYSIN DD *                                                            
+000600  PRINT INFILE(DD1)                                                      
+000900 /*                                                                      
+001000 //                                                                      
+
+
+COMMAND INPUT ===>                                            SCROLL ===> PAGE 
+RELATIVE RECORD NUMBER - 1                                                     
+000000  C5F0F0F0 F1E5C5D5 D2C1E340 40404040   40404040 40404040 40C9D5C4 C9C140
+000020  40404040 40404040 40404040 40F0F9F8   F7F7F6F4 F3F2F1                  
+                                                                               
+RELATIVE RECORD NUMBER - 2                                                     
+000000  C5F0F0F0 F1E5C5D5 D2C1E340 40404040   40404040 40404040 40C9D5C4 C9C140
+000020  40404040 40404040 40404040 40F0F9F8   F7F7F6F4 F3F2F1                  
+                                                                               
+RELATIVE RECORD NUMBER - 3                                                     
+000000  C5F0F0F0 F1E5C5D5 D2C1E340 40404040   40404040 40404040 40C9D5C4 C9C140
+000020  40404040 40404040 40404040 40F0F9F8   F7F7F6F4 F3F2F1                  
+                                                                               
+RELATIVE RECORD NUMBER - 4                                                     
+000000  C5F0F0F0 F1E5C5D5 D2C1E340 40404040   40404040 40404040 40C9D5C4 C9C140
+000020  40404040 40404040 40404040 40F0F9F8   F7F7F6F4 F3F2F1                  
+                                                                               
+RELATIVE RECORD NUMBER - 5                                                     
+
+
+
  ***                                                        
  EDIT       ZA0917.B13.JCLS.PDS(CREKSDS) - 01.00            Columns 00001 00072 
  =COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
