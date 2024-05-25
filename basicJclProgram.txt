@@ -623,7 +623,7 @@ STEP4: PROVIDE VSAME DATASET -'ZA0917.ESDS.JCL'
 
 
 ESDS- SUPPORTS SEQUENTIAL READ,DUPLICATES ARE ACCEPTED, AND WE CANT DELETE RECORD IN THE ESDS
-
+=============================================================================================
  Inplace Edit     ZA0917.ESDS.JCL                                    Not active 
                              Type ESDS     RBA                      Format CHAR 
                                               Col 1       Insert Length 55      
@@ -635,9 +635,10 @@ ESDS- SUPPORTS SEQUENTIAL READ,DUPLICATES ARE ACCEPTED, AND WE CANT DELETE RECOR
  000004 E0004SACHIN              INDIA               1000000001                 
  000005 E0005MADHAVAN            USA                 1000000002                 
  D      E0007MANOJ               UK                  1000000004                 
- 000007 E0006SURAJ               USA                 1000000005                 
-RRDS- SUPPORTS RANDOM READ, DYNAMIC READ AND DELETE, DUPLICATES ARE ACCEPTED
+ 000007 E0006SURAJ               USA                 1000000005    
 
+RRDS- SUPPORTS RANDOM READ, DYNAMIC READ AND DELETE, DUPLICATES ARE ACCEPTED
+===============================================================================
  Edit             ZA0917.RRDS.JCL                                   Top of 4    
              Type RRDS     Slot            RBA                      Format CHAR 
                                               Col 1       Insert Length 55      
@@ -651,8 +652,8 @@ RRDS- SUPPORTS RANDOM READ, DYNAMIC READ AND DELETE, DUPLICATES ARE ACCEPTED
 
 
 
-KSDS- DUPLICATES ARE NOT ACCEPTED AND INDEXED BASED/
-
+KSDS- DUPLICATES ARE NOT ACCEPTED AND KEY BASED/
+======================================================
 
  Edit             ZA0917.KSDS1.JCL                                  Top of 5    
                              Type KSDS     RBA                      Format CHAR 
@@ -665,6 +666,10 @@ KSDS- DUPLICATES ARE NOT ACCEPTED AND INDEXED BASED/
  000004 E0004DIVYA               INDIA               1000000004                 
  000005 E0005MOHIT ROY           UK                  1000000003                 
  ****** ****  End of data  ****                                                 
+
+REPRO:1- TO COPY THE DATA FROM VSAM---->VSAM
+      2- TO COPY THE DATA FROM PS------>VSAM
+
 
 
 
