@@ -713,7 +713,7 @@ EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(REPRO) - 01.01      Columns 00001 00072
 001400        TOADDRESS(550)                                                   
 001500 /*                                                                      
 001600 //                                                                                                                                        
-COPYING FROM ESDS TO KSDS AND KSDS TO KSDS NO DUPLICATES SHOULD BE AVAILABLE
+COPYING FROM ESDS TO KSDS AND  NO DUPLICATES SHOULD BE AVAILABLE
 ==============================================================================
 
  ****** ***************************** Top of Data ******************************
@@ -745,6 +745,40 @@ COPYING FROM ESDS TO KSDS AND KSDS TO KSDS NO DUPLICATES SHOULD BE AVAILABLE
  000008 E0003HARIAT              USA                 0123456783                 
  000009 E0004HARISH              INDIA               0123456782                 
  000010 E0005MANOJT              PAKISTAN            0123456781                 
+
+
+
+KSDS TO KSDS 
+
+EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(REPRO) - 01.04      Columns 00001 00072 
+****** ***************************** Top of Data ******************************
+000100 //ZA0917A JOB NOTIFY=&SYSUID,RESTART=STEP4                              
+- - -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 22 Line(s) not Displayed 
+001610 //STEP4 EXEC PGM=IDCAMS                                                 
+001620 //SYSPRINT DD SYSOUT=*                                                  
+001630 //DD1 DD DISP=SHR,DSN=ZA0917.KSDS1.JCL                                  
+001640 //DD2 DD DISP=SHR,DSN=ZA0917.KSDS2.JCL                                  
+001650 //SYSIN DD *                                                            
+001660  REPRO INFILE(DD1)-                                                     
+001670        OUTFILE(DD2)-                                                    
+001671        FROMKEY(C0005)-                                                  
+001672        TOKEY(E0001)                                                     
+001680 /*                                                                      
+001700 //                                                                      
+
+
+
+ Edit             ZA0917.KSDS2.JCL                                  Top of 2    
+                             Type KSDS     RBA                      Format CHAR 
+ Key                                          Col 1       Insert Length 55      
+        <===>----10---+----2----+----3----+----4----+----5----+                 
+ ****** ****  Top of data  ****                                                 
+ 000001 C0005MOHIT ROY           UK                  1000000003                 
+ 000002 E0001VENKAT              INDIA               0123456789                 
+ ****** ****  End of data  ****                                                 
+
+
+
 
  ***                                                        
  EDIT       ZA0917.B13.JCLS.PDS(CREKSDS) - 01.00            Columns 00001 00072 
