@@ -713,8 +713,8 @@ EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(REPRO) - 01.01      Columns 00001 00072
 001400        TOADDRESS(550)                                                   
 001500 /*                                                                      
 001600 //                                                                                                                                        
-COPYING FROM ESDS TO KSDS
-===========================
+COPYING FROM ESDS TO KSDS AND KSDS TO KSDS NO DUPLICATES SHOULD BE AVAILABLE
+==============================================================================
 
  ****** ***************************** Top of Data ******************************
  000100 //ZA0917A JOB NOTIFY=&SYSUID,RESTART=STEP3                              
