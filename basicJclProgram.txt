@@ -671,8 +671,46 @@ REPRO:1- TO COPY THE DATA FROM VSAM---->VSAM
       2- TO COPY THE DATA FROM PS------>VSAM
 
 
+RELATIVE BYTE ADDRESS
+40 RECORD LENGTH
+             ---------------0
+             ---------------40
+             ---------------80
+             ---------------120
+PRINT IDS(/) CHAR
+
+ E0002DIVYA NAIR          UNITED STATES       0987654321    
+ RBA OF RECORD -              110                           
+ E0002DIVYA NAIR          UNITED STATES       0987654321    
+ RBA OF RECORD -              165                           
+ E0004SACHIN              INDIA               1000000001    
+ RBA OF RECORD -              220                           
+ E0005MADHAVAN            USA                 1000000002    
+ RBA OF RECORD -              275                           
+ E0007MANOJ               UK                  1000000004    
+ RBA OF RECORD -              330                           
+ E0006SURAJ               USA                 1000000005    
+ NUMBER OF RECORDS PROCESSED WAS 7    /
 
 
+
+   File  Edit  Edit_Settings  Menu  Utilities  Compilers  Test  Help            
+ -------------------------------------------------------------------------------
+ EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(REPRO) - 01.00      Columns 00001 00072 
+ ****** ***************************** Top of Data ******************************
+ 000100 //ZA0917A JOB NOTIFY=&SYSUID                                            
+ 000200 //STEP1 EXEC PGM=IDCAMS                                                 
+ 000300 //SYSPRINT DD SYSOUT=*                                                  
+ 000400 //SYSIN DD *                                                            
+ 000500  REPRO INDATASET(ZA0917.ESDS.JCL)-                                      
+ 000600        OUTDATASET(ZA0917.ESDS1.JCL)                                     
+ 000700 /*                                                                      
+ 000800 //                                                                      
+
+
+
+
+ ***                                                        
  EDIT       ZA0917.B13.JCLS.PDS(CREKSDS) - 01.00            Columns 00001 00072 
  =COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
  ****** ***************************** Top of Data ******************************
@@ -752,3 +790,4 @@ REPRO:1- TO COPY THE DATA FROM VSAM---->VSAM
 
 
 1- LISTCAT ENTRIES (/) ALL
+2- PRINT IDS(/) CHAR
