@@ -474,6 +474,17 @@ FORCE -means detele the generation if the retention period has expired
 PURGE -means delete the generation if the retention period has not expired
 
 
+VSAM FILES:
+    IDCAMS: - 
+         DEFINE: TO CREATE VSAM FILES- GDG,AIX,BUILD INDEX, PATH
+         REPRO:
+         ALTER:
+         PRINT:
+         LISTCAT:
+         VERIFY:
+         IMPORT:
+         EXPORT:
+         DELETE:
 
 
 
