@@ -905,83 +905,77 @@ DUMP,HEX,CHAR
  001000 //                                                                      
  ****** **************************** Bottom of Data ****************************
 
- ***                                                        
- EDIT       ZA0917.B13.JCLS.PDS(CREKSDS) - 01.00            Columns 00001 00072 
- =COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
- ****** ***************************** Top of Data ******************************
- 000100 //CREKSDS JOB CLASS=A,MSGLEVEL=(1,1),MSGCLASS=A,NOTIFY=&SYSUID,         
- 000200 //            PRTY=15                                                   
- 000300 //STEP010 EXEC PGM=IDCAMS                                               
- 000400 //SYSPRINT DD SYSOUT=*                                                  
- 000500 //SYSIN    DD *                                                         
- 000600            DEFINE CLUSTER(                -                             
- 000700                   NAME(AKHIL.COURSE.KSDS) -                             
- 000800                   INDEXED                 -                             
- 000900                   KEYS(5,0)               -                             
- 001000                   RECSZ(90 200)           -                             
- 001100                   FREESPACE(10 20)        -                             
- 001200                   TRACKS(50 30)           -                             
- 001300                   CISZ(4096)              -                             
- 001400                   VOLUME(VPWRKF))                                       
- 001500 /*                          
+ COMMAND INPUT ===>                                            SCROLL ===> PAGE 
+********************************* TOP OF DATA **********************************
+IDCAMS  SYSTEM SERVICES                                           TIME: 11:16:35
+                                                                                
+ PRINT INFILE(DD1) DUMP                                                 00060002
+IDCAMS  SYSTEM SERVICES                                           TIME: 11:16:35
+LISTING OF DATA SET -ZA0917.KSDS.JCL                                            
+RELATIVE RECORD NUMBER - 1                                                      
+000000  C5F0F0F0 F1E5C5D5 D2C1E340 40404040   40404040 40404040 40C9D5C4 C9C1404
+000020  40404040 40404040 40404040 40F0F9F8   F7F7F6F4 F3F2F1                   
+                                                                                
+RELATIVE RECORD NUMBER - 2                                                      
+000000  C5F0F0F0 F1E5C5D5 D2C1E340 40404040   40404040 40404040 40C9D5C4 C9C1404
+000020  40404040 40404040 40404040 40F0F9F8   F7F7F6F4 F3F2F1                   
+                                                                                
+RELATIVE RECORD NUMBER - 3                                                      
+000000  C5F0F0F0 F1E5C5D5 D2C1E340 40404040   40404040 40404040 40C9D5C4 C9C1404
+000020  40404040 40404040 40404040 40F0F9F8   F7F7F6F4 F3F2F1                   
 
+ COMMAND INPUT ===>                                            SCROLL ===> PAGE 
+                                                                                
+RELATIVE RECORD NUMBER - 4                                                      
+000000  C5F0F0F0 F1E5C5D5 D2C1E340 40404040   40404040 40404040 40C9D5C4 C9C1404
+000020  40404040 40404040 40404040 40F0F9F8   F7F7F6F4 F3F2F1                   
+                                                                                
+RELATIVE RECORD NUMBER - 5                                                      
+000000  C5F0F0F0 F1E5C5D5 D2C1E340 40404040   40404040 40404040 40C9D5C4 C9C1404
+000020  40404040 40404040 40404040 40F0F9F8   F7F7F6F4 F3F2F1                   
+                                                                                
+IDC0005I NUMBER OF RECORDS PROCESSED WAS 5                                      
+IDC0001I FUNCTION COMPLETED, HIGHEST CONDITION CODE WAS 0                       
+IDCAMS  SYSTEM SERVICES                                           TIME: 11:16:35
+                                                                                
+ PRINT INFILE(DD1) HEX                                                  00070002
+IDCAMS  SYSTEM SERVICES                                           TIME: 11:16:35
+LISTING OF DATA SET -ZA0917.KSDS.JCL                                            
+RELATIVE RECORD NUMBER - 1                                                      
 
- EDIT       ZA0917.B13.JCLS.PDS(CREESDS) - 01.00            Columns 00001 00072 
- =COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
- ****** ***************************** Top of Data ******************************
- 000100 //CREESDS JOB CLASS=A,MSGLEVEL=(1,1),MSGCLASS=A,NOTIFY=&SYSUID,         
- 000200 //            PRTY=15                                                   
- 000300 //STEP010 EXEC PGM=IDCAMS                                               
- 000400 //SYSPRINT DD SYSOUT=*                                                  
- 000500 //SYSIN    DD *                                                         
- 000600            DEFINE CLUSTER(                -                             
- 000700                   NAME(AKHIL.COURSE.ESDS) -                                                 
- 001000                   RECSZ(90 200)           -                             
- 001100                   FREESPACE(10 20)        -                             
- 001200                   TRACKS(20 20)           -                             
- 001300                   CISZ(8192)              -                             
- 001400                   VOLUME(VPWRKF))                                       
- 001500 /*   
-
-
-
-
- EDIT       ZA0917.B13.JCLS.PDS(CRERSDS) - 01.00            Columns 00001 00072 
- =COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
- ****** ***************************** Top of Data ******************************
- 000100 //CRERSDS JOB CLASS=A,MSGLEVEL=(1,1),MSGCLASS=A,NOTIFY=&SYSUID,         
- 000200 //            PRTY=15                                                   
- 000300 //STEP010 EXEC PGM=IDCAMS                                               
- 000400 //SYSPRINT DD SYSOUT=*                                                  
- 000500 //SYSIN    DD *                                                         
- 000600            DEFINE CLUSTER(                -                             
- 000700                   NAME(AKHIL.COURSE.RSDS) -  
- 000000                   NUMBERED                -
- 001000                   RECSZ(90 200)           -                             
- 001100                   FREESPACE(10 20)        -                             
- 001200                   TRACKS(20 20)           -                             
- 001300                   CISZ(8192)              -                             
- 001400                   VOLUME(VPWRKF))                                       
- 001500 /*   
-
-
-
-
- EDIT       ZA0917.B13.JCLS.PDS(CRELSDS) - 01.00            Columns 00001 00072 
- =COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
- ****** ***************************** Top of Data ******************************
- 000100 //CRELSDS JOB CLASS=A,MSGLEVEL=(1,1),MSGCLASS=A,NOTIFY=&SYSUID,         
- 000200 //            PRTY=15                                                   
- 000300 //STEP010 EXEC PGM=IDCAMS                                               
- 000400 //SYSPRINT DD SYSOUT=*                                                  
- 000500 //SYSIN    DD *                                                         
- 000600            DEFINE CLUSTER(                -                             
- 000700                   NAME(AKHIL.COURSE.LSDS) -                                                 
- 001000                   LINEAR                  -                                                
- 001200                   TRACKS(20 20)           -                             
- 001300                   CISZ(8192)              -                             
- 001400                   VOLUME(VPWRKF))                                       
- 001500 /*   
+C5F0F0F0F1E5C5D5D2C1E34040404040404040404040404040C9D5C4C9C140404040404040404040
+RELATIVE RECORD NUMBER - 2                                                      
+C5F0F0F0F1E5C5D5D2C1E34040404040404040404040404040C9D5C4C9C140404040404040404040
+RELATIVE RECORD NUMBER - 3                                                      
+C5F0F0F0F1E5C5D5D2C1E34040404040404040404040404040C9D5C4C9C140404040404040404040
+RELATIVE RECORD NUMBER - 4                                                      
+C5F0F0F0F1E5C5D5D2C1E34040404040404040404040404040C9D5C4C9C140404040404040404040
+RELATIVE RECORD NUMBER - 5                                                      
+C5F0F0F0F1E5C5D5D2C1E34040404040404040404040404040C9D5C4C9C140404040404040404040
+IDC0005I NUMBER OF RECORDS PROCESSED WAS 5                                      
+IDC0001I FUNCTION COMPLETED, HIGHEST CONDITION CODE WAS 0                       
+IDCAMS  SYSTEM SERVICES                                           TIME: 11:16:35
+                                                                                
+ PRINT INFILE(DD1) CHAR                                                 00080002
+IDCAMS  SYSTEM SERVICES                                           TIME: 11:16:35
+LISTING OF DATA SET -ZA0917.KSDS.JCL                                            
+RELATIVE RECORD NUMBER - 1                                                      
+E0001VENKAT              INDIA               0987764321                         
+RELATIVE RECORD NUMBER - 2                                                      
+E0001VENKAT              INDIA               0987764321                         
+RELATIVE RECORD NUMBER - 3                                                      
+E0001VENKAT              INDIA               0987764321                         
+RELATIVE RECORD NUMBER - 4                                                      
+E0001VENKAT              INDIA               0987764321                         
+RELATIVE RECORD NUMBER - 5                                                      
+E0001VENKAT              INDIA               0987764321                         
+IDC0005I NUMBER OF RECORDS PROCESSED WAS 5                                      
+IDC0001I FUNCTION COMPLETED, HIGHEST CONDITION CODE WAS 0                       
+IDCAMS  SYSTEM SERVICES                                           TIME: 11:16:35
+                                                                                
+IDC0002I IDCAMS PROCESSING COMPLETE. MAXIMUM CONDITION CODE WAS 0               
+******************************** BOTTOM OF DATA ********************************
+                                                    
 
 
 1- LISTCAT ENTRIES (/) ALL
