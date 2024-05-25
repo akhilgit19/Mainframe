@@ -806,6 +806,29 @@ COPYING FROM RRDS TO PS FILE AND DUPLICATES  ARE ACCEPTED
  ****** **************************** Bottom of Data ****************************
 
 
+ ****** ***************************** Top of Data ******************************
+ 000100 //ZA0917A JOB NOTIFY=&SYSUID,RESTART=STEP6                              
+ - - -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 40 Line(s) not Displayed 
+ 001700 //STEP6 EXEC PGM=IDCAMS                                                 
+ 001710 //SYSPRINT DD SYSOUT=*                                                  
+ 001720 //DD1 DD DISP=SHR,DSN=ZA0917.KSDS.JCL                                   
+ 001730 //DD2 DD DISP=SHR,DSN=ZA0917.VSAM.COPY.RRDS                             
+ 001740 //SYSIN DD *                                                            
+ 001750  REPRO INFILE(DD1)-                                                     
+ 001760        OUTFILE(DD2)-                                                    
+ 001761        FROMNUMBER(3)-                                                   
+ 001762        TONUMBER(4)                                                      
+ 001770 /*                                                                      
+ 001800 //                                                                      
+ ****** **************************** Bottom of Data ****************************
+
+
+ EDIT       ZA0917.VSAM.COPY.RRDS                           Columns 00001 00055 
+ ****** ***************************** Top of Data ******************************
+ 000001 E0001VENKAT              INDIA               0987764321                 
+ 000002 E0001VENKAT              INDIA               0987764321                 
+ ****** **************************** Bottom of Data ****************************
+
 
  ***                                                        
  EDIT       ZA0917.B13.JCLS.PDS(CREKSDS) - 01.00            Columns 00001 00072 
