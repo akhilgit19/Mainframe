@@ -831,7 +831,7 @@ COPYING FROM RRDS TO PS FILE AND DUPLICATES  ARE ACCEPTED
 
 
 
-SKIP PARAMETER:
+SKIP AND COUNT PARAMETER:
 ================
 
   ****** ***************************** Top of Data ******************************
@@ -844,7 +844,8 @@ SKIP PARAMETER:
  001793 //SYSIN DD *                                                            
  001794  REPRO INFILE(DD1)-                                                     
  001795        OUTFILE(DD2)-                                                    
- 001796        SKIP(2)                                                          
+ 001796        SKIP(2)-        
+ 000000        COUNT(4)
  001798 /*                                                                      
  001800 //                                                                      
  ****** **************************** Bottom of Data ****************************
