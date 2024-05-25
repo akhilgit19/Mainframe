@@ -513,6 +513,24 @@ ENO  ENAME EADD ESAL
 RECORDSIZE(55 55) (Average record lenght Max record length)- IF BOTH ARE SAME IT IS FIXED BLOCK ELSE IT IS VARIABLE BLOCK.
 TRACKS(1 1) - PRIMARY QUANTITY AND SECONDARY QUANTITY 
 
+EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(ESDS) - 01.02   11 lines cut to DEFAULT 
+****** ***************************** Top of Data ******************************
+000100 //ZA0917A JOB NOTIFY=&SYSUID                                            
+000200 //STEP1 EXEC PGM=IDCAMS                                                 
+000300 //SYSPRINT DD SYSOUT=*                                                  
+000400 //SYSIN DD *                                                            
+000500    DEFINE CLUSTER (NAME(ZA0917.ESDS.JCL)-                               
+000510                   VOLUME(VPWRKF) -                                      
+000520                   RECORDSIZE(55 55) -                                   
+000530                   TRACKS(1 1) -                                         
+000540                   NONINDEXED)                                           
+000700 /*                                                                      
+000800 //                                                                      
+****** **************************** Bottom of Data ****************************
+
+
+
+
 
  EDIT       ZA0917.B13.JCLS.PDS(CREKSDS) - 01.00            Columns 00001 00072 
  =COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
