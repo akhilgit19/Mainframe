@@ -487,7 +487,8 @@ VSAM FILES:
          EXPORT:
          DELETE:
 
-
+CREATING ESDS VSAM DATASET:
+==============================
 STEP1: IN ISPF PANEL OPTION ENTER 3.2
 STEP2: GIVE A IN THE OPTION AND IN THE NAME PROVIDE DATASET NAME- ZA0917.VEN.JULY20.VSAM.JCLS
 STEP3: NOW YOU WILL REDIRECT TO ALLOCATE NEW DATA SET PANEL
@@ -540,8 +541,50 @@ EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(ESDS) - 01.02   11 lines cut to DEFAULT
 000800 //                                                                      
 ****** **************************** Bottom of Data ****************************
 
+ESDS- SUPPORTS SEQUENTIAL READ, AND WE CAN DELETE RECORD IN THE ESDS
+RRDS- SUPPORTS RANDOM READ, DYNAMIC READ AND DELETE
+
+CREATING RRDS VSAM DATASET:
+==============================
+
+ EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(RRDS) - 01.01       Columns 00001 00072 
+ ****** ***************************** Top of Data ******************************
+ 000100 //ZA0917A JOB NOTIFY=&SYSUID                                            
+ 000200 //STEP1 EXEC PGM=IDCAMS                                                 
+ 000300 //SYSPRINT DD SYSOUT=*                                                  
+ 000400 //SYSIN DD *                                                            
+ 000500    DEFINE CLUSTER (NAME(ZA0917.RRDS.JCL)-                               
+ 000600                   VOLUME(VPWRKF) -                                      
+ 000700                   RECORDSIZE(55 55) -                                   
+ 000800                   TRACKS(1 1) -                                         
+ 000900                   NUMBERED)                                             
+ 001000 /*                                                                      
+ 001100 //                                                                      
+ ****** **************************** Bottom of Data ****************************
 
 
+
+CREATING KSDS VSAM DATASET:
+==============================
+
+ EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(KSDS) - 01.01       Columns 00001 00072 
+ ****** ***************************** Top of Data ******************************
+ 000100 //ZA0917A JOB NOTIFY=&SYSUID                                            
+ 000200 //STEP1 EXEC PGM=IDCAMS                                                 
+ 000300 //SYSPRINT DD SYSOUT=*                                                  
+ 000400 //SYSIN DD *                                                            
+ 000500    DEFINE CLUSTER (NAME(ZA0917.KSDS1.JCL)-                              
+ 000600                   VOLUME(VPWRKF) -                                      
+ 000700                   RECORDSIZE(55 55) -                                   
+ 000710                   KEYS(5,0)-                                            
+ 000800                   TRACKS(1 1)-                                          
+ 000900                   INDEXED -                                             
+ 000910                   CISZ(512)-                                            
+ 000920                   FREESPACE(10 15)-                                     
+ 000930                   )                                                     
+ 001000 /*                                                                      
+ 001100 //                                                                      
+ ****** **************************** Bottom of Data ****************************
 
 
  EDIT       ZA0917.B13.JCLS.PDS(CREKSDS) - 01.00            Columns 00001 00072 
