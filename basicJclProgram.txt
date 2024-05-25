@@ -617,6 +617,14 @@ STEP2: SELECT OPTION 6
 STEP3: TO EDIT OPTION 10
 STEP4: PROVIDE VSAME DATASET -'ZA0917.ESDS.JCL'
 
+F  File Manager  File Manager for z/OS 
+STEP1: GO TO MORE OPTION IN ISPF PANEL 
+STEP2: SELECT OPTION F
+STEP3: SELECT EDIT OPTION
+STEP4: PROVIDE VSAME DATASET -'ZA0917.ESDS.JCL'
+
+
+
  EDIT       ZA0917.B13.JCLS.PDS(CREKSDS) - 01.00            Columns 00001 00072 
  =COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
  ****** ***************************** Top of Data ******************************
