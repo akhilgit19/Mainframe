@@ -586,6 +586,23 @@ CREATING KSDS VSAM DATASET:
  001100 //                                                                      
  ****** **************************** Bottom of Data ****************************
 
+CREATING KSDS VSAM DATASET:
+==============================
+
+ EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(LDS) - 01.01        Columns 00001 00072 
+ ****** ***************************** Top of Data ******************************
+ 000100 //ZA0917A JOB NOTIFY=&SYSUID                                            
+ 000200 //STEP1 EXEC PGM=IDCAMS                                                 
+ 000300 //SYSPRINT DD SYSOUT=*                                                  
+ 000400 //SYSIN DD *                                                            
+ 000500    DEFINE CLUSTER (NAME(ZA0917.LDS.JCL)-                                
+ 000600                   VOLUME(VPWRKF) -                                      
+ 000800                   TRACKS(1 1)-                                          
+ 000900                   LINEAR)                                               
+ 001000 /*                                                                      
+ 001100 //                                                                      
+ ****** **************************** Bottom of Data ****************************
+
 
  EDIT       ZA0917.B13.JCLS.PDS(CREKSDS) - 01.00            Columns 00001 00072 
  =COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
