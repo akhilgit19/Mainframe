@@ -779,7 +779,7 @@ EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(REPRO) - 01.04      Columns 00001 00072
  ****** ****  End of data  ****                                                 
 
 
-
+27:43
 
  ***                                                        
  EDIT       ZA0917.B13.JCLS.PDS(CREKSDS) - 01.00            Columns 00001 00072 
