@@ -692,7 +692,8 @@ PRINT IDS(/) CHAR
  E0006SURAJ               USA                 1000000005    
  NUMBER OF RECORDS PROCESSED WAS 7    /
 
-
+COPYING FROM ESDS TO ESDS
+============================
 
 EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(REPRO) - 01.01      Columns 00001 00072 
 ****** ***************************** Top of Data ******************************
@@ -712,9 +713,38 @@ EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(REPRO) - 01.01      Columns 00001 00072
 001400        TOADDRESS(550)                                                   
 001500 /*                                                                      
 001600 //                                                                                                                                        
+COPYING FROM ESDS TO KSDS
+===========================
+
+ ****** ***************************** Top of Data ******************************
+ 000100 //ZA0917A JOB NOTIFY=&SYSUID,RESTART=STEP3                              
+ - - -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 14 Line(s) not Displayed 
+ 001510 //STEP3 EXEC PGM=IDCAMS                                                 
+ 001520 //SYSPRINT DD SYSOUT=*                                                  
+ 001521 //DD1 DD DISP=SHR,DSN=ZA0917.ESDS2.JCL                                  
+ 001522 //DD2 DD DISP=SHR,DSN=ZA0917.KSDS1.JCL                                  
+ 001530 //SYSIN DD *                                                            
+ 001540  REPRO INFILE(DD1)-                                                     
+ 001550        OUTFILE(DD2)                                                     
+ 001600 /*                                                                      
+ 001700 //                                                                      
 
 
-
+ Edit             ZA0917.KSDS1.JCL                                 Top of 10    
+                             Type KSDS     RBA                      Format CHAR 
+ Key                                          Col 1       Insert Length 55      
+        <===>----10---+----2----+----3----+----4----+----5----+                 
+ ****** ****  Top of data  ****                                                 
+ 000001 C0001VENKAT              INDIA               0987654321                 
+ 000002 C0002RAJU                USA                 1000000001                 
+ 000003 C0003KIRAN ROY           INDIA               1000000002                 
+ 000004 C0004DIVYA               INDIA               1000000004                 
+ 000005 C0005MOHIT ROY           UK                  1000000003                 
+ 000006 E0001VENKAT              INDIA               0123456789                 
+ 000007 E0002AKHIL               USA                 0123456785                 
+ 000008 E0003HARIAT              USA                 0123456783                 
+ 000009 E0004HARISH              INDIA               0123456782                 
+ 000010 E0005MANOJT              PAKISTAN            0123456781                 
 
  ***                                                        
  EDIT       ZA0917.B13.JCLS.PDS(CREKSDS) - 01.00            Columns 00001 00072 
