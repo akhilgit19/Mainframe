@@ -694,18 +694,24 @@ PRINT IDS(/) CHAR
 
 
 
-   File  Edit  Edit_Settings  Menu  Utilities  Compilers  Test  Help            
- -------------------------------------------------------------------------------
- EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(REPRO) - 01.00      Columns 00001 00072 
- ****** ***************************** Top of Data ******************************
- 000100 //ZA0917A JOB NOTIFY=&SYSUID                                            
- 000200 //STEP1 EXEC PGM=IDCAMS                                                 
- 000300 //SYSPRINT DD SYSOUT=*                                                  
- 000400 //SYSIN DD *                                                            
- 000500  REPRO INDATASET(ZA0917.ESDS.JCL)-                                      
- 000600        OUTDATASET(ZA0917.ESDS1.JCL)                                     
- 000700 /*                                                                      
- 000800 //                                                                      
+EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(REPRO) - 01.01      Columns 00001 00072 
+****** ***************************** Top of Data ******************************
+000100 //ZA0917A JOB NOTIFY=&SYSUID,RESTART=STEP2                              
+000200 //STEP1 EXEC PGM=IDCAMS                                                 
+000300 //SYSPRINT DD SYSOUT=*                                                  
+000400 //SYSIN DD *                                                            
+000500  REPRO INDATASET(ZA0917.ESDS.JCL)-                                      
+000600        OUTDATASET(ZA0917.ESDS1.JCL)                                     
+000700 /*                                                                      
+000800 //STEP2 EXEC PGM=IDCAMS                                                 
+000900 //SYSPRINT DD SYSOUT=*                                                  
+001000 //SYSIN DD *                                                            
+001100  REPRO INDATASET(ZA0917.ESDS.JCL)-                                      
+001200        OUTDATASET(ZA0917.ESDS1.JCL)-                                    
+001300        FROMADDRESS(440)-                                                
+001400        TOADDRESS(550)                                                   
+001500 /*                                                                      
+001600 //                                                                                                                                        
 
 
 
