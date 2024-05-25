@@ -544,10 +544,6 @@ EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(ESDS) - 01.02   11 lines cut to DEFAULT
 000800 //                                                                      
 ****** **************************** Bottom of Data ****************************
 
-ESDS- SUPPORTS SEQUENTIAL READ,DUPLICATES ARE ACCEPTED, AND WE CANT DELETE RECORD IN THE ESDS
-RRDS- SUPPORTS RANDOM READ, DYNAMIC READ AND DELETE, DUPLICATES ARE ACCEPTED
-KSDS- DUPLICATES ARE NOT ACCEPTED AND INDEXED BASED
-
 CREATING RRDS VSAM DATASET:
 ==============================
 
@@ -623,6 +619,52 @@ STEP1: GO TO MORE OPTION IN ISPF PANEL
 STEP2: SELECT OPTION F
 STEP3: SELECT EDIT OPTION
 STEP4: PROVIDE VSAME DATASET -'ZA0917.ESDS.JCL'
+
+
+
+ESDS- SUPPORTS SEQUENTIAL READ,DUPLICATES ARE ACCEPTED, AND WE CANT DELETE RECORD IN THE ESDS
+
+ Inplace Edit     ZA0917.ESDS.JCL                                    Not active 
+                             Type ESDS     RBA                      Format CHAR 
+                                              Col 1       Insert Length 55      
+        ----+----10---+----2----+----3----+----4----+----5----+                 
+ ****** ****  Top of data  ****                                                 
+ 000001 E0001VENKAT              INDIA               0123456789                 
+ 000002 E0002DIVYA NAIR          UNITED STATES       0987654321                 
+ 000003 E0002DIVYA NAIR          UNITED STATES       0987654321                 
+ 000004 E0004SACHIN              INDIA               1000000001                 
+ 000005 E0005MADHAVAN            USA                 1000000002                 
+ D      E0007MANOJ               UK                  1000000004                 
+ 000007 E0006SURAJ               USA                 1000000005                 
+RRDS- SUPPORTS RANDOM READ, DYNAMIC READ AND DELETE, DUPLICATES ARE ACCEPTED
+
+ Edit             ZA0917.RRDS.JCL                                   Top of 4    
+             Type RRDS     Slot            RBA                      Format CHAR 
+                                              Col 1       Insert Length 55      
+        ----+----10---+----2----+----3----+----4----+----5----+                 
+ ****** ****  Top of data  ****                                                 
+ 000001 E0001VENKAT              INDIA               0987764321                 
+ 000002 E0001VENKAT              INDIA               0987764321                 
+ 000003 E0001VENKAT              INDIA               0987764321                 
+ 000004 E0001VENKAT              INDIA               0987764321                 
+ ****** ****  End of data  ****                                                 
+
+
+
+KSDS- DUPLICATES ARE NOT ACCEPTED AND INDEXED BASED/
+
+
+ Edit             ZA0917.KSDS1.JCL                                  Top of 5    
+                             Type KSDS     RBA                      Format CHAR 
+ Key                                          Col 1       Insert Length 55      
+        <===>----10---+----2----+----3----+----4----+----5----+                 
+ ****** ****  Top of data  ****                                                 
+ 000001 E0001VENKAT              INDIA               0987654321                 
+ 000002 E0002RAJU                USA                 1000000001                 
+ 000003 E0003KIRAN ROY           INDIA               1000000002                 
+ 000004 E0004DIVYA               INDIA               1000000004                 
+ 000005 E0005MOHIT ROY           UK                  1000000003                 
+ ****** ****  End of data  ****                                                 
 
 
 
