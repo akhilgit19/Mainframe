@@ -108,6 +108,9 @@ To repeat a line in the datset
 ================================
 1. r, r4, rr  after a or before b
 
+TO DELETE ALL THE LINES IN THE DATASET
+========================================
+DEL NX ALL
 
 To copy a line in the datset
 ================================
