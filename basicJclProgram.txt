@@ -1006,3 +1006,19 @@ IDC0002I IDCAMS PROCESSING COMPLETE. MAXIMUM CONDITION CODE WAS 12
 
 1- LISTCAT ENTRIES (/) ALL
 2- PRINT IDS(/) CHAR
+
+
+LISTCAT JCL
+
+
+ -------------------------------------------------------------------------------
+ EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(LISTCAT) - 01.00    Columns 00001 00072 
+ ****** ***************************** Top of Data ******************************
+ 000100 //ZA0917A JOB NOTIFY=&SYSUID                                            
+ 000200 //STEP1 EXEC PGM=IDCAMS                                                 
+ 000300 //SYSPRINT DD SYSOUT=*                                                  
+ 000400 //SYSIN DD *                                                            
+ 000500   LISTCAT ENTRIES(ZA0917.ESDS.JCL) ALL                                  
+ 000600 /*                                                                      
+ 000700 //                                                                      
+ ****** **************************** Bottom of Data ****************************
