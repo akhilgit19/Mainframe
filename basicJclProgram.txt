@@ -1047,4 +1047,21 @@ PURGE IS USED WHEN DELETE THE FILE WHICH IS USING RETENTION
  000400 //SYSIN DD *                                                            
  000500   DELETE ZA0917.ESDS6.JCL PURGE CLUSTER                                 
  000600 /*                                                                      
- 000700 //                                                                      
+ 000700 //                          
+
+DELETING A GDG WITH VERSIONS
+================================
+
+ EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(DELGDG) - 01.01     Columns 00001 00072 
+ ****** ***************************** Top of Data ******************************
+ 000100 //ZA0917A JOB NOTIFY=&SYSUID                                            
+ 000200 //STEP1 EXEC PGM=IDCAMS                                                 
+ 000300 //SYSPRINT DD SYSOUT=*                                                  
+ 000400 //SYSIN DD *                                                            
+ 000500   DELETE ZA0917.B13.JCLS.GDG GDG FORCE                                  
+ 000600 /*                                                                      
+ ****** **************************** Bottom of Data ****************************
+                                                                                
+
+
+
