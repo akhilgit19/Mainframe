@@ -438,29 +438,27 @@ Command ===>                                                  Scroll ===> CSR
 
 GDG
 ===================================
- -------------------------------------------------------------------------------
- EDIT       VENKATB.B13.JCLS.SRCLIB3(GDG) - 01.00              Member GDG saved 
- Command ===>                                                  Scroll ===> CSR  
+  EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(GDG) - 01.02        Columns 00001 00072 
  ****** ***************************** Top of Data ******************************
- 000001 //VENKATB JOB NOTIFY=&SYSUID,RESTART=STEP2                              
- 000002 //STEP1 EXEC PGM=IDCAMS                                                 
- 000003 //SYSPRINT DD SYSOUT=*                                                  
- 000004 //SYSIN DD *                                                            
- 000005    DEFINE GDG (NAME(VENKATB.B13.JCLS.GDG) -                             
- 000006                LIMIT(4) -                                               
- 000007                EMPTY    -                                               
- 000008                SCRATCH  -                                               
- 000009               )                                                         
- 000010 /*                                                                      
- 000011 //STEP2 EXEC PGM=IEFBR14                                                
- 000012 //DD1 DD DSN=VENKATB.B13.JCLS.GDG(+1),                                  
- 000013 // DISP=(NEW,CATLG,DELETE),                                             
- 000014 // SPACE=(TRK,(1,1)),                                                   
- 000015 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)
+ 000100 //ZA0917A JOB NOTIFY=&SYSUID,RESTART=STEP3                              
+ 000200 //STEP1 EXEC PGM=IDCAMS                                                 
+ 000300 //SYSPRINT DD SYSOUT=*                                                  
+ 000400 //SYSIN DD *                                                            
+ 000500  DEFINE GDG (NAME(ZA0917.B13.JCLS.GDG) -                                
+ 000600              LIMIT(4) -                                                 
+ 000700              EMPTY    -                                                 
+ 000800              SCRATCH  -                                                 
+ 000900              )                                                          
+ 001000 /*                                                                      
+ 001100 //STEP2 EXEC PGM=IEFBR14                                                
+ 001200 //DD1 DD DSN=ZA0917.B13.JCLS.GDG(+1),                                   
+ 001300 // DISP=(NEW,CATLG,DELETE),                                             
+ 001400 // SPACE=(TRK,(1,1)),                                                   
+ 001500 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)                         
 
- 000011 //STEP3 EXEC PGM=IEFBR14                                                
- 000012 //DD1 DD DSN=VENKATB.B13.JCLS.GDG(-2),                                  
- 000013 // DISP=(OLD,DELETE,DELETE)
+001600 //STEP3 EXEC PGM=IEFBR14                    
+001700 //DD1 DD DSN=ZA0917.B13.JCLS.GDG(-1),       
+001800 // DISP=(OLD,DELETE,DELETE)                 
 
 
  000001 //DELGDG JOB CLASS=A,MSGCLASS=A,NOTIFY=&SYSUID,MSGLEVEL=(1,1),PRTY=15                        
