@@ -468,6 +468,8 @@ GDG
  000005         DELETE (BANK.CUSTOMER.MONTHLY) GDG FORCE                      
  000010 /*   
 
+NOEMPTY- OLDEST GENERATION IS GOING TO DELETE WHEN LIMIT IS REACHED
+EMPTY- OLDESTS GENERATIONS ARE GOING TO DELETE WHEN EXCEEDED THE LIMIT
 
 FORCE -means detele the generation if the retention period has expired
 PURGE -means delete the generation if the retention period has not expired
