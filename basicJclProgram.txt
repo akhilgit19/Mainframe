@@ -154,16 +154,27 @@ EDIT       ZA0917.B13.JCLS.PDS(IEBGENER) - 01.00           Columns 00001 00072
 ==============================================================           
  000076 //* TO COPY 3 DATA FILES TO ONE DATA SET USING IEBGENER 
 ================================================================  
- 000077 //STEP12 EXEC PGM=IEBGENER                                
- 000078 //SYSPRINT DD SYSOUT=*                                    
- 000079 //SYSIN DD DUMMY                                          
- 000080 //SYSUT1 DD DISP=SHR,DSN=VENKATB.B13.JCLS.PDS2(M1)        
- 000081 //       DD DISP=SHR,DSN=VENKATB.B13.JCLS.PS5             
- 000082 //       DD DISP=SHR,DSN=VENKATB.B13.JCLS.PS9             
- 000083 //SYSUT2 DD DSN=VENKATB.B13.JCLS.PDS3(M1),                
- 000084 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,1,2),RLSE),      
- 000085 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PO)
+ EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(COPY) - 01.02       Columns 00001 00072 
+****** ***************************** Top of Data ******************************
+000100 //ZA0917A JOB (8179332273),'AKHIL',NOTIFY=&SYSUID,                      
+000200 // TIME=(1,0),CLASS=A                                                   
+000300 //STEP1 EXEC PGM=IEBGENER                                               
+000400 //SYSPRINT DD SYSOUT=*                                                  
+000410 //SYSIN DD DUMMY                                                        
+000500 //SYSUT1 DD DISP=SHR,DSN=ZA0917.B13.JCLS.PDS2(M1)                       
+000600 //       DD DISP=SHR,DSN=ZA0917.B13.JCLS.PS1                            
+000700 //       DD DISP=SHR,DSN=ZA0917.B13.JCLS.PS2                            
+000800 //SYSUT2 DD DSN=ZA0917.B13.JCLS.PDS3(M1),                               
+000900 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,1,7),RLSE),                    
+001000 // DCB=(LRECL=55,BLKSIZE=550,RECFM=FB,DSORG=PO)                         
  
+ -------------------------------------------------------------------------------
+ EDIT       ZA0917.B13.JCLS.PDS3(M1) - 01.00                Columns 00001 00055 
+ ****** ***************************** Top of Data ******************************
+ 000001 // heLLO                                      00010000                 
+ 000002 // Akhil                                       00000100                 
+ 000003 //Good Morning                                 00000100                 
+ ****** **************************** Bottom of Data ****************************
 
  
  
