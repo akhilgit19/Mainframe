@@ -57,7 +57,7 @@ PARAMETERS
    BLOCK SIZE :   Block size is always multiple of record length
                   LRECL=75,BLKSIZE=150-- In a block i can stroe 2 records
                   LRECL=50,BLKSIZE=400---In each block how many records i can store: 8
-                   LRECL=50,BLKSIZE=200---In each block how many records i can store: 4
+                  LRECL=50,BLKSIZE=200---In each block how many records i can store: 4
    RECORD FORMAT:  FB
    ORGANIZATION TYPE:
                       BLANK IF you creating PS File
@@ -104,6 +104,49 @@ Enter "/" to select option             YY.DDD, YYYY.DDD in Julian form
                                                                                
 ( ** Only one of these fields may be specified)                                
 Command ===>                                                                   
+
+EX:
+====
+1.Create a sequential file as per the requirement
+Create a sequential file to store 100 transactions/records as  per the below record structure
+
+TID  TDATE  TAMOUNT =========> 23 record length
+5     10     8       
+
+How many bytes we need to allocate?--2300 bytes
+
+
+ Data Set Name . . . . : ZA0917.TSO.COMMANDS.PS3                           
+                                                                           
+ General Data                           Current Allocation                 
+  Management class . . : **None**        Allocated bytes . . : 14,720      
+  Storage class  . . . : **None**        Allocated extents . : 1           
+   Volume serial . . . : VPWRKF                                            
+   Device type . . . . : 3390                                              
+  Data class . . . . . : **None**                                          
+   Organization  . . . : PS             Current Utilization                
+   Record format . . . : FB              Used bytes  . . . . : 0           
+   Record length . . . : 23              Used extents  . . . : 0           
+   Block size  . . . . : 230                                               
+   1st extent bytes  . : 14720                                             
+   Secondary bytes . . : 1500           Dates                              
+   Data set name type  :                 Creation date . . . : 2024/06/22  
+   Data set encryption : NO              Referenced date . . : 2024/06/22  
+                                         Expiration date . . : ***None***  
+
+
+Line Commands:
+====================
+ I: Information
+ S: Short Information
+ R: Rename
+ D: Delete
+ V: View the data
+ B: Browse the data/read only
+ E: Edit the data
+ CO: Copy the data from this file to another file
+ MO: Move the data from this file to another file
+  /: To see the option which are available
 
 
                               Data Set Information                             
