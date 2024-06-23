@@ -135,7 +135,9 @@ How many bytes we need to allocate?--2300 bytes.
                                          Expiration date . . : ***None***  
 
 
-Line Commands:
+X: ALPHA NUMERIC( A-Z,0-9,Any special character)
+
+Dataset Commands:
 ====================
  I: Information
  S: Short Information
@@ -147,8 +149,45 @@ Line Commands:
  CO: Copy the data from this file to another file
  MO: Move the data from this file to another file
   /: To see the option which are available
+ 
 
+Primary Commands
+====================
+ COLS: To see the column position
+ RES: To clear the warning message
+ CAPS ON : To enable caps on, It convers lowercase characters into upper case automatically
+ CAPS OFF :
+ SAVE    :
+ FIND    :
+ CHANGE  :
+ PROFILE :
+ NUM OFF :  To restrict generating last 8 digits
+ NUM ON  :
+ CUT     :
+ PASTE   :
 
+Line Commands
+===================
+
+I: Inser a line
+I4: Insert 4 lines
+In: Insert n lines
+D:  Delete a line
+D20: Delete 2 lines
+Dn:  Delete n lines
+DD..DD
+LC: Convertint single row to lower casse
+LC2: Convert 2 ros to lower case if any characters are present
+LCC..LCC:Block content to lower case
+
+UC: Converting single row to upper case
+UC2: 
+UCC..UCC:
+
+R: Repeat the line
+R4: Repeat the line 4 times
+RR
+RR2: Block repeat
                               Data Set Information                             
                                                                     More:     +
  Data Set Name . . . . : ZA0917.TSO.COMMANDS.PS1                               
