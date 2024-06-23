@@ -49,8 +49,8 @@ FIELDS: PNO,PNAME,PLOCATION,PPHN,PEMAILID
 PARAMETERS
    VOLUME
    SPACE UNITS: BYTES===============8
-   PRIMARY QUANTITY:    7500
-   SECONDARY QUANTITY:
+   PRIMARY QUANTITY:    7500 (Recordlength * no of records)
+   SECONDARY QUANTITY:  
    DIRECTORY:- U want to create a ps file then specify 0
                you want to create a pds then specify value >=1
    RECORD LENGTH:      75
@@ -64,9 +64,9 @@ PARAMETERS
                       PDS if you creating PDS File
 
 Note:
-=====
+=======
 Block size= no of records * record length;
-Tota no of bytes = PQ +(SQ*15)
+Total no of bytes = PQ +(SQ*15)
 Directory Blocks in PDS = (N*6)-1
 
 
@@ -107,13 +107,13 @@ Command ===>
 
 EX:
 ====
-1.Create a sequential file as per the requirement
+1.Create a sequential file as per the requirement.
 Create a sequential file to store 100 transactions/records as  per the below record structure
 
 TID  TDATE  TAMOUNT =========> 23 record length
 5     10     8       
 
-How many bytes we need to allocate?--2300 bytes
+How many bytes we need to allocate?--2300 bytes.
 
 
  Data Set Name . . . . : ZA0917.TSO.COMMANDS.PS3                           
