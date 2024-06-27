@@ -188,6 +188,41 @@ R: Repeat the line
 R4: Repeat the line 4 times
 RR
 RR2: Block repeat
+
+C ..A && C....B- Copy the line
+CC..CC- To copy the block data
+
+M- Move the line
+MM...MM- To move the block data
+
+
+RightShift Left Shift:
+
+)- The  Data is shifting right side 2 columns
+
+)5  The current position + 5 
+
+))
+))2---Shifting block column - Current position +2
+
+((
+((
+
+X: Exclude the line
+X3: Exclude 3 lines
+
+XX
+XX: Excludng the block lines
+
+
+
+
+
+
+
+
+
+
                               Data Set Information                             
                                                                     More:     +
  Data Set Name . . . . : ZA0917.TSO.COMMANDS.PS1                               
