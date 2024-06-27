@@ -165,10 +165,13 @@ Primary Commands
  NUM ON  :
  CUT     :
  PASTE   :
+ DEL NX ALL: Delete all not excluded rows
 
 Line Commands
 ===================
 
+Insert and delete:
+-------------------
 I: Inser a line
 I4: Insert 4 lines
 In: Insert n lines
@@ -176,6 +179,9 @@ D:  Delete a line
 D20: Delete 2 lines
 Dn:  Delete n lines
 DD..DD
+
+Upper and Lower case:
+-------------------------
 LC: Convertint single row to lower casse
 LC2: Convert 2 ros to lower case if any characters are present
 LCC..LCC:Block content to lower case
@@ -184,20 +190,26 @@ UC: Converting single row to upper case
 UC2: 
 UCC..UCC:
 
+Repeat:
+---------
 R: Repeat the line
 R4: Repeat the line 4 times
 RR
 RR2: Block repeat
 
+Copy:
+------
 C ..A && C....B- Copy the line
 CC..CC- To copy the block data
 
+Move:
+--------
 M- Move the line
 MM...MM- To move the block data
 
 
 RightShift Left Shift:
-
+------------------------
 )- The  Data is shifting right side 2 columns
 
 )5  The current position + 5 
@@ -208,15 +220,40 @@ RightShift Left Shift:
 ((
 ((
 
+Exclude:
+---------
 X: Exclude the line
 X3: Exclude 3 lines
 
 XX
 XX: Excludng the block lines
 
+X TSO ALL: Exclude all TSO rows
+X 'T SO' ALL
 
+X ALL: TO know the no rows in the dataset
 
+FIND:
+----
 
+F TSO ALL: Press F5 to goto next occurance
+
+CHANGE:
+---------
+
+C 'TSO'  '***' ALL
+
+PROFILE COMMAND
+-------------------
+PROFILE
+
+REPT Command:
+---------------
+To see recent entered commands
+
+SCROLL:
+--------
+SCROLL- CSR/PAGE/HALF
 
 
 
