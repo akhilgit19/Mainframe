@@ -287,7 +287,8 @@ Interview question.
 -==================
 1.How to save the changes while using view command- REPLACE .A .B M4 or REPLACE .zf .zl M4 
 
-
+CREATE .zf .zl 'ZA0917.TSO.COMMANDS.PS1'
+REPLACE .ZF .ZL 'ZA0917.TSO.COMMANDS.PS1'
 
                               Data Set Information                             
                                                                     More:     +
