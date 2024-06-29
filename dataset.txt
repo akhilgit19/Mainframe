@@ -323,16 +323,6 @@ To copy pds or ps:
 CO PDS--S *
 CO PDS-- C in front of selected members
 
-TO COMPARE DATASETS
-=======================
-
-3.12 OPTION
-
-3.13 OPTION FOR extended options
-
-
-
-
 
 
 
@@ -446,5 +436,12 @@ To Compress a pdf command is z:
 To Copy all the lines and created a memember in a PDS from the command line:
 =============================================================================
 CC CC AND give in the command line -Create .zf .zl mem3
+
+TO COMPARE DATASETS
+=======================
+
+3.12 OPTION
+
+3.13 OPTION FOR extended options
 
 
