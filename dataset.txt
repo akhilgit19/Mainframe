@@ -256,6 +256,32 @@ SCROLL:
 SCROLL- CSR/PAGE/HALF
 
 
+PDS Creation:
+===============
+ Data Set Name  . . . : ZA0917.TSO.PDS                                      
+                                                                            
+ General Data                          Current Allocation                   
+  Volume serial . . . : VPWRKF          Allocated bytes . . : 31,200        
+  Device type . . . . : 3390            Allocated extents . : 1             
+  Organization  . . . : PO              Maximum dir. blocks : 7             
+  Record format . . . : FB                                                  
+  Record length . . . : 80                                                  
+  Block size  . . . . : 800            Current Utilization                  
+  1st extent bytes  . : 31200           Used bytes  . . . . : 8,000         
+  Secondary bytes . . : 1500            Used extents  . . . : 1             
+  Data set encryption : NO              Used dir. blocks  . : 1             
+                                        Number of members . : 2             
+                                                                            
+                                       Dates                                
+                                        Creation date . . . : 2024/06/28    
+                                        Referenced date . . : 2024/06/28    
+                                        Expiration date . . : ***None***    
+
+1 To create a member- Give E in front of Datasetname and at the end member name
+  ex E DATASETNAME (M1)
+2.You can create other members give S M2 in inside the dataset 
+3.CREATE M3 .A .B
+                                                                            
 
 
 
