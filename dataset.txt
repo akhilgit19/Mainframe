@@ -137,6 +137,28 @@ How many bytes we need to allocate?--2300 bytes.
 
 X: ALPHA NUMERIC( A-Z,0-9,Any special character)
 
+                              Data Set Information                             
+                                                                    More:     +
+ Data Set Name . . . . : ZA0917.TSO.COMMANDS.PS1                               
+                                                                               
+ General Data                           Current Allocation                     
+  Management class . . : **None**        Allocated bytes . . : 30,750          
+  Storage class  . . . : **None**        Allocated extents . : 1               
+   Volume serial . . . : VPWRKF                                                
+   Device type . . . . : 3390                                                  
+  Data class . . . . . : **None**                                              
+   Organization  . . . : PS             Current Utilization                    
+   Record format . . . : FB              Used bytes  . . . . : 0               
+   Record length . . . : 75              Used extents  . . . : 0               
+   Block size  . . . . : 750                                                   
+   1st extent bytes  . : 30750                                                 
+   Secondary bytes . . : 7000           Dates                                  
+   Data set name type  :                 Creation date . . . : 2024/06/16      
+   Data set encryption : NO              Referenced date . . : 2024/06/16      
+                                         Expiration date . . : ***None***      
+
+
+
 Dataset Commands:
 ====================
  I: Information
@@ -290,25 +312,23 @@ Interview question.
 CREATE .zf .zl 'ZA0917.TSO.COMMANDS.PS1'
 REPLACE .ZF .ZL 'ZA0917.TSO.COMMANDS.PS1'
 
-                              Data Set Information                             
-                                                                    More:     +
- Data Set Name . . . . : ZA0917.TSO.COMMANDS.PS1                               
-                                                                               
- General Data                           Current Allocation                     
-  Management class . . : **None**        Allocated bytes . . : 30,750          
-  Storage class  . . . : **None**        Allocated extents . : 1               
-   Volume serial . . . : VPWRKF                                                
-   Device type . . . . : 3390                                                  
-  Data class . . . . . : **None**                                              
-   Organization  . . . : PS             Current Utilization                    
-   Record format . . . : FB              Used bytes  . . . . : 0               
-   Record length . . . : 75              Used extents  . . . : 0               
-   Block size  . . . . : 750                                                   
-   1st extent bytes  . : 30750                                                 
-   Secondary bytes . . : 7000           Dates                                  
-   Data set name type  :                 Creation date . . . : 2024/06/16      
-   Data set encryption : NO              Referenced date . . : 2024/06/16      
-                                         Expiration date . . : ***None***      
+
+
+COPY -C0 AND MOVE MO
+========================
+1 Once you copy the old datset will not be deleted but it reverse in move
+
+To copy pds or ps:
+==================
+CO PDS--S *
+CO PDS-- C in front of selected members
+
+TO COMPARE DATASETS
+=======================
+
+3.12 OPTION
+
+3.13 OPTION FOR extended options
 
 
 
@@ -360,12 +380,6 @@ TO MOVE A MEMBER FROM ONE PDS TO PDS
 
 
 
-TO COMPARE DATASETS
-=======================
-
-3.12 OPTION
-
-3.13 OPTION FOR extended options
 
 
 Dataset Edit line Commands
@@ -387,53 +401,6 @@ Dataset Edit line Commands
 
 
 
-To inser a line in the datset
-================================
-1. i, i4
-
-To delete a line in the datset
-================================
-1. d, d4, dd
-
-To repeat a line in the datset
-================================
-1. r, r4, rr  after a or before b
-
-TO DELETE ALL THE LINES IN THE DATASET
-========================================
-DEL NX ALL
-
-To copy a line in the datset
-================================
-1. c, c4 , cc  after a or before b
-
-To move a line in the datset
-================================
-1. m, m4 , mm  after a or before b
-
-
-To exclude a line in the datset
-================================
-1. x, x4 , xx  
-
-
-To show a line in the datset
-================================
-1. s4
-
-
-To uppercase a line in the datset
-================================
-1. uc, uc4 ucc
-
-
-To lowercase a line in the datset
-================================
-1. lc, lc4 lcc
-
-To show lines first and last lines when u exclude
-====================================================
-1. if you exclude lines to show the lines you can press f1,f2,f3 to show first lines same as with last lines- l1,l2,l3
 
 Text split command
 ======================
@@ -469,10 +436,6 @@ ISPF: DSLIST UTILITY PRIMARY COMMANDS
 5. To find the memebers in we can give mvm command as mem copy, mem cproc
 6. To save the members in the another dataset is save cproc2
 7. srchfor 
-
-
-
-
 
 
 
