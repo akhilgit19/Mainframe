@@ -283,6 +283,9 @@ PDS Creation:
 3.CREATE M3 .A .B
                                                                             
 
+Interview question.
+-==================
+1.How to save the changes while using view command- REPLACE .A .B M4 or REPLACE .zf .zl M4 
 
 
 
