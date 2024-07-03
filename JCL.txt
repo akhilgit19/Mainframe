@@ -1,0 +1,38 @@
+JCL
+=====
+
+Fields in JCL Statement
+  --Identifier Field --//
+  -- Name 
+  -- Operation Field -- Job, Exec, DD
+  -- Operands/Parameters
+  -- Comment
+
+Write the Sample JCL Code, submit and see the result
+========================================================
+Step1: We need a PDS to place the jcl Program
+       Record Length-80 RF- FB
+Step2:  COLS
+        CAPS ON
+        HI JCL
+       Identifier files start from 1 and ends at 2 column
+Note:
+1-On JOB Statement: Name field should be your mainframe ID
+2-Name field starts from 3rd column
+3-Length of name field 1 -8 characters.
+
+Step3: Operation Field
+ 1-Before and after operation field we should have atleas 1 space
+
+2 Accounting information (12345)
+ JOB (12345),'AKHIL',NOTIFY=ZA0917 
+ 
+3.TIME(1,0)Min,seconds
+
+
+ EDIT       ZA0917.AKHIL.JCL.SRCLIB(MEM1) - 01.03           Columns 00001 000
+ ****** ***************************** Top of Data ***************************
+ 000100 //ZA0917AB JOB (12345),'AKHIL',NOTIFY=ZA0917,TIME=(1,0)              
+ 000110 //ABC EXEC PGM=IEFBR14                                               
+ 000200 /* END OF INSTREAM                                                   
+ ****** **************************** Bottom of Data *************************
