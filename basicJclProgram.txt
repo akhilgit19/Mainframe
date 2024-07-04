@@ -14,23 +14,22 @@ EDIT       ZA0917.B13.JCLS.PDS(MEM2) - 01.00               Columns 00001 00072
  000009 /*                                                                      
  ****** **************************** Bottom of Data ****************************
 
-
-EDIT       ZA0917.B13.JCLS.PDS(CPSPDS) - 01.03             Columns 00001 00072 
-****** ***************************** Top of Data ******************************
-000001 //ZA09170B JOB 8179332273,'AKHIL',NOTIFY=&SYSUID,                       
-000002 // TIME=(1,0),REGION=0M,CLASS=A,MSGLEVEL=(1,1),RESTART=STEP3            
-000003 //STEP1 EXEC PGM=IEFBR14                                                
-000004 //DD1 DD DSN=ZA0917.NEW.JCL.PS,                                         
-000005 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,1),RLSE),                      
-000006 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)                         
-000007 //STEP2 EXEC PGM=IEFBR14                                                
-000008 //DD1 DD DSN=ZA0917.NEW.JCL.PDS,                                        
-000009 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,1,1)),                         
-000010 // DCB=(LRECL=100,BLKSIZE=1000,RECFM=FB,DSORG=PO)                       
-000011 //STEP3 EXEC PGM=IEFBR14                                                
-000012 //DD1 DD DSN=ZA0917.NEW.JCL.PDS,DISP=(OLD,DELETE,DELETE)                
-000013 HELLO WORLD                                                             
-****** **************************** Bottom of Data ****************************
+ EDIT       ZA0917.AKHIL.JCL.SRCLIB(CPSPDS) - 01.05         Columns 00001 00072 
+ ****** ***************************** Top of Data ******************************
+ 000001 //ZA0917AB JOB 8179332273,'AKHIL',NOTIFY=&SYSUID,RESTART=STEP3,         
+ 000002 // TIME=(1,0),REGION=0M,CLASS=A,MSGLEVEL=(1,1)                          
+ 000003 //STEP1 EXEC PGM=IEFBR14                                                
+ 000004 //DD1   DD DSN=ZA0917.AKHIL.JCL.PS1,                                    
+ 000005 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,1),RLSE),                      
+ 000006 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)                         
+ 000007 //STEP2 EXEC PGM=IEFBR14                                                
+ 000008 //DD2   DD DSN=ZA0917.AKHIL.JCL.PDS1,                                   
+ 000009 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,2,1)),                         
+ 000010 // DCB=(LRECL=100,BLKSIZE=100,RECFM=FB,DSORG=PO)                        
+ 000011 //STEP3 EXEC PGM=IEFBR14                                                
+ 000012 //DD1 DD DISP=(OLD,DELETE,DELETE),DSN=ZA0917.AKHIL.JCL.PS1              
+ 000013 //                                                                      
+ ****** **************************** Bottom of Data ****************************
 
 
 
