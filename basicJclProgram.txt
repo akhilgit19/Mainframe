@@ -33,20 +33,21 @@ EDIT       ZA0917.B13.JCLS.PDS(MEM2) - 01.00               Columns 00001 00072
 
 
 
-EDIT       ZA0917.B13.JCLS.PDS(IEBGENER) - 01.00           Columns 00001 00072 
-****** ***************************** Top of Data ******************************
-000001 //ZA0917 JOB 8179332273,'AKHIL',NOTIFY=&SYSUID,                         
-000002 // TIME=(1,10),REGION=0M,CLASS=A                                        
-000003 //*COPYING DATA FROM PS TO ANOTHER PS FILE                              
-000004 // SET IFILE=ZA0917.NEW.JCL.PS                                          
-000005 //STEP1 EXEC PGM=IEBGENER                                               
-000006 //SYSPRINT DD SYSOUT=*                                                  
-000007 //SYSUT1 DD DISP=SHR,DSN=&IFILE                                         
-000008 //SYSUT2 DD DSN=ZA0917.NEW.CPY.PS,                                      
-000009 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(2,2),RLSE),                      
-000010 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)                         
-000011 //SYSIN DD DUMMY                                                        
-****** **************************** Bottom of Data ****************************
+ EDIT       ZA0917.AKHIL.JCL.SRCLIB(IEBGENER) - 01.02       Columns 00001 00072 
+ ****** ***************************** Top of Data ******************************
+ 000001 //ZA0917AC JOB 8179332273,'AKHIL',NOTIFY=&SYSUID,                       
+ 000002 // TIME=(1,10),REGION=0M,CLASS=A                                        
+ 000003 //* COPYING THE DATA FROM PS FILE TO PS FILE                            
+ 000004 // SET IFILE=ZA0917.AKHIL.JCL.PS1                                       
+ 000005 //STEP1 EXEC PGM=IEBGENER                                               
+ 000006 //SYSPRINT DD SYSOUT=*                                                  
+ 000007 //SYSUT1 DD DISP=SHR,DSN=&IFILE                                         
+ 000008 //SYSUT2 DD DSN=ZA0917.AKHIL.JCL.PS2,                                   
+ 000009 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(2,2),RLSE),                      
+ 000010 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)                         
+ 000011 //SYSIN DD DUMMY                                                        
+ 000012 //                                                                      
+ ****** **************************** Bottom of Data ****************************
 
 
 
