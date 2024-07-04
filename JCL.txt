@@ -36,3 +36,17 @@ Step3: Operation Field
  000110 //ABC EXEC PGM=IEFBR14                                               
  000200 /* END OF INSTREAM                                                   
  ****** **************************** Bottom of Data *************************
+
+
+How to create sequential file in step1 and create pds in another step?
+
+DISP=(STATUS,NORMAL,ABNORMAL)
+STATUS: OLD,SHR,NEW,MOD
+NORMAL:CATLG,UNCATLG,KEEP,PASS,DELETE
+ABNORMAL:CATLG,DELETE,UNCATLG,KEEP
+
+
+
+//DD1 DD DSN=ZA0917.A.B,DISP=(OLD,DELETE,DELETE)
+//DD1 DD DSN=ZA0917.X.Y,DISP=(NEW,DELETE,DELETE)
+//DD1 DD DSN=ZA0917.Y.Z,DISP=(NEW,CATLG,DELETE)
