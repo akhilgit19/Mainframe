@@ -128,3 +128,58 @@ Rules:
  000011 //SYSIN DD DUMMY                                                        
  000012 //                                                                      
  ****** **************************** Bottom of Data ****************************
+
+
+Example of MOD,SHR,OLD/PS-PDS/PDS-PS/Instream to PS
+
+ EDIT       ZA0917.AKHIL.JCL.SRCLIB(M6) - 01.02             Columns
+ ****** ***************************** Top of Data *****************
+ 000001 //ZA0917AD JOB 8179332273,'AKHIL',NOTIFY=&SYSUID,          
+ 000002 // TIME=(1,10),REGION=0M,CLASS=A,RESTART=STEP2             
+ 000003 //STEP1 EXEC PGM=IEFBR14                                   
+ 000004 //DD1 DD DSN=ZA0917.AKHIL.JCL.PS6,                         
+ 000005 // DISP=(NEW,CATLG,DELETE),                                
+ 000006 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB),                    
+ 000007 // SPACE=(TRK,(1,1),RLSE)                                  
+ 000008 //STEP2 EXEC PGM=IEBGENER                                  
+ 000009 //SYSPRINT DD SYSOUT=*                                     
+ 000010 //SYSUT1 DD DSN=ZA0917.AKHIL.JCL.PS1,DISP=SHR              
+ 000011 //SYSUT2 DD DSN=ZA0917.AKHIL.JCL.PS6,DISP=MOD              
+ 000012 //SYSIN DD DUMMY         
+ 000013 //STEP3 EXEC PGM=IEBGENER                             
+000014 //SYSPRINT DD DISP=OLD,DSN=ZA0917.AKHIL.JCL.PS6       
+000015 //SYSUT1 DD DSN=ZA0917.AKHIL.JCL.PS1,DISP=SHR         
+000016 //SYSUT2 DD DSN=ZA0917.AKHIL.JCL.SRCLIB(M7),DISP=OLD  
+000017 //SYSIN DD DUMMY                                      
+000018 //STEP4 EXEC PGM=IEBGENER                             
+000019 //SYSPRINT DD SYSOUT=*                                
+000020 //SYSUT1 DD DSN=ZA0917.AKHIL.JCL.SRCLIB(M7),DISP=SHR  
+000021 //SYSUT2 DD DSN=ZA0917.AKHIL.JCL.PS2,DISP=SHR         
+000022 //SYSIN DD DUMMY                                      
+ 000023 //STEP5 EXEC PGM=IEBGENER                     
+000024 //SYSPRINT DD SYSOUT=*                        
+000025 //SYSUT1 DD *                                 
+000026 HELLO GOOD MORNING                            
+000027 /*                                            
+000028 //SYSUT2 DD DSN=ZA0917.AKHIL.JCL.PS2,DISP=SHR 
+000029 //SYSIN DD DUMMY                              
+000030 //STEP6 EXEC PGM=IEBGENER                     
+000031 //SYSPRINT DD SYSOUT=*                        
+000032 //SYSUT1 DD DATA,DLM=A1                       
+000033 HELLO GOOD MORNING AKHIL                      
+000034 /*                                            
+000035 A1                                            
+000036 //SYSUT2 DD DSN=ZA0917.AKHIL.JCL.PS2,DISP=OLD 
+000037 //SYSIN DD DUMMY                              
+000038 //STEP7 EXEC PGM=IEBGENER                            
+000039 //SYSPRINT DD SYSOUT=*                               
+000040 //SYSUT1 DD DSN=ZA0917.AKHIL.JCL.PS1,DISP=OLD        
+000041 //       DD DSN=ZA0917.AKHIL.JCL.PS2,DISP=SHR        
+000042 //       DD DSN=ZA0917.AKHIL.JCL.SRCLIB(M6),DISP=OLD 
+000043 //SYSUT2 DD DSN=ZA0917.AKHIL.JCL.PS7,                
+000044 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,1),RLSE),   
+000045 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)      
+000046 //SYSIN DD DUMMY                                     
+000047 //                                                   
+
+                                         
