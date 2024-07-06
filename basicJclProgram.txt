@@ -50,133 +50,58 @@ EDIT       ZA0917.B13.JCLS.PDS(MEM2) - 01.00               Columns 00001 00072
  ****** **************************** Bottom of Data ****************************
 
 
-
-========================================================                                       
- 000002 //*SAMPLE JCL PROGRAM TO NOTIFY THE USER    
- ========================================================                            
- 000003 //VENKATB JOB (8179332273),'AKHIL',NOTIFY=&SYSUID,                      
- 000004 // TIME=(1,0),CLASS=A,REGION=0M,RESTART=STEP12                          
- 000005 //STEP1 EXEC PGM=IEFBR14          
- 
- =================================================================                                      
- 000006 //*SAMPLE JCL PROGRAM TO CREATE A PS(SEQUENTIAL DATA SET)  
- =================================================================             
- 000007 //STEP2 EXEC PGM=IEFBR14                                                
- 000008 //DD1 DD DSN=VENKATB.B13.JCLS.PS2,                                      
- 000009 // SPACE=(TRK,(1,1)),                                                   
- 000010 // DISP=(NEW,CATLG,DELETE),                                             
- 000011 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)
- 
- ========================================================================
- 000012 //*SAMPLE JCL PROGRAM TO CREATE PS AND PDS FILE       
- =======================================================================
- 000013 //STEP3 EXEC PGM=IEFBR14                              
- 000014 //DD1 DD DSN=VENKATB.B13.JCLS.PS4,                    
- 000015 // SPACE=(TRK,(1,1)),                                 
- 000016 // DISP=(NEW,CATLG,DELETE),                           
- 000017 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)
- 000018 //DD2 DD DSN=VENKATB.B13.JCLS.PDS2,                                     
- 000019 // SPACE=(TRK,(1,1,1)),                                                 
- 000020 // DISP=(NEW,CATLG,DELETE),                                             
- 000021 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB)  
-  
- ==============================================================                               
- 000022 //*SAMPLE JCL PROGRAM TO DETELE A PS DATA SET          
- ==============================================================                 
- 000023 //STEP4 EXEC PGM=IEFBR14                                                
- 000024 //DD1 DD DSN=VENKATB.B13.JCLS.PS4,                                      
- 000025 // DISP=(OLD,DELETE,DELETE)       
- 
- ======================================================================                                      
- 000026 //*SAMPLE JCL PROGRAM TO COPY A DATASET TO ANOTHER PS DATASET    
- =======================================================================       
- 000027 // SET IFILE=VENKATB.B13.JCLS.PS2                                       
- 000028 //STEP5 EXEC PGM=IEBGENER                                               
- 000029 //SYSPRINT DD SYSOUT=*                                                  
- 000030 //SYSUT1 DD DISP=SHR,DSN=&IFILE
- 000031 //SYSUT2 DD DSN=VENKATB.B13.JCLS.PS5,                        
- 000032 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,1)),                
- 000033 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)              
- 000034 //SYSIN DD DUMMY                     
- 
- ===================================================================                        
- 000035 //*SAMPLE JCL PROGRAM TO COPY THE DATE FROM PS TO PS  USING OLD,MOD,SHR  
- =================================================================   
- 000036 //STEP6 EXEC PGM=IEFBR14
- 000037 //DD1 DD DSN=VENKATB.B13.JCLS.PS9,                               
- 000038 // SPACE=(TRK,(1,1)),                                            
- 000039 // DISP=(NEW,CATLG,DELETE),                                      
- 000040 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)                  
- 000041 //STEP7 EXEC PGM=IEBGENER                                        
- 000042 //SYSPRINT DD SYSOUT=*                                           
- 000043 //SYSIN DD DUMMY                                                 
- 000044 //SYSUT1 DD DSN=VENKATB.B13.JCLS.PS5,DISP=SHR                    
- 000045 //SYSUT2 DD DSN=VENKATB.B13.JCLS.PS9,DISP=OLD      
- 
- ============================================================              
- 000046 //*SAMPLE JCL PROGRAM TO COPY FROM PS TO PDS MEMBER    
- ============================================================          
- 000047 //STEP8 EXEC PGM=IEBGENER                                        
- 000048 //SYSPRINT DD SYSOUT=*                                           
- 000049 //SYSIN DD DUMMY                                                 
- 000050 //SYSUT1 DD DSN=VENKATB.B13.JCLS.PS5,DISP=SHR                    
- 000051 //SYSUT2 DD DSN=VENKATB.B13.JCLS.PDS2(M1),DISP=SHR  
- 
- =============================================================             
- 000052 //*SAMPLE JCL PROGRAM TO COPY FROM PDS MEMBER TO PS     
- ==============================================================         
- 000053 //STEP9 EXEC PGM=IEBGENER                                        
- 000054 //SYSPRINT DD SYSOUT=*                                           
- 000055 //SYSIN DD DUMMY
- 000056 //SYSUT2 DD DSN=VENKATB.B13.JCLS.PS5,DISP=MOD                          
- 000057 //SYSUT1 DD DSN=VENKATB.B13.JCLS.PDS2(M1),DISP=SHR   
- 
- ==================================================================                  
- 000058 //*COPYING THE DATA FROM INSTREAM TO OUTPUT FILE         
- ====================================================================              
- 000059 //STEP10 EXEC PGM=IEBGENER                                             
- 000060 //SYSPRINT DD SYSOUT=*                                                 
- 000061 //SYSIN DD DUMMY                                                       
- 000062 //SYSUT1 DD *                                                          
- 000063 HELLO,WELCOME TO JCL MODULE                                            
- 000064 PLS DO HAND-ON BEFORE WE START SORT                                    
- 000065 /*                                                                     
- 000066 //SYSUT2 DD DSN=VENKATB.B13.JCLS.PS5,DISP=OLD                          
- 000067 //STEP11 EXEC PGM=IEBGENER                                             
- 000068 //SYSPRINT DD SYSOUT=*                                                 
- 000069 //SYSIN DD DUMMY                                                       
- 000070 //SYSUT1 DD DATA,DLM=AA                                                
- 000071 1111111111111111111111                                                 
- 000072 2333333333333333333333                                                 
- 000073 /*                                                                     
- 000074 AA
- 000075 //SYSUT2 DD DSN=VENKATB.B13.JCLS.PS9,DISP=OLD  
-==============================================================           
- 000076 //* TO COPY 3 DATA FILES TO ONE DATA SET USING IEBGENER 
-================================================================  
- EDIT       ZA0917.VEN.JULY20.VSAM.JCLS(COPY) - 01.02       Columns 00001 00072 
-****** ***************************** Top of Data ******************************
-000100 //ZA0917A JOB (8179332273),'AKHIL',NOTIFY=&SYSUID,                      
-000200 // TIME=(1,0),CLASS=A                                                   
-000300 //STEP1 EXEC PGM=IEBGENER                                               
-000400 //SYSPRINT DD SYSOUT=*                                                  
-000410 //SYSIN DD DUMMY                                                        
-000500 //SYSUT1 DD DISP=SHR,DSN=ZA0917.B13.JCLS.PDS2(M1)                       
-000600 //       DD DISP=SHR,DSN=ZA0917.B13.JCLS.PS1                            
-000700 //       DD DISP=SHR,DSN=ZA0917.B13.JCLS.PS2                            
-000800 //SYSUT2 DD DSN=ZA0917.B13.JCLS.PDS3(M1),                               
-000900 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,1,7),RLSE),                    
-001000 // DCB=(LRECL=55,BLKSIZE=550,RECFM=FB,DSORG=PO)                         
- 
- -------------------------------------------------------------------------------
- EDIT       ZA0917.B13.JCLS.PDS3(M1) - 01.00                Columns 00001 00055 
- ****** ***************************** Top of Data ******************************
- 000001 // heLLO                                      00010000                 
- 000002 // Akhil                                       00000100                 
- 000003 //Good Morning                                 00000100                 
- ****** **************************** Bottom of Data ****************************
-
- 
+=============================================================================
+Example of MOD,SHR,OLD/PS-PDS/PDS-PS/Instream to PS/ 3datasets to one PS File
+=============================================================================
+ EDIT       ZA0917.AKHIL.JCL.SRCLIB(M6) - 01.02             Columns
+ ****** ***************************** Top of Data *****************
+ 000001 //ZA0917AD JOB 8179332273,'AKHIL',NOTIFY=&SYSUID,          
+ 000002 // TIME=(1,10),REGION=0M,CLASS=A,RESTART=STEP2             
+ 000003 //STEP1 EXEC PGM=IEFBR14                                   
+ 000004 //DD1 DD DSN=ZA0917.AKHIL.JCL.PS6,                         
+ 000005 // DISP=(NEW,CATLG,DELETE),                                
+ 000006 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB),                    
+ 000007 // SPACE=(TRK,(1,1),RLSE)                                  
+ 000008 //STEP2 EXEC PGM=IEBGENER                                  
+ 000009 //SYSPRINT DD SYSOUT=*                                     
+ 000010 //SYSUT1 DD DSN=ZA0917.AKHIL.JCL.PS1,DISP=SHR              
+ 000011 //SYSUT2 DD DSN=ZA0917.AKHIL.JCL.PS6,DISP=MOD              
+ 000012 //SYSIN DD DUMMY         
+ 000013 //STEP3 EXEC PGM=IEBGENER                             
+000014 //SYSPRINT DD DISP=OLD,DSN=ZA0917.AKHIL.JCL.PS6       
+000015 //SYSUT1 DD DSN=ZA0917.AKHIL.JCL.PS1,DISP=SHR         
+000016 //SYSUT2 DD DSN=ZA0917.AKHIL.JCL.SRCLIB(M7),DISP=OLD  
+000017 //SYSIN DD DUMMY                                      
+000018 //STEP4 EXEC PGM=IEBGENER                             
+000019 //SYSPRINT DD SYSOUT=*                                
+000020 //SYSUT1 DD DSN=ZA0917.AKHIL.JCL.SRCLIB(M7),DISP=SHR  
+000021 //SYSUT2 DD DSN=ZA0917.AKHIL.JCL.PS2,DISP=SHR         
+000022 //SYSIN DD DUMMY                                      
+ 000023 //STEP5 EXEC PGM=IEBGENER                     
+000024 //SYSPRINT DD SYSOUT=*                        
+000025 //SYSUT1 DD *                                 
+000026 HELLO GOOD MORNING                            
+000027 /*                                            
+000028 //SYSUT2 DD DSN=ZA0917.AKHIL.JCL.PS2,DISP=SHR 
+000029 //SYSIN DD DUMMY                              
+000030 //STEP6 EXEC PGM=IEBGENER                     
+000031 //SYSPRINT DD SYSOUT=*                        
+000032 //SYSUT1 DD DATA,DLM=A1                       
+000033 HELLO GOOD MORNING AKHIL                      
+000034 /*                                            
+000035 A1                                            
+000036 //SYSUT2 DD DSN=ZA0917.AKHIL.JCL.PS2,DISP=OLD 
+000037 //SYSIN DD DUMMY                              
+000038 //STEP7 EXEC PGM=IEBGENER                            
+000039 //SYSPRINT DD SYSOUT=*                               
+000040 //SYSUT1 DD DSN=ZA0917.AKHIL.JCL.PS1,DISP=OLD        
+000041 //       DD DSN=ZA0917.AKHIL.JCL.PS2,DISP=SHR        
+000042 //       DD DSN=ZA0917.AKHIL.JCL.SRCLIB(M6),DISP=OLD 
+000043 //SYSUT2 DD DSN=ZA0917.AKHIL.JCL.PS7,                
+000044 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,1),RLSE),   
+000045 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)      
+000046 //SYSIN DD DUMMY                                     
+000047 //   
  
  000001 //VENKATB JOB (89999),'AKHIL',NOTIFY=&SYSUID,TIME=(1,0),  
  000002 // CLASS=A,PRTY=1,MSGCLASS=A,MSGLEVEL=(1,1),REGION=0M,    
