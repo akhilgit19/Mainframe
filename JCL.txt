@@ -182,4 +182,52 @@ Example of MOD,SHR,OLD/PS-PDS/PDS-PS/Instream to PS
 000046 //SYSIN DD DUMMY                                     
 000047 //                                                   
 
-                                         
+
+
+
+COPY from One or more PDS to one PDS Using IEBCOPY
+=======================================================
+
+ EDIT       ZA0917.AKHIL.JCL.SRCLIB(CPDSPDS) - 01.06        Columns 00001 00072 
+ ****** ***************************** Top of Data ******************************
+ 000001 //ZA0917AJ JOB (8179332273),'AKHIL',NOTIFY=&SYSUID,                     
+ 000002 // CLASS=A,PRTY=1,MSGCLASS=A,MSGLEVEL=(1,1),TIME=(1,2),REGION=0M,       
+ 000003 // RESTART=STEP5                                                        
+ 000004 //STEP1 EXEC PGM=IEFBR14                                                
+ 000005 //DD1 DD DSN=ZA0917.AKHIL.JCL.PDS2,                                     
+ 000006 // DISP=(NEW,CATLG,DELETE),                                             
+ 000007 // SPACE=(TRK,(1,1,3),RLSE),                                            
+ 000008 // DCB=(LRECL=100,BLKSIZE=1000,RECFM=FB,DSORG=PO)                       
+ 000009 //STEP2 EXEC PGM=IEBCOPY                                                
+ 000010 //SYSPRINT DD SYSOUT=*                                                  
+ 000011 //DD1 DD DSN=ZA0917.AKHIL.JCL.PDS1,DISP=SHR                             
+ 000012 //DD2 DD DSN=ZA0917.AKHIL.JCL.PDS2,DISP=SHR                             
+ 000013 //SYSIN DD *                                                            
+ 000014   COPY INDD=DD1,OUTDD=DD2                                               
+ 000015 /*                                                                      
+ 000016 //STEP3 EXEC PGM=IEBCOPY                                                
+ 000017 //SYSPRINT DD SYSOUT=*                      
+ 000018 //X DD DISP=SHR,DSN=ZA0917.AKHIL.JCL.PDS1              
+000019 //Y DD DISP=SHR,DSN=ZA0917.AKHIL.JCL.PDS2              
+000020 //SYSIN DD *                                           
+000021    COPY INDD=X,OUTDD=Y                                 
+000022    SELECT MEMBER=(M1,M3,M4)                            
+000023 /*                                                     
+000024 //STEP4 EXEC PGM=IEBCOPY                               
+000025 //SYSPRINT DD SYSOUT=*                                 
+000026 //SYSUT1 DD DSN=ZA0917.AKHIL.JCL.PDS1,DISP=SHR         
+000027 //SYSUT2 DD DSN=ZA0917.AKHIL.JCL.PDS2,DISP=SHR         
+000028 //SYSIN DD *                                           
+000029    COPY INDD=SYSUT1,OUTDD=SYSUT2                       
+000030    EXCLUDE MEMBER=(M1,M2,M4)                           
+000031 /*                                                     
+000032 //STEP5 EXEC PGM=IEBCOPY                               
+000033 //SYSPRINT DD SYSOUT=*                                 
+000034 //SYSUT1 DD DSN=ZA0917.AKHIL.JCL.PDS1,DISP=SHR         
+000035 //SYSUT2 DD DSN=ZA0917.AKHIL.JCL.PDS2,DISP=SHR         
+000036 //SYSIN DD *                                   
+000037    COPY INDD=SYSUT1,OUTDD=SYSUT2               
+000038    SELECT MEMBER=((M1,,R),(M3,M98,R),(M4,M5))  
+000039 /*                                             
+000040 //                                             
+
