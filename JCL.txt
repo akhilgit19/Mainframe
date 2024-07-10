@@ -229,5 +229,16 @@ COPY from One or more PDS to one PDS Using IEBCOPY
 000037    COPY INDD=SYSUT1,OUTDD=SYSUT2               
 000038    SELECT MEMBER=((M1,,R),(M3,M98,R),(M4,M5))  
 000039 /*                                             
-000040 //                                             
+000040 //              
+
+SORT:
+-----
+1 Sort the data
+2 Merge the data
+3 Filter
+4 Reformat the record structure
+5 Generate the reports
+
+
+
 
