@@ -158,47 +158,65 @@ Example of MOD,SHR,OLD/PS-PDS/PDS-PS/Instream to PS/ 3datasets to one PS File
 SORT PROGRAMS
 ==================================
 
-****** ***************************** Top of Data *****************
-000001 //VENKATB JOB (8179332273),'AKHIL',NOTIFY=&SYSUID,         
-000002 // TIME=(1,5),CLASS=A,REGION=0M,RESTART=STEP9              
-000003 //STEP1 EXEC PGM=IEFBR14                                   
-000004 //DD1 DD DSN=VENKATB.B13.JCLS.SORTIN,                      
-000005 // DISP=(NEW,CATLG,DELETE),                                
-000006 // SPACE=(TRK,(1,2)),                                      
-000007 // DCB=(LRECL=54,BLKSIZE=540,RECFM=FB,DSORG=PS)            
-000008 // SET IFILE=VENKATB.B13.JCLS.SORTIN                       
-000009 //STEP2 EXEC PGM=SORT                                      
-000010 //SYSOUT DD SYSOUT=*                                       
-000011 //SORTIN DD DISP=SHR,DSN=&IFILE                            
-000012 //SORTOUT DD DSN=VENKATB.B13.JCLS.SORTOUT,                 
-000013 // DISP=(NEW,CATLG,DELETE),                                
-000014 // SPACE=(TRK,(1,1)),                                      
-000015 // DCB=(LRECL=54,BLKSIZE=540,RECFM=FB,DSORG=PS)            
-000016 //SYSIN DD *                                               
-000017   SORT FIELDS=COPY                                      
-000018 /*                                                      
-000019 //STEP3 EXEC PGM=SORT                                   
-000020 //SYSOUT DD SYSOUT=*                                    
-000021 //SORTIN DD DISP=SHR,DSN=&IFILE                         
-000022 //SORTOUT DD DSN=VENKATB.B13.JCLS.SORTOUT,DISP=OLD      
-000023 //SYSIN DD *                                            
-000024   SORT FIELDS=(1,5,ZD,A)                                
-000025 /*                                                      
-000026 //STEP4 EXEC PGM=SORT                                   
-000027 //SYSOUT DD SYSOUT=*                                    
-000028 //SORTIN DD DISP=SHR,DSN=&IFILE                         
-000029 //SORTOUT DD DSN=VENKATB.B13.JCLS.SORTOUT,DISP=OLD      
-000030 //SYSIN DD *                                            
-000031   SORT FIELDS=(46,8,ZD,D)                               
-000032 /*                                                      
-000033 //STEP5 EXEC PGM=SORT                                   
-000034 //SYSOUT DD SYSOUT=*                                        
-000035 //SORTIN DD DISP=SHR,DSN=&IFILE                             
-000036 //SORTOUT DD DSN=VENKATB.B13.JCLS.SORTOUT,DISP=OLD          
-000037 //SYSIN DD *                                                
-000038   SORT FIELDS=(46,8,ZD,D)                                   
-000039   INCLUDE COND=(26,20,CH,EQ,C'VIZAG')                       
-000040 /*                                                          
+
+
+
+ -------------------------------------------------------------------------------
+ EDIT       ZA0917.AKHIL.JCL.SRCLIB(SORT) - 01.04           Columns 00001 00072 
+ ****** ***************************** Top of Data ******************************
+ 000001 //ZA0917AO JOB (8179332273),'AKHIL',TIME=(1,5),                         
+ 000002 // NOTIFY=&SYSUID,CLASS=A,REGION=0M,RESTART=STEP5                       
+ 000003 //STEP1 EXEC PGM=IEFBR14                                                
+ 000004 //DD1 DD DSN=ZA0917.AKHIL.JCL.PS2,DISP=(NEW,CATLG,DELETE),              
+ 000005 // SPACE=(TRK,(1,1),RLSE),                                              
+ 000006 // DCB=(LRECL=54,BLKSIZE=540,RECFM=FB,DSORG=PS)                         
+ 000007 // SET IFILE=ZA0917.AKHIL.JCL.PS2                                       
+ 000008 //STEP2 EXEC PGM=SORT                                                   
+ 000009 //SYSOUT DD SYSOUT=*                                                    
+ 000010 //SORTIN DD DISP=SHR,DSN=&IFILE                                         
+ 000011 //SORTOUT DD DSN=ZA0917.AKHIL.JCL.PS3,                                  
+ 000012 // DISP=(NEW,CATLG,DELETE),                                             
+ 000013 // SPACE=(TRK,(1,1),RLSE),                                              
+ 000014 // DCB=(LRECL=54,BLKSIZE=540,RECFM=FB,DSORG=PS)                         
+ 000015 //SYSIN DD *                                                            
+ 000016   SORT FIELDS=COPY                                                      
+000017 /*                                                
+000018 //STEP3 EXEC PGM=SORT                             
+000019 //SYSOUT DD SYSOUT=*                              
+000020 //SORTIN DD DISP=SHR,DSN=&IFILE                   
+000021 //SORTOUT DD DSN=ZA0917.AKHIL.JCL.PS3,            
+000022 // DISP=(OLD,CATLG,DELETE),                       
+000023 // SPACE=(TRK,(1,1),RLSE),                        
+000024 // DCB=(LRECL=54,BLKSIZE=540,RECFM=FB,DSORG=PS)   
+000025 //SYSIN DD *                                      
+000026   SORT FIELDS=(1,5,CH,A,6,20,CH,A)                
+000027 /*                                                
+000028 //STEP4 EXEC PGM=SORT                             
+000029 //SYSOUT DD SYSOUT=*                              
+000030 //SORTIN DD DISP=SHR,DSN=&IFILE                   
+000031 //SORTOUT DD DSN=ZA0917.AKHIL.JCL.PS3,            
+000032 // DISP=(OLD,CATLG,DELETE),                       
+000033 // SPACE=(TRK,(1,1),RLSE),                                                                 
+000034 // DCB=(LRECL=54,BLKSIZE=540,RECFM=FB,DSORG=PS)                         
+000035 //SYSIN DD *                                                            
+000036   SORT FIELDS=(46,8,ZD,D)                                               
+000037 /*                                                                      
+000038 //STEP5 EXEC PGM=SORT                                                   
+000039 //SYSOUT DD SYSOUT=*                                                    
+000040 //SORTIN DD DISP=SHR,DSN=&IFILE                                         
+000041 //SORTOUT DD DSN=ZA0917.AKHIL.JCL.PS3,                                  
+000042 // DISP=(OLD,CATLG,DELETE),                                             
+000043 // SPACE=(TRK,(1,1),RLSE),                                              
+000044 // DCB=(LRECL=54,BLKSIZE=540,RECFM=FB,DSORG=PS)                         
+000045 //SYSIN DD *                                                            
+000046   SORT FIELDS=(1,5,CH,A)                                                
+000047   INCLUDE COND=(26,20,CH,EQ,C'VIZAG')                                   
+000048 /*                                                                      
+000049 //                                                                      
+****** **************************** Bottom of Data ****************************
+
+
+
 000041 //STEP6 EXEC PGM=SORT                                       
 000042 //SYSOUT DD SYSOUT=*                                        
 000043 //SORTIN DD DISP=SHR,DSN=&IFILE                             
