@@ -249,16 +249,20 @@ SORT PROGRAMS
 ****** **************************** Bottom of Data ****************************
 
                                                     
-000065 //STEP9 EXEC PGM=SORT                                      
-000066 //SYSOUT DD SYSOUT=*                                       
-000067 //SORTIN01 DD DISP=SHR,DSN=&IFILE                          
-000068 //SORTIN02 DD DISP=SHR,DSN=VENKATB.B13.JCLS.SORTOUT               
-000069 //SORTOUT DD DSN=VENKATB.B13.JCLS.MERGOUT,DISP=(NEW,CATLG,DELETE),
-000070 // SPACE=(TRK,(1,2)),                                             
-000071 // DCB=(LRECL=54,BLKSIZE=540,RECFM=FB,DSORG=PS)                   
-000072 //SYSIN DD *                                                      
-000073   MERGE FIELDS=(1,5,CH,A)                                         
-000074 /*                                                                
+ EDIT       ZA0917.AKHIL.JCL.SRCLIB(MERGE) - 01.02          Columns 00001 00072 
+ ****** ***************************** Top of Data ******************************
+ 000001 //ZA0917AK JOB NOTIFY=&SYSUID                                           
+ 000002 //STEP1 EXEC PGM=SORT                                                   
+ 000003 //SYSOUT DD SYSOUT=*                                                    
+ 000004 //SORTIN01 DD DISP=SHR,DSN=ZA0917.AKHIL.JCL.PS2                         
+ 000005 //SORTIN02 DD DISP=SHR,DSN=ZA0917.AKHIL.JCL.PS3                         
+ 000006 //SORTOUT DD DSN=ZA0917.AKHIL.JCL.PS4,DISP=(NEW,CATLG,DELETE),          
+ 000007 //  SPACE=(TRK,(1,1),RLSE),                                             
+ 000008 //  DCB=(LRECL=54,BLKSIZE=540,RECFM=FB,DSORG=PS)                        
+ 000009 //SYSIN DD *                                                            
+ 000010    MERGE FIELDS=(1,5,CH,A)                                              
+ 000011 /*                                                                      
+ ****** **************************** Bottom of Data ****************************                                                          
  
  
  ====================================
