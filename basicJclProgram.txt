@@ -270,24 +270,20 @@ INSTREAM ADN CATLOG PROC
 ===================================-===
 
 INSTREAM PROC
-****** ***************************** Top of Data *********************
-000001 //VENKATB JOB (8179332273),'AKHIL',NOTIFY=&SYSUID,             
-000002 // TIME=(1,5),CLASS=A,REGION=0M,RESTART=STEP2.PS1              
-000003 //M1 PROC                                                      
-000004 //PS1 EXEC PGM=IEFBR14                                         
-000005 //PDD1 DD DSN=&D1,DISP=(NEW,CATLG,DELETE),                     
-000006 // SPACE=(TRK,(1,1)),                                          
-000007 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)                
-000008 //   PEND                                                      
-000009 //STEP1 EXEC PROC=M1,D1=VENKATB.B13.JCLS.PS7                   
-000010 //M2 PROC                                                      
-000011 //PS1 EXEC PGM=IEFBR14                                         
-000012 //PDD1 DD DSN=&D1,DISP=(NEW,CATLG,DELETE),                     
-000013 // SPACE=(TRK,(1,2,1)),                                        
-000014 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PO)                
-000015 //   PEND                                                      
-000016 //STEP2 EXEC PROC=M2,D1=VENKATB.B13.JCLS.SRCLIB3               
 
+EDIT       ZA0917.AKHIL.JCL.SRCLIB(PROC) - 01.01           Columns 00001 00072 
+****** ***************************** Top of Data ******************************
+000001 //ZA0917AM JOB (8179332453),NOTIFY=&SYSUID                              
+000002 //M1 PROC                                                               
+000003 //PS1 EXEC PGM=IEFBR14                                                  
+000004 //PDD1 DD DSN=&D1,                                                      
+000005 // DISP=(NEW,CATLG,DELETE),                                             
+000006 // SPACE=(TRK,(1,1),RLSE),                                              
+000007 // DCB=(LRECL=&L,BLKSIZE=&B,RECFM=FB,DSORG=PS)                          
+000008 //   PEND                                                               
+000009 //STEP1 EXEC PROC=M1,D1=ZA0917.PROC.INSTREAM.PS1,L=90,B=900             
+000010 //STEP2 EXEC PROC=M1,D1=ZA0917.PROC.INSTREAM.PS2,L=80,B=800             
+****** **************************** Bottom of Data ****************************
 
 OVERRIDE AND RESTART IN PROC
 
