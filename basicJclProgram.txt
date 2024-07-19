@@ -269,6 +269,25 @@ SORT PROGRAMS
 INSTREAM ADN CATLOG PROC
 ===================================-===
 
+
+
+Instream Procedure
+====================
+EDIT       ZA0917.AKHIL.JCL.SRCLIB(PROC) - 01.01           Columns 00001 00072 
+****** ***************************** Top of Data ******************************
+000001 //ZA0917AM JOB (8179332453),NOTIFY=&SYSUID                              
+000002 //M1 PROC                                                               
+000003 //PS1 EXEC PGM=IEFBR14                                                  
+000004 //PDD1 DD DSN=&D1,                                                      
+000005 // DISP=(NEW,CATLG,DELETE),                                             
+000006 // SPACE=(TRK,(1,1),RLSE),                                              
+000007 // DCB=(LRECL=&L,BLKSIZE=&B,RECFM=FB,DSORG=PS)                          
+000008 //   PEND                                                               
+000009 //STEP1 EXEC PROC=M1,D1=ZA0917.PROC.INSTREAM.PS1,L=90,B=900             
+000010 //STEP2 EXEC PROC=M1,D1=ZA0917.PROC.INSTREAM.PS2,L=80,B=800             
+****** **************************** Bottom of Data ****************************
+
+
 Override Procedure
 =======================
 
