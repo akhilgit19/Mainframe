@@ -430,3 +430,17 @@ Restart Procedure
  000011 //    PEND                                                              
  000012 //STEP1 EXEC PROC=PR1                                                   
  ****** **************************** Bottom of Data ****************************
+
+
+
+
+MSGLEVEL=(STATEMENTS,MESSAGES)
+MSGLEVEL=(0,1)
+STATEMENTS
+0:  MEANS IT WILL PRINT ONLY JOB CARD
+1: JOB CARD+JCL+ EXPANDED PROCEDURE
+2: IT WILL PRINT JOB CARD AND JCL WHICH U SUBMITTED
+MESSAGES:
+0: IT WILL PRINT MESSAGES ONLY WHEN THE JOB IS ABENDED
+1: IT WILL PRINT ERROR MESSAGE AND SUCCESSFUL MESSAGE IF THE JOB 
+   IS SUCCESSFUL OR ABEND.
