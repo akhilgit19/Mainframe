@@ -392,4 +392,41 @@ EDIT       ZA0917.AKHIL.JCL.SRCLIB(PROC) - 01.01           Columns 00001 00072
 ****** **************************** Bottom of Data ****************************
 
 
+Override Procedure
+=======================
 
+EDIT       ZA0917.AKHIL.JCL.SRCLIB(OVERRID) - 01.03        Columns 00001 00072 
+****** ***************************** Top of Data ******************************
+000001 //ZA0917AN JOB (9908403106),NOTIFY=&SYSUID                              
+000002 //PR1 PROC                                                              
+000003 //PRS1 EXEC PGM=IEFBR14                                                 
+000004 //DD1 DD DSN=ZA0917.TEST.JCL.PS11,                                      
+000005 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,1),RLSE),                      
+000006 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)                         
+000007 //    PEND                                                              
+000008 //STEP1 EXEC PROC=PR1                                                   
+000009 //PRS1.DD1 DD DSN=ZA0917.TEST.JCL.PS13                                  
+000010 //STEP1 EXEC PROC=PR1                                                   
+000011 //PRS1.DD1 DD DSN=ZA0917.TEST.JCL.PS14                                  
+****** **************************** Bottom of Data ****************************
+
+
+
+
+Restart Procedure
+========================
+ EDIT       ZA0917.AKHIL.JCL.SRCLIB(RTRTPROC) - 01.01       Columns 00001 00072 
+ ****** ***************************** Top of Data ******************************
+ 000001 //ZA0917AN JOB (9908403106),NOTIFY=&SYSUID,RESTART=STEP1.PRS2           
+ 000002 //PR1 PROC                                                              
+ 000003 //PRS1 EXEC PGM=IEFBR14                                                 
+ 000004 //DD1 DD DSN=ZA0917.TEST.JCL.PS11,                                      
+ 000005 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,1),RLSE),                      
+ 000006 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)                         
+ 000007 //PRS2 EXEC PGM=IEFBR14                                                 
+ 000008 //DD2 DD DSN=ZA0917.TEST.JCL.PS12,                                      
+ 000009 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,1),RLSE),                      
+ 000010 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)                         
+ 000011 //    PEND                                                              
+ 000012 //STEP1 EXEC PROC=PR1                                                   
+ ****** **************************** Bottom of Data ****************************
