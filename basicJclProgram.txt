@@ -338,30 +338,29 @@ MESSAGES:
 1: IT WILL PRINT ERROR MESSAGE AND SUCCESSFUL MESSAGE IF THE JOB 
    IS SUCCESSFUL OR ABEND.
 
-CATALOG PROC
+Catalog Procedure:
+=====================
+-------------------------------------------------------------------------------
+EDIT       ZA0917.AKHIL.JCL.SRCLIB(CPROC) - 01.01          Columns 00001 00072 
+****** ***************************** Top of Data ******************************
+000001 //PR8 PROC                                                              
+000002 //PRS8 EXEC PGM=IEFBR14                                                 
+000003 //DD8 DD DSN=ZA0917.TEST.JCL.PS19,                                      
+000004 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,1),RLSE),                      
+000005 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)                         
+000006 //    PEND                                                              
+****** **************************** Bottom of Data ****************************
+                                                                               
 
- EDIT       VENKATB.B13.JCLS.SRCLIB2(PROC3) - 01.00         Columns 00001 00072 
- Command ===>                                                  Scroll ===> CSR  
+
+
+ EDIT       ZA0917.AKHIL.JCL.SRCLIB1(CPROCEX) - 01.00       Columns 00001 00072 
  ****** ***************************** Top of Data ******************************
- ==MSG> -Warning- The UNDO command is not available until you change            
- ==MSG>           your edit profile using the command RECOVERY ON.              
- 000001 //VENKATB JOB NOTIFY=&SYSUID                                            
- 000002 // JCLLIB ORDER=VENKATB.B13.JCLS.SRCLIB2                                
- 000003 //STEP1 EXEC PROC=CPROC,D1=VENKATB.B13.JCLS.PS89                        
+ 000100 //ZA0917BV JOB (7167773698),'AKHIL',NOTIFY=&SYSUID,                     
+ 000200 // TIME=(1,0),MSGLEVEL=(1,1)                                            
+ 000300 // JCLLIB ORDER=ZA0917.AKHIL.JCL.SRCLIB                                 
+ 000400 //STEP1 EXEC PROC=CPROC                                                 
  ****** **************************** Bottom of Data ****************************
-
- EDIT       VENKATB.B13.JCLS.SRCLIB2(CPROC) - 01.00         Columns 00001 00072 
- Command ===>                                                  Scroll ===> CSR  
- ****** ***************************** Top of Data ******************************
- ==MSG> -Warning- The UNDO command is not available until you change            
- ==MSG>           your edit profile using the command RECOVERY ON.              
- 000001 //PR1 PROC                                                              
- 000002 //PRS1 EXEC PGM=IEFBR14                                                 
- 000003 //PDD1 DD DSN=&D1,SPACE=(TRK,(1,2)),                                    
- 000004 // DISP=(NEW,CATLG,DELETE),                                             
- 000005 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS)                         
- 000006 //PR1 PEND            
-
 
 ====================
 COND JCL
