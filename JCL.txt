@@ -468,3 +468,78 @@ EDIT       ZA0917.AKHIL.JCL.SRCLIB(CPROC) - 01.01          Columns 00001 00072
  000300 // JCLLIB ORDER=ZA0917.AKHIL.JCL.SRCLIB                                 
  000400 //STEP1 EXEC PROC=CPROC                                                 
  ****** **************************** Bottom of Data ****************************
+
+
+
+====================
+COND JCL
+====================
+  ---------------------------------------------------
+  EDIT       VENKATB.B13.JCLS.SRCLIB2(COND) - 01.00  
+  Command ===>                                       
+  ****** ***************************** Top of Data **
+  000001 //VENKATB JOB NOTIFY=&SYSUID,RESTART=STEP3  
+  000002 //STEP1 EXEC PGM=IEFBR14                    
+  000003 //STEP2 EXEC PGM=IEFBR14                    
+  000004 //STEP3 EXEC PGM=IEFBR14                    
+  000005 //STEP4 EXEC PGM=IEFBR14                    
+  000006 //STEP5 EXEC PGM=IEFBR14                    
+  ****** **************************** Bottom of Data                                                                    
+
+
+ EDIT       VENKATB.B13.JCLS.SRCLIB2(COND) - 01.02          Columns 00001 00072 
+ Command ===>                                                  Scroll ===> CSR  
+ ****** ***************************** Top of Data ******************************
+ ==MSG> -Warning- The UNDO command is not available until you change            
+ ==MSG>           your edit profile using the command RECOVERY ON.              
+ 000001 //VENKATB JOB NOTIFY=&SYSUID                                            
+ 000002 //STEP1 EXEC PGM=IEBGENER                                               
+ 000003 //STEP2 EXEC PGM=IEFBR14,COND=(0,LE,STEP1) //* WILL NOT EXECUTE         
+ 000004 //STEP3 EXEC PGM=IEFBR14,COND=(12,NE,STEP1) //* WILL EXECUTE            
+ 000005 //STEP4 EXEC PGM=IEFBR14                                                
+ 000006 //STEP5 EXEC PGM=IEFBR14                                                
+ ****** **************************** Bottom of Data ****************************
+
+
+
+ EDIT       VENKATB.B13.JCLS.SRCLIB2(COND2) - 01.01         Columns 00001 0007
+ Command ===>                                                  Scroll ===> CSR
+ ****** ***************************** Top of Data ****************************
+ 000001 //VENKATB JOB NOTIFY=&SYSUID                                          
+ 000002 //STEP1 EXEC PGM=IEBGENER //*WILL EXECUTE WITH 12                     
+ 000003 //STEP2 EXEC PGM=IEFBR14,COND=(0,GE,STEP1) //*WILL EXECUTE            
+ 000004 //STEP3 EXEC PGM=IEFBR14,COND=(12,EQ,STEP1) //*WILL NOT EXE           
+ 000005 //STEP4 EXEC PGM=IEFBR14,COND=(0,GE,STEP1) //*WILL EXECUTE            
+ 000006 //STEP5 EXEC PGM=IEFBR14,COND=(0,GE,STEP1) //*WILL EXECUTE            
+ 000007 //STEP6 EXEC PGM=IEFBR14,COND=(12,NE,STEP1) //*WILL EXECUTE           
+ ****** **************************** Bottom of Data **************************
+
+
+  EDIT       VENKATB.B13.JCLS.SRCLIB3(COND3) - 01.00         Columns 00001 00072 
+  Command ===>                                                  Scroll ===> CSR  
+  ****** ***************************** Top of Data ******************************
+  000100 //VENKATB JOB NOTIFY=&SYSUID,COND=(0,EQ)                                
+  000200 //STEP1 EXEC PGM=IEBGENER  //*WILL      EXECUTE 12                      
+  000300 //STEP2 EXEC PGM=IEFBR14,COND=(12,EQ,STEP1) //*WILL  NOTEXECUTE         
+  000400 //STEP3 EXEC PGM=IEFBR14,COND=(12,NE,STEP1)  //*WILL  EXECUTE =0        
+  000500 //STEP4 EXEC PGM=IEFBR14  //*WILL NOT EXECUTE                           
+  000600 //STEP5 EXEC PGM=IEFBR14  //*WILL NOT EXECUTE                           
+  ****** **************************** Bottom of Data ****************************
+
+
+
+EDIT       VENKATB.B13.JCLS.SRCLIB3(CON4) - 01.00            Member CON4 saved
+Command ===>                                                  Scroll ===> CSR 
+****** ***************************** Top of Data *****************************
+000100 //VENKATB JOB NOTIFY=&SYSUID,COND=(0,EQ)                               
+000200 //STEP1 EXEC PGM=IEBGENER  //*WILL      EXECUTE 12                     
+000300 //STEP2 EXEC PGM=IEFBR14,COND=(12,EQ,STEP1) //*WILL NOT EXECUTE        
+000400 //STEP3 EXEC PGM=IEBGENER,COND=(12,EQ,STEP1)  //*WILL  EXECUTE =12     
+000500 //STEP4 EXEC PGM=IEFBR14  //*WILL    EXECUTE                           
+000600 //STEP5 EXEC PGM=IEFBR14  //*WILL NOT EXECUTE                          
+                                                                                 
+                                                                                 
+                                                                                 
+
+
+
