@@ -437,7 +437,18 @@ Command ===>                                                  Scroll ===> CSR
                                                                                  
                                                                                  
                                                                                  
-
+                                                                                
+                                                                                 
+EDIT       VENKATB.B13.JCLS.SRCLIB2(COND) - 01.00  
+  Command ===>                                       
+  ****** ***************************** Top of Data **
+  000001 //VENKATB JOB NOTIFY=&SYSUID,RESTART=STEP3  
+  000002 //STEP1 EXEC PGM=IEFBR14  //WILL EXCUTE ==0                  
+  000003 //STEP2 EXEC PGM=P1         //WILL ABEND 806          
+  000004 //STEP3 EXEC PGM=IEFBR14,COND=EVEN // WILL EXECUTE                 
+  000005 //STEP4 EXEC PGM=IEFBR14,COND=ONLY   //WILL EXECUTE IF  ONLY PREVIOUS STEPS ABENDED                 
+  000006 //STEP5 EXEC PGM=IEFBR14        // WILL NOT EXECUTE           
+  ****** **************************** Bottom of Data     
 
 
 =========================
