@@ -365,6 +365,12 @@ EDIT       ZA0917.AKHIL.JCL.SRCLIB(CPROC) - 01.01          Columns 00001 00072
 ====================
 COND JCL
 ====================
+
+
+COND=(RC,RO,PREVIOUSSTEP)
+RC=0-4093
+R0= EQ, NE, GT,GE,LT,LE
+
   ---------------------------------------------------
   EDIT       VENKATB.B13.JCLS.SRCLIB2(COND) - 01.00  
   Command ===>                                       
