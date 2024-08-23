@@ -6,7 +6,7 @@ Here are the zOS userid and password you will need for your labs/exercises - tak
 
 IBM Z ID: Z33138
 
-IBM Z Password: CAB37WYN
+IBM Z Password: BEE89DUN
 
 
 
