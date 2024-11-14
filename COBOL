@@ -1,4 +1,3 @@
-
 EDIT       MATESE.T6.COBOL(CMPLINK) - 01.00                Columns 00001 00072 
 Command ===>                                                  Scroll ===> CSR  
 ****** ***************************** Top of Data ******************************
@@ -18,25 +17,53 @@ Command ===>                                                  Scroll ===> CSR
 001400 //             DISP=SHR                                                 
 001500 //SYSPRINT DD  SYSOUT=*                                                 
 001600 //SYSLIN   DD  DSNAME=&&LOADSET,UNIT=SYSALLDA,                          
-001700 //             DISP=(MOD,PASS),SPACE=(TRK,(3,3)),                   
-001800 //             DCB=(BLKSIZE=3200)                                   
-001900 //SYSUT1   DD  UNIT=SYSALLDA,SPACE=(CYL,(1,1))                      
-002000 //SYSUT2   DD  UNIT=SYSALLDA,SPACE=(CYL,(1,1))                      
-002100 //SYSUT3   DD  UNIT=SYSALLDA,SPACE=(CYL,(1,1))                      
-002200 //SYSUT4   DD  UNIT=SYSALLDA,SPACE=(CYL,(1,1))                      
-002300 //SYSUT5   DD  UNIT=SYSALLDA,SPACE=(CYL,(1,1))                      
-002400 //SYSUT6   DD  UNIT=SYSALLDA,SPACE=(CYL,(1,1))                      
-002500 //SYSUT7   DD  UNIT=SYSALLDA,SPACE=(CYL,(1,1))                      
-002600 //*                                                                 
-002700 //LKED   EXEC PGM=IEWBLINK,COND=(8,LT,COBOL),REGION=0M              
-002800 //SYSLIB   DD  DSNAME=CEE.SCEELKED,DISP=SHR                         
-002900 //         DD  DSNAME=&LOADLIB,                                     
-003000 //             DISP=SHR                                             
-003100 //SYSPRINT DD  SYSOUT=*                                             
-003200 //SYSLIN   DD  DSNAME=&&LOADSET,DISP=(OLD,DELETE)                   
-003300 //         DD  DDNAME=SYSIN                                         
+001700 //             DISP=(MOD,PASS),SPACE=(TRK,(3,3)),                    
+001800 //             DCB=(BLKSIZE=3200)                                    
+001900 //SYSUT1   DD  UNIT=SYSALLDA,SPACE=(CYL,(1,1))                       
+002000 //SYSUT2   DD  UNIT=SYSALLDA,SPACE=(CYL,(1,1))                       
+002100 //SYSUT3   DD  UNIT=SYSALLDA,SPACE=(CYL,(1,1))                       
+002200 //SYSUT4   DD  UNIT=SYSALLDA,SPACE=(CYL,(1,1))                       
+002300 //SYSUT5   DD  UNIT=SYSALLDA,SPACE=(CYL,(1,1))                       
+002400 //SYSUT6   DD  UNIT=SYSALLDA,SPACE=(CYL,(1,1))                       
+002500 //SYSUT7   DD  UNIT=SYSALLDA,SPACE=(CYL,(1,1))                       
+002600 //*                                                                  
+002700 //LKED   EXEC PGM=IEWBLINK,COND=(8,LT,COBOL),REGION=0M               
+002800 //SYSLIB   DD  DSNAME=CEE.SCEELKED,DISP=SHR                          
+002900 //         DD  DSNAME=&LOADLIB,                                      
+003000 //             DISP=SHR                                              
+003100 //SYSPRINT DD  SYSOUT=*                                              
+003200 //SYSLIN   DD  DSNAME=&&LOADSET,DISP=(OLD,DELETE)                    
+003300 //         DD  DDNAME=SYSIN                                          
 003400 //SYSLMOD  DD  DSNAME=&LOADLIB(&MEMBER),                                
 003500 //             DISP=OLD                                                 
 003600 //SYSUT1   DD  UNIT=SYSALLDA,SPACE=(TRK,(10,10))                        
 003700 //SYSIN    DD  DUMMY                                                    
+
+EDIT       MATESE.T6.COBOL(COBCOMP) - 01.08                Columns 00001 00072 
+Command ===>                                                  Scroll ===> CSR  
+****** ***************************** Top of Data ******************************
+000100 //MATESE  JOB MSGLEVEL=(1,1),NOTIFY=&SYSUID                             
+000110 //PLIB    JCLLIB ORDER=(MATESE.T6.COBOL)                                
+000200 //*                                                                     
+000300 //*  COMPILE A COBOL PROGRAM                                            
+000310 //*                                                                     
+000700 //CL      EXEC CMPLINK,                                                 
+000710 //            COPYLIB=MATESE.T6.TEST,         <= COPYBOOK LIBRARY       
+000711 //            LOADLIB=MATESE.T6.LOAD,         <= LOAD LIBRARY           
+000720 //             SRCLIB=MATESE.T6.COBOL,        <= SOURCE LIBRARY         
+000730 //             MEMBER=MFPROG1                 <= SOURCE MEMBER          
+
+
+
+EDIT       MATESE.T6.COBOL(EXEC2) - 01.00                  Columns 00001 00072 
+Command ===>                                                  Scroll ===> CSR  
+****** ***************************** Top of Data ******************************
+000100 //MATESEXN JOB NOTIFY=&SYSUID                                           
+000200 //STEP1 EXEC PGM=MFPROG1                                                
+000300 //STEPLIB DD DSN=MATESE.T6.LOAD,DISP=SHR                                
+000400 //SYSPRINT DD SYSOUT=*                                                  
+000500 //SYSOUT DD SYSOUT=*                                                    
+000600 //SYSIN DD *                                                            
+001700 /*                                                                      
+001800 //                                                                      
 ****** **************************** Bottom of Data ****************************
