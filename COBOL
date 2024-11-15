@@ -67,3 +67,36 @@ Command ===>                                                  Scroll ===> CSR
 001700 /*                                                                      
 001800 //                                                                      
 ****** **************************** Bottom of Data ****************************
+
+
+Output:
+
+********************************* TOP OF DATA **********************************
+HELLO WORLD                                                                     
+******************************** BOTTOM OF DATA ********************************
+
+
+
+
+Command ===>                                                  Scroll ===> CSR  
+****** ***************************** Top of Data ******************************
+000001        IDENTIFICATION DIVISION.                                         
+000002        PROGRAM-ID. MFPROG1.                                             
+000003        PROCEDURE DIVISION.                                              
+000004        MAIN-PARA.                                                       
+000005            DISPLAY 'COBOL PROGRAMMING LANGUAGE'                         
+000006       D    DISPLAY 'DEBUGGING MODE ACTIVATED'                           
+000007       *    THIS IS LINE IS COMMENTED AS IT CONTAINS '*' ON POSITION 7   
+000008            DISPLAY 'LINE CONTIN'                                        
+000009       -            'UATION'                                             
+000010            STOP RUN.                                                    
+****** **************************** Bottom of Data ****************************
+
+********************************* TOP OF DATA **********************************
+COBOL PROGRAMMING LANGUAGE                                                      
+LINE CONTINUATION                                                               
+******************************** BOTTOM OF DATA ********************************
+                                                                                
+                                                                                
+
+
