@@ -1,0 +1,238 @@
+akhilpagadapoola@Akhils-MacBook-Air ~ % ls
+AWSCLIV2.pkg                    HTML,CSS                        aws
+Applications                    Library                         eclipse
+Cobol                           Mainframe                       eclipse-workspace
+Desktop                         Movies                          iCloud Drive (Archive)
+Documents                       Music                           shell
+Downloads                       Pictures                        trail
+Gold_Site_Ecommerce             Public
+Gold_Site_Ecommerce-1           Virtual Machines.localized
+akhilpagadapoola@Akhils-MacBook-Air ~ % cd Cobol
+akhilpagadapoola@Akhils-MacBook-Air Cobol % ls
+hello.cob
+akhilpagadapoola@Akhils-MacBook-Air Cobol % cat hello.cob
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. HelloWorld.
+       AUTHOR. AKHIL.
+       ENVIRONMENT DIVISION. 
+       DATA DIVISION. 
+       PROCEDURE DIVISION.
+           DISPLAY "Hello, World".
+           STOP RUN.
+
+
+       
+
+akhilpagadapoola@Akhils-MacBook-Air Cobol % cobc -x hello.cob
+zsh: command not found: cobc
+akhilpagadapoola@Akhils-MacBook-Air Cobol % brew install gnu-cobol
+
+==> Auto-updating Homebrew...
+Adjust how often this is run with HOMEBREW_AUTO_UPDATE_SECS or disable with
+HOMEBREW_NO_AUTO_UPDATE. Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
+==> Downloading https://ghcr.io/v2/homebrew/portable-ruby/portable-ruby/blobs/sha256:303bed4c7fc431a685db3c3c151d873740114adbdccd23762ea2d1e39ea78f47
+########################################################################################### 100.0%
+==> Pouring portable-ruby-3.3.6.arm64_big_sur.bottle.tar.gz
+==> Auto-updated Homebrew!
+Updated 3 taps (hashicorp/tap, homebrew/core and homebrew/cask).
+==> New Formulae
+action-docs              gollama                  lld                      rsgain
+afl++                    goyacc                   llvm@18                  rust-script
+aicommit                 gplugin                  localai                  sequoia-sq
+ansible-builder          gptme                    m68k-elf-binutils        setconf
+argtable3                hawkeye                  m68k-elf-gcc             sf
+azqr                     icu4c@74                 maeparser                sidekick
+binsider                 icu4c@75                 markdown-oxide           sleek
+blisp                    icu4c@76                 mbpoll                   surfer
+boring                   inchi                    minijinja-cli            sysprof
+carapace                 jikken                   mkdocs-material          tcl-tk@8
+clickhouse-sql-parser    jxl-oxide                nanobind                 termscp
+comtrya                  kamal-proxy              node@22                  tex-fmt
+coordgen                 kanata                   onnx                     tllist
+crossplane               keep-sorted              openapi-diff             tmux-sessionizer
+cyphernetes              kty                      oxlint                   toml2json
+decasify                 kubetail                 paperjam                 typos-lsp
+dipc                     kuzco                    pipet                    veryfasttree
+distill-cli              langgraph-cli            polkit                   vimtutor-sequel
+djlint                   lbfgspp                  postgresql@17            vipsdisp
+dug                      libcss                   probe-rs-tools           wasi-libc
+erlang@26                libdex                   pytest                   wasi-runtimes
+facad                    libdom                   python-freethreading     wasm-component-ld
+fcft                     libhubbub                python-gdbm@3.13         wthrr
+fileql                   libmsquic                python-tk@3.13           zizmor
+flang                    libnice-gstreamer        python@3.13              zsh-system-clipboard
+foot                     libparserutils           recc
+git-spice                libspelling@0.2          rip2
+goku                     libtatsu                 roxctl
+==> New Casks
+ableset                          font-edu-au-vic-wa-nt-guides     lets
+acronis-true-image-cleanup-tool  font-edu-au-vic-wa-nt-pre        localsend
+adlock                           font-eldur                       lunatask
+aide-app                         font-faculty-glyphic             magicquit
+anytype@alpha                    font-funnel-display              mailbird
+anytype@beta                     font-funnel-sans                 mailsteward
+archivewebpage                   font-greybeard                   microsoft-edge@canary
+ba-connected                     font-host-grotesk                minstaller
+backyard-ai                      font-matemasie                   morisawa-desktop-manager
+bentobox                         font-miracode                    mythic
+bobhelper                        font-moderustic                  neohtop
+caido                            font-mynaui-icons                pixel-shift-combiner
+cap                              font-new-amsterdam               pronotes
+ccstudio                         font-new-computer-modern         quba
+claude                           font-noto-serif-todhri           replaywebpage
+cocoapacketanalyzer              font-parkinsans                  rode-unify
+colemak-dh                       font-recursive-desktop           rouvy
+colemak-dhk                      font-sour-gummy                  sanctum
+default-handler                  font-suse                        silhouette-studio
+displaybuddy                     font-zpix                        singlebox
+djuced                           fujifilm-tether-app              sketchup
+dockside                         furtherance                      synology-image-assistant
+excalidrawz                      github-copilot-for-xcode         thunderbird@esr
+fathom                           homerow                          typefully
+feedflow                         huggingchat                      unraid-usb-creator-next
+follow                           huly                             vienna-assistant
+follow@alpha                     hyperconnect                     viz
+follow@nightly                   imaging-edge                     webkinz
+font-agave                       jet-pilot                        whimsical
+font-bungee-tint                 keyguard                         windows-app
+font-doto                        label-live                       yellowdot
+font-edu-au-vic-wa-nt-arrows     langgraph-studio                 zoom-m3-edit-and-play
+font-edu-au-vic-wa-nt-dots       legcord
+==> Deleted Installed Formulae
+icu4c ✘
+
+You have 27 outdated formulae and 1 outdated cask installed.
+
+Warning: Formula gnu-cobol was renamed to gnucobol.
+==> Downloading https://ghcr.io/v2/homebrew/core/gnucobol/manifests/3.2
+########################################################################################### 100.0%
+==> Fetching dependencies for gnucobol: berkeley-db, gmp and json-c
+==> Downloading https://ghcr.io/v2/homebrew/core/berkeley-db/manifests/18.1.40_2
+########################################################################################### 100.0%
+==> Fetching berkeley-db
+==> Downloading https://ghcr.io/v2/homebrew/core/berkeley-db/blobs/sha256:f8a6da9be201214ca17efa82
+########################################################################################### 100.0%
+==> Downloading https://ghcr.io/v2/homebrew/core/gmp/manifests/6.3.0
+########################################################################################### 100.0%
+==> Fetching gmp
+==> Downloading https://ghcr.io/v2/homebrew/core/gmp/blobs/sha256:78e4f40cba6419cf7e2d81e9c945d1e9
+########################################################################################### 100.0%
+==> Downloading https://ghcr.io/v2/homebrew/core/json-c/manifests/0.18
+########################################################################################### 100.0%
+==> Fetching json-c
+==> Downloading https://ghcr.io/v2/homebrew/core/json-c/blobs/sha256:16b53cbbfaa2361f7e68f112f8ce7
+########################################################################################### 100.0%
+==> Fetching gnucobol
+==> Downloading https://ghcr.io/v2/homebrew/core/gnucobol/blobs/sha256:35b99190f38a4ce4f20096a3fcc
+########################################################################################### 100.0%
+==> Installing dependencies for gnucobol: berkeley-db, gmp and json-c
+==> Installing gnucobol dependency: berkeley-db
+==> Downloading https://ghcr.io/v2/homebrew/core/berkeley-db/manifests/18.1.40_2
+Already downloaded: /Users/akhilpagadapoola/Library/Caches/Homebrew/downloads/dad399d41acac3c682869c3c11caa898079e60cc1336af2d7ec80b5538bddfb6--berkeley-db-18.1.40_2.bottle_manifest.json
+==> Pouring berkeley-db--18.1.40_2.arm64_sonoma.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/berkeley-db/18.1.40_2: 45 files, 6.1MB
+==> Installing gnucobol dependency: gmp
+==> Downloading https://ghcr.io/v2/homebrew/core/gmp/manifests/6.3.0
+Already downloaded: /Users/akhilpagadapoola/Library/Caches/Homebrew/downloads/70a72a71216843d66a953c06ff6337445ce9bc94fae9f0e301e2f59005274a8e--gmp-6.3.0.bottle_manifest.json
+==> Pouring gmp--6.3.0.arm64_sonoma.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/gmp/6.3.0: 22 files, 3.3MB
+==> Installing gnucobol dependency: json-c
+==> Downloading https://ghcr.io/v2/homebrew/core/json-c/manifests/0.18
+Already downloaded: /Users/akhilpagadapoola/Library/Caches/Homebrew/downloads/2b1b57d90168111a85e505e96c756a6a792ae692fdab1cb092422bece9724f89--json-c-0.18.bottle_manifest.json
+==> Pouring json-c--0.18.arm64_sonoma.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/json-c/0.18: 34 files, 358.6KB
+==> Installing gnucobol
+==> Pouring gnucobol--3.2.arm64_sonoma.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/gnucobol/3.2: 75 files, 3.2MB
+==> Running `brew cleanup gnucobol`...
+Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.
+Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
+==> `brew cleanup` has not been run in the last 30 days, running now...
+Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.
+Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/awscli_bottle_manifest--2.16.8... (19.5KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/ca-certificates_bottle_manifest--2024-03-11... (1.8KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/cairo_bottle_manifest--1.18.0... (20.9KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/cairo--1.18.0... (738KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/fontconfig_bottle_manifest--2.15.0... (10.2KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/fontconfig--2.15.0... (633.6KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/freetype_bottle_manifest--2.13.2-1... (10.4KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/gettext_bottle_manifest--0.22.5... (10KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/gettext--0.22.5... (10.2MB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/giflib_bottle_manifest--5.2.2... (7.2KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/giflib--5.2.2... (149.2KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/git_bottle_manifest--2.45.2... (14.3KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/git-gui_bottle_manifest--2.45.2... (11.0KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/glib_bottle_manifest--2.80.3... (20.5KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/graphite2_bottle_manifest--1.3.14... (11.0KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/graphite2--1.3.14... (89.4KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/harfbuzz_bottle_manifest--8.5.0... (30.5KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/jpeg-turbo_bottle_manifest--3.0.3... (7.7KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/jpeg-turbo--3.0.3... (1.1MB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/libpng_bottle_manifest--1.6.43... (7.9KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/libpng--1.6.43... (448.7KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/libtiff_bottle_manifest--4.6.0... (12.1KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/libtiff--4.6.0... (1.5MB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/libx11_bottle_manifest--1.8.9... (15KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/libx11--1.8.9... (2.1MB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/libxau_bottle_manifest--1.0.11... (9.7KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/libxau--1.0.11... (30KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/libxcb_bottle_manifest--1.17.0... (15.8KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/libxcb--1.17.0... (977.2KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/libxdmcp_bottle_manifest--1.1.5... (8.2KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/libxdmcp--1.1.5... (35.7KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/libxext_bottle_manifest--1.3.6... (11.5KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/libxext--1.3.6... (105.6KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/libxrender_bottle_manifest--0.9.11... (13.6KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/libxrender--0.9.11... (51.6KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/little-cms2_bottle_manifest--2.16... (11.5KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/little-cms2--2.16... (420KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/lz4_bottle_manifest--1.9.4... (9.9KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/lzo_bottle_manifest--2.10... (13.2KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/lzo--2.10... (143.9KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/maven_bottle_manifest--3.9.7... (37.4KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/mpdecimal_bottle_manifest--4.0.0-1... (7.7KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/mpdecimal--4.0.0... (178.0KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/openjdk_bottle_manifest--22.0.1... (36.2KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/openjdk@11_bottle_manifest--11.0.23... (36.7KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/openssl@3_bottle_manifest--3.3.1... (9.2KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/openssl@3--3.3.1... (9.5MB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/pcre2_bottle_manifest--10.43... (8.8KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/pixman_bottle_manifest--0.42.2-1... (9.3KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/pixman--0.42.2... (378.2KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/python@3.11_bottle_manifest--3.11.9... (24KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/python@3.12_bottle_manifest--3.12.3... (23.2KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/readline_bottle_manifest--8.2.10... (8.0KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/sqlite_bottle_manifest--3.46.0... (8.5KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/tcl-tk_bottle_manifest--8.6.14... (11.7KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/tcl-tk--8.6.14... (8.4MB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/terraform--1.9.5.zip... (24.5MB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/xorgproto_bottle_manifest--2024.1... (14.1KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/xorgproto--2024.1... (699.7KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/xz_bottle_manifest--5.4.6... (7.5KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/zstd_bottle_manifest--1.5.6... (9.1KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/zstd--1.5.6... (758.6KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/portable-ruby-3.3.2.arm64_big_sur.bottle.tar.gz... (14.4MB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/openssl@1.1_bottle_manifest--1.1.1w... (10.9KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/icu4c--74.2... (28.9MB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/portable-ruby-3.3.3.arm64_big_sur.bottle.tar.gz... (11MB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/icu4c_bottle_manifest--74.2... (8.4KB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/Cask/vagrant--2.4.1.dmg... (127MB)
+Removing: /Users/akhilpagadapoola/Library/Caches/Homebrew/Cask/vagrant-manager--2.7.1.dmg... (3.9MB)
+Removing: /Users/akhilpagadapoola/Library/Logs/Homebrew/terraform... (119B)
+akhilpagadapoola@Akhils-MacBook-Air Cobol % cobc -v
+
+cobc (GnuCOBOL) 3.2.0
+Built     Jul 28 2023 18:42:18  Packaged  Jul 28 2023 17:02:56 UTC
+C version "Apple LLVM 15.0.0 (clang-1500.0.40.1)"
+loading standard configuration file 'default.conf'
+cobc: error: no input files
+akhilpagadapoola@Akhils-MacBook-Air Cobol % cobc -x hello.cob
+
+akhilpagadapoola@Akhils-MacBook-Air Cobol % ./hello
+Hello, World
+akhilpagadapoola@Akhils-MacBook-Air Cobol % cobc -x hello.cob
+
+akhilpagadapoola@Akhils-MacBook-Air Cobol % ./hello          
+Hello World this is the first program in cobol
+akhilpagadapoola@Akhils-MacBook-Air Cobol % 
