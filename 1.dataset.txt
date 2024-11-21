@@ -303,6 +303,7 @@ PDS Creation:
   ex E DATASETNAME (M1)
 2.You can create other members give S M2 in inside the dataset 
 3.CREATE M3 .A .B
+4.(n*6)-1
                                                                             
 
 Interview question.
