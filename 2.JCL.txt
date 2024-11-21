@@ -95,7 +95,7 @@ SYSIPT: A device used for input processing, often used for SYSIN or job input.
  000006 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS),UNIT=SYSDA              
  000007 //STEP2 EXEC PGM=IEFBR14                                                
  000008 //DD2 DD DSN=MATESE.T6.JCL.PDS2,                                        
- 000009 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,1),RLSE),                      
+ 000009 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,1,1)),                      
  000010 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PO),UNIT=SYSDA              
  ****** **************************** Bottom of Data ****************************
 
@@ -207,8 +207,43 @@ Example of MOD,SHR,OLD/PS-PDS/PDS-PS/Instream to PS
 000046 //SYSIN DD DUMMY                                     
 000047 //                                                   
 
+Same programe below with more detailed:
 
-
+EDIT       MATESE.T6.JCL.PDS(JCL4) - 01.01                 Columns 00001 00072 
+Command ===>                                                  Scroll ===> CSR  
+****** ***************************** Top of Data ******************************
+000001 //MATESE04 JOB 8179332273,'AKHIL',NOTIFY=&SYSUID,                       
+000002 // TIME=(1,10),REGION=0M,CLASS=A,RESTART=STEP4                          
+000003 //STEP1 EXEC PGM=IEBGENER                                               
+000004 //SYSPRINT DD SYSOUT=*                                                  
+000005 //SYSUT1 DD DSN=MATESE.T6.JCL.PS1,DISP=SHR                              
+000006 //SYSUT2 DD DSN=MATESE.T6.JCL.PS2,DISP=OLD                              
+000007 //SYSIN DD DUMMY                                                        
+000008 //STEP2 EXEC PGM=IEBGENER                                               
+000009 //SYSPRINT DD SYSOUT=*                                                  
+000010 //SYSUT1 DD DSN=MATESE.T6.JCL.PS1,DISP=SHR                              
+000011 //SYSUT2 DD DSN=MATESE.T6.JCL.PS2,DISP=MOD                              
+000012 //SYSIN DD DUMMY                                                        
+000013 //*******************************************COPYING FROM PS TO MEM OF PDS                                        
+000014 //STEP3 EXEC PGM=IEBGENER                                               
+000015 //SYSPRINT DD SYSOUT=*                                                  
+000016 //SYSUT1 DD DSN=MATESE.T6.JCL.PS2,DISP=SHR                              
+000017 //SYSUT2 DD DSN=MATESE.T6.JCL.PDS2(M1),DISP=SHR                         
+000018 //SYSIN DD DUMMY                                                        
+000019 //*********************************************COPYING FROM MEM OF PDS TO PS                                        
+000020 //STEP4 EXEC PGM=IEBGENER                                               
+000021 //SYSPRINT DD SYSOUT=*                                                  
+000022 //SYSUT1 DD DSN=MATESE.T6.JCL.PDS2(M2),DISP=SHR      
+000023 //SYSUT2 DD DSN=MATESE.T6.JCL.PS2,DISP=OLD                             
+000024 //SYSIN DD DUMMY    
+000025 //******************************************COPYING THE DATA FROM INSTREAM TO PS FILE                        
+000026 //STEP5 EXEC PGM=IEBGENER                                           
+000027 //SYSPRINT DD SYSOUT=*                                              
+000028 //SYSUT1 DD *                                                       
+000029  HELLO WELCOME TO JCL
+000029 /* 
+000030 //SYSUT2 DD DSN=MATESE.T6.JCL.PS2,DISP=OLD                          
+000031 //SYSIN DD DUMMY                                                    
 
 COPY from One or more PDS to one PDS Using IEBCOPY
 =======================================================
