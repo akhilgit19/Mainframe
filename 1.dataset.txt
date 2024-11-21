@@ -1,5 +1,5 @@
 
-TSO/ISPF COMMANDS
+TSO/ISPF(Interactive System Productivity Facility) COMMANDS
 ==================================
 1.SETTINGS
 2.PFSHOW ON : TO DISPLAY THE FUNCTIONS KEYS
