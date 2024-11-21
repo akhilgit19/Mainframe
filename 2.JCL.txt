@@ -2,8 +2,8 @@ JCL
 =====
 
 Fields in JCL Statement
-  --Identifier Field --//
-  -- Name 
+  -- Identifier Field --//
+  -- Name Field
   -- Operation Field -- Job, Exec, DD
   -- Operands/Parameters
   -- Comment
@@ -14,9 +14,9 @@ Write the Sample JCL Code, submit and see the result:
 Step1: We need a PDS to place the jcl Program
        Record Length-80 RF- FB
 Step2:  COLS
-        CAPS ON
+        CAPS ON and NUM OFF
         HI JCL
-       Identifier files start from 1 and ends at 2 column
+        Identifier files start from 1 and ends at 2 column
 Note:
 1-On JOB Statement: Name field should be your mainframe ID
 2-Name field starts from 3rd column
@@ -28,7 +28,7 @@ Step3: Operation Field
 2 Accounting information (12345)
  JOB (12345),'AKHIL',NOTIFY=ZA0917 
  
-3.TIME(1,0)Min,seconds
+3.TIME(1,0)Min,seconds IF it is execeeds abend s322
 
 
  -------------------------------------------------------------------------------
@@ -72,6 +72,31 @@ Note:*****error-The 806 or S806 error is the operating system reporting that it 
  000009 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,2,1)),                         
  000010 // DCB=(LRECL=100,BLKSIZE=1000,RECFM=FB,DSORG=PO)                        
  000011 //                                                                      
+ ****** **************************** Bottom of Data ****************************
+
+If you get invalid unit error. You can give unit as SYSDA device. Below are the common unit types
+
+SYSDA: A direct access storage device (DASD) unit, commonly used for datasets on disk.
+SYSALLDA: A special unit type that represents all available DASD devices.
+SYSTAP: A device type for tape drives.
+SYSTEMP: A temporary storage unit type for work datasets.
+SYSIPT: A device used for input processing, often used for SYSIN or job input.
+
+
+ EDIT       MATESE.T6.JCL.PDS(JCL2) - 01.00                 Columns 00001 00072 
+ Command ===>                                                  Scroll ===> CSR  
+ =COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
+ ****** ***************************** Top of Data ******************************
+ 000001 //MATESE01 JOB 8179332273,'AKHIL',NOTIFY=&SYSUID,                       
+ 000002 // TIME=(1,0),REGION=0M,CLASS=A,MSGLEVEL=(1,1)                          
+ 000003 //STEP1 EXEC PGM=IEFBR14                                                
+ 000004 //DD1 DD DSN=MATESE.T6.JCL.PS1,                                         
+ 000005 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,1),RLSE),                      
+ 000006 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PS),UNIT=SYSDA              
+ 000007 //STEP2 EXEC PGM=IEFBR14                                                
+ 000008 //DD2 DD DSN=MATESE.T6.JCL.PDS2,                                        
+ 000009 // DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(1,1),RLSE),                      
+ 000010 // DCB=(LRECL=80,BLKSIZE=800,RECFM=FB,DSORG=PO),UNIT=SYSDA              
  ****** **************************** Bottom of Data ****************************
 
 ==================================
