@@ -257,14 +257,15 @@ COPY from One or more PDS to one PDS Using IEBCOPY
  000005 //DD1 DD DSN=ZA0917.AKHIL.JCL.PDS2,                                     
  000006 // DISP=(NEW,CATLG,DELETE),                                             
  000007 // SPACE=(TRK,(1,1,3),RLSE),                                            
- 000008 // DCB=(LRECL=100,BLKSIZE=1000,RECFM=FB,DSORG=PO)                       
+ 000008 // DCB=(LRECL=100,BLKSIZE=1000,RECFM=FB,DSORG=PO)  
+*************************COPY ALL THE MEMBER FROM PDS TO ANOTHER PDS
  000009 //STEP2 EXEC PGM=IEBCOPY                                                
  000010 //SYSPRINT DD SYSOUT=*                                                  
  000011 //DD1 DD DSN=ZA0917.AKHIL.JCL.PDS1,DISP=SHR                             
  000012 //DD2 DD DSN=ZA0917.AKHIL.JCL.PDS2,DISP=SHR                             
  000013 //SYSIN DD *                                                            
  000014   COPY INDD=DD1,OUTDD=DD2                                               
- 000015 /*                                                                      
+ 000015 /*   
  000016 //STEP3 EXEC PGM=IEBCOPY                                                
  000017 //SYSPRINT DD SYSOUT=*                      
  000018 //X DD DISP=SHR,DSN=ZA0917.AKHIL.JCL.PDS1              
