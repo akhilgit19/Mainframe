@@ -559,7 +559,7 @@ R0= EQ, NE, GT,GE,LT,LE
  ==MSG> -Warning- The UNDO command is not available until you change            
  ==MSG>           your edit profile using the command RECOVERY ON.              
  000001 //VENKATB JOB NOTIFY=&SYSUID                                            
- 000002 //STEP1 EXEC PGM=IEBGENER                                               
+ 000002 //STEP1 EXEC PGM=IEBGENER   //*WILL EXECUTE WITH 12                                          
  000003 //STEP2 EXEC PGM=IEFBR14,COND=(0,LE,STEP1) //* WILL NOT EXECUTE         
  000004 //STEP3 EXEC PGM=IEFBR14,COND=(12,NE,STEP1) //* WILL EXECUTE            
  000005 //STEP4 EXEC PGM=IEFBR14                                                
@@ -587,8 +587,8 @@ R0= EQ, NE, GT,GE,LT,LE
   000100 //VENKATB JOB NOTIFY=&SYSUID,COND=(0,EQ)                                
   000200 //STEP1 EXEC PGM=IEBGENER  //*WILL      EXECUTE 12                      
   000300 //STEP2 EXEC PGM=IEFBR14,COND=(12,EQ,STEP1) //*WILL  NOTEXECUTE         
-  000400 //STEP3 EXEC PGM=IEFBR14,COND=(12,NE,STEP1)  //*WILL  EXECUTE =0        
-  000500 //STEP4 EXEC PGM=IEFBR14  //*WILL NOT EXECUTE                           
+  000400 //STEP3 EXEC PGM=IEFBR14,COND=(12,NE,STEP1)  //*WILL  NOT EXECUTE =0        
+  000500 //STEP4 EXEC PGM=IEFBR14  //*WILL NOT EXECUTE                       
   000600 //STEP5 EXEC PGM=IEFBR14  //*WILL NOT EXECUTE                           
   ****** **************************** Bottom of Data ****************************
 
@@ -600,8 +600,8 @@ Command ===>                                                  Scroll ===> CSR
 000100 //VENKATB JOB NOTIFY=&SYSUID,COND=(0,EQ)                               
 000200 //STEP1 EXEC PGM=IEBGENER  //*WILL      EXECUTE 12                     
 000300 //STEP2 EXEC PGM=IEFBR14,COND=(12,EQ,STEP1) //*WILL NOT EXECUTE        
-000400 //STEP3 EXEC PGM=IEBGENER,COND=(12,EQ,STEP1)  //*WILL  EXECUTE =12     
-000500 //STEP4 EXEC PGM=IEFBR14  //*WILL    EXECUTE                           
+000400 //STEP3 EXEC PGM=IEBGENER,COND=(12,EQ,STEP1)  //*WILL NOT  EXECUTE =12     
+000500 //STEP4 EXEC PGM=IEFBR14  //*WILL  EXECUTE    =0                   
 000600 //STEP5 EXEC PGM=IEFBR14  //*WILL NOT EXECUTE                          
                                                                                  
                                                                                  
@@ -645,6 +645,9 @@ GDG
 001700 //DD1 DD DSN=ZA0917.B13.JCLS.GDG(-1),       
 001800 // DISP=(OLD,DELETE,DELETE)                 
 
+(0)--LATEST
+(-1)-OLDEST
+(+1)- NEWEST
 
  000001 //DELGDG JOB CLASS=A,MSGCLASS=A,NOTIFY=&SYSUID,MSGLEVEL=(1,1),PRTY=15                        
  000002 //STEP1 EXEC PGM=IDCAMS                                                 
@@ -656,6 +659,8 @@ GDG
 NOEMPTY- OLDEST GENERATION IS GOING TO DELETE WHEN LIMIT IS REACHED
 EMPTY- OLDESTS GENERATIONS ARE GOING TO DELETE WHEN EXCEEDED THE LIMIT
 
+SCRATCH- PERMANENTLY DELETED
+NO SCRATCH- CAN RECOVER BY USING HR RECOVERY COMMAND
 FORCE -means detele the generation if the retention period has expired
 PURGE -means delete the generation if the retention period has not expired
 
