@@ -1,3 +1,4 @@
+
 JCL
 =====
 
@@ -664,3 +665,6 @@ NO SCRATCH- CAN RECOVER BY USING HR RECOVERY COMMAND
 FORCE -means detele the generation if the retention period has expired
 PURGE -means delete the generation if the retention period has not expired
 
+
+
+                                                                             
