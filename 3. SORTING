@@ -16,7 +16,7 @@ Command ===>                                                  Scroll ===> CSR
 000005 //           SPACE=(TRK,(1,1),RLSE),                                    
 000006 //           DCB=(RECFM=FB,LRECL=80,BLKSIZE=800),UNIT=SYSDA             
 000007 //SYSIN   DD *                                                          
-000008   OPTION COPY                                                           
+000008   OPTION COPY or SORT FIELDS=COPY                                                           
 000009 /*                                                                      
 000010 //SYSOUT DD SYSOUT=*                                                    
 000011 //SYSPRINT DD SYSOUT=*                                                  
@@ -202,6 +202,8 @@ Solution:
  ****** **************************** Bottom of Data ****************************
 
 
+6. TO SORT THE DATA AND PUT THE LOGS IN MULTIPLE OUTPUT FILES
+=================================================================
 
  EDIT       MATESE.T6.JCL.PDS(SORT) - 01.00                 Columns 00001 0007
  Command ===>                                                  Scroll ===> CSR
@@ -243,4 +245,75 @@ Solution:
   000002 EMP006 HITESH         01011996 M SCIENCE AP 123456789                 
   000003 EMP009 HARI           01011992 M COMMERC AP 123456789                 
   ****** **************************** Bottom of Data **************************
-  
+
+
+7.TO SORT AND GET ONLY SPECIFIC FIELDS IN THE OUTPUT DATASET:
+=========================================================================
+
+
+ EDIT       MATESE.T6.JCL.PDS(SORT) - 01.01                 Columns 00001 00072 
+ Command ===>                                                  Scroll ===> CSR  
+ ****** ***************************** Top of Data ******************************
+ 000001 //MATESE09 JOB NOTIFY=&SYSUID                                           
+ 000002 //STEP1 EXEC PGM=SORT                                                   
+ 000003 //SORTIN DD DSN=MATESE.T6.JCL.PS1,DISP=SHR                              
+ 000004 //SORTOUT  DD DSN=MATESE.T6.SORT,DISP=(NEW,CATLG,DELETE),               
+ 000005 //            SPACE=(TRK,(1,1),RLSE),                                   
+ 000006 //            DCB=(RECFM=FB,LRECL=80,BLKSIZE=800),UNIT=SYSDA            
+ 000007 //SYSIN   DD *                                                          
+ 000008   SORT FIELDS=(1,6,CH,A)                                                
+ 000009   INREC FIELDS=(1:1,6,8:32,1,10:42,2)                                   
+ 000010 /*                                                                      
+ 000011 //SYSOUT DD SYSOUT=*                                                    
+ 000012 //SYSPRINT DD SYSOUT=*                                                  
+ ****** **************************** Bottom of Data ****************************
+
+
+
+ -------------------------------------------------------------------------------
+ EDIT       MATESE.T6.SORT                                  Columns 00001 00072 
+ Command ===>                                                  Scroll ===> CSR  
+ ****** ***************************** Top of Data ******************************
+ 000001 EMP001 M KA                                                             
+ 000002 EMP001 M KA                                                             
+ 000003 EMP001 M KA                                                             
+ 000004 EMP002 M KA                                                             
+ 000005 EMP003 M TN                                                             
+ 000006 EMP004 M KA                                                             
+ 000007 EMP004 M KA                                                             
+ 000008 EMP005 F AP                                                             
+ 000009 EMP006 M AP                                                             
+ 000010 EMP007 F KA                                                             
+ 000011 EMP007 M TN                                                             
+ 000012 EMP009 M AP                                                             
+ 000013 EMP010 F TN                                                             
+ 000014 EMP011 M TN                                                             
+ ****** **************************** Bottom of Data ****************************
+
+8. Sort and Skip the records in the dataset:
+===================================================
+
+
+ EDIT       MATESE.T6.JCL.PDS(SORT) - 01.01                 Columns 00001 00072 
+ Command ===>                                                  Scroll ===> CSR  
+ ****** ***************************** Top of Data ******************************
+ 000001 //MATESE09 JOB NOTIFY=&SYSUID                                           
+ 000002 //STEP1 EXEC PGM=SORT                                                   
+ 000003 //SORTIN DD DSN=MATESE.T6.JCL.PS1,DISP=SHR                              
+ 000004 //SORTOUT  DD DSN=MATESE.T6.SORT,DISP=(NEW,CATLG,DELETE),               
+ 000005 //            SPACE=(TRK,(1,1),RLSE),                                   
+ 000006 //            DCB=(RECFM=FB,LRECL=80,BLKSIZE=800),UNIT=SYSDA            
+ 000007 //SYSIN   DD *                                                          
+ 000008   SORT FIELDS=COPY,SKIPREC=5,STOPAFT=3                                  
+ 000009 /*                                                                      
+ 000010 //SYSOUT DD SYSOUT=*                                                    
+ 000011 //SYSPRINT DD SYSOUT=*                                                  
+ ****** **************************** Bottom of Data ****************************
+
+ EDIT       MATESE.T6.SORT                                  Columns 00001 00072 
+ Command ===>                                                  Scroll ===> CSR  
+ ****** ***************************** Top of Data ******************************
+ 000001 EMP004 RAMESH         01011994 M COMMERC KA 123456789                   
+ 000002 EMP004 RAMESH         01011994 M COMMERC KA 123456789                   
+ 000003 EMP005 VINITHA        01011995 F SCIENCE AP 123456789                   
+ ****** **************************** Bottom of Data ****************************
