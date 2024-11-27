@@ -1,0 +1,246 @@
+
+SORTING:
+===========================
+
+1. TO COPY DATA WITHOUT SORTING USING SORT PROGRAM
+======================================================
+
+EDIT       MATESE.T6.JCL.PDS(SORT) - 01.00                 Columns 00001 00072 
+Command ===>                                                  Scroll ===> CSR  
+=COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
+****** ***************************** Top of Data ******************************
+000001 //MATESE09 JOB NOTIFY=&SYSUID                                           
+000002 //STEP1 EXEC PGM=SORT                                                   
+000003 //SORTIN DD DSN=MATESE.T6.JCL.PS1,DISP=SHR                              
+000004 //SORTOUT DD DSN=MATESE.T6.SORT,DISP=(NEW,CATLG,DELETE),                
+000005 //           SPACE=(TRK,(1,1),RLSE),                                    
+000006 //           DCB=(RECFM=FB,LRECL=80,BLKSIZE=800),UNIT=SYSDA             
+000007 //SYSIN   DD *                                                          
+000008   OPTION COPY                                                           
+000009 /*                                                                      
+000010 //SYSOUT DD SYSOUT=*                                                    
+000011 //SYSPRINT DD SYSOUT=*                                                  
+****** **************************** Bottom of Data ****************************
+
+Solution:
+ ----------------------------------------------------------------------------
+ EDIT       MATESE.T6.SORT                                  Columns 00001 000
+ Command ===>                                                  Scroll ===> CS
+ ****** ***************************** Top of Data ***************************
+ 000001 EMP001 RAMESH         01011991 M SCIENCE KA 123456789                
+ 000002 EMP009 HARI           01011992 M COMMERC AP 123456789                
+ 000003 EMP003 KRISHNA        01011993 M SCIENCE TN 123456789                
+ 000004 EMP004 RAMESH         01011994 M COMMERC KA 123456789                
+ 000005 EMP005 VINITHA        01011995 F SCIENCE AP 123456789                
+ 000006 EMP006 HITESH         01011996 M SCIENCE AP 123456789                
+ 000007 EMP007 CHINNU         01011997 F COMMERC KA 123456789                
+ 000008 EMP008 SATISH         01011998 M SCIENCE TN 123456789                
+ 000009 EMP002 KALEEL         01011999 M COMMERC KA 123456789                
+ 000010 EMP010 VINITHA        01012000 F COMMERC TN 123456789                
+ 000011 EMP011 CHETAN         01012001 M SCIENCE TN 123456789                
+ ****** **************************** Bottom of Data *************************
+
+
+2. TO SORT THE DATA USING SORT PROGRAM
+========================================================
+ EDIT       MATESE.T6.JCL.PDS(SORT) - 01.00                 Columns 00001 00072 
+ Command ===>                                                  Scroll ===> CSR  
+ =COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
+ ****** ***************************** Top of Data ******************************
+ 000001 //MATESE09 JOB NOTIFY=&SYSUID                                           
+ 000002 //STEP1 EXEC PGM=SORT                                                   
+ 000003 //SORTIN DD DSN=MATESE.T6.JCL.PS1,DISP=SHR                              
+ 000004 //SORTOUT DD DSN=MATESE.T6.SORT,DISP=(NEW,CATLG,DELETE),                
+ 000005 //           SPACE=(TRK,(1,1),RLSE),                                    
+ 000006 //           DCB=(RECFM=FB,LRECL=80,BLKSIZE=800),UNIT=SYSDA             
+ 000007 //SYSIN   DD *                                                          
+ 000008   SORT FIELDS=(1,6,CH,A)                                                
+ 000009 /*                                                                      
+ 000010 //SYSOUT DD SYSOUT=*                                                    
+ 000011 //SYSPRINT DD SYSOUT=*                                                  
+ ****** **************************** Bottom of Data ****************************
+
+Solution:
+EDIT       MATESE.T6.SORT                                  Columns 00001 000
+Command ===>                                                  Scroll ===> CS
+****** ***************************** Top of Data ***************************
+000001 EMP001 RAMESH         01011991 M SCIENCE KA 123456789                
+000002 EMP002 KALEEL         01011999 M COMMERC KA 123456789                
+000003 EMP003 KRISHNA        01011993 M SCIENCE TN 123456789                
+000004 EMP004 RAMESH         01011994 M COMMERC KA 123456789                
+000005 EMP005 VINITHA        01011995 F SCIENCE AP 123456789                
+000006 EMP006 HITESH         01011996 M SCIENCE AP 123456789                
+000007 EMP007 CHINNU         01011997 F COMMERC KA 123456789                
+000008 EMP008 SATISH         01011998 M SCIENCE TN 123456789                
+000009 EMP009 HARI           01011992 M COMMERC AP 123456789                
+000010 EMP010 VINITHA        01012000 F COMMERC TN 123456789                
+000011 EMP011 CHETAN         01012001 M SCIENCE TN 123456789                
+****** **************************** Bottom of Data *************************
+
+
+3. TO SORT THE DATA USING INCLUDE CONDION SORT PROGRAM
+=================================================================
+EDIT       MATESE.T6.JCL.PDS(SORT) - 01.00                 Columns 00001 000
+Command ===>                                                  Scroll ===> CS
+=COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----
+****** ***************************** Top of Data ***************************
+000001 //MATESE09 JOB NOTIFY=&SYSUID                                        
+000002 //STEP1 EXEC PGM=SORT                                                
+000003 //SORTIN DD DSN=MATESE.T6.JCL.PS1,DISP=SHR                           
+000004 //SORTOUT DD DSN=MATESE.T6.SORT,DISP=(NEW,CATLG,DELETE),             
+000005 //           SPACE=(TRK,(1,1),RLSE),                                 
+000006 //           DCB=(RECFM=FB,LRECL=80,BLKSIZE=800),UNIT=SYSDA          
+000007 //SYSIN   DD *                                                       
+000008   SORT FIELDS=(1,6,CH,A)                                             
+000009   INCLUDE COND=(32,1,CH,EQ,C'M')                                     
+000010 /*                                                                   
+000011 //SYSOUT DD SYSOUT=*                                                 
+000012 //SYSPRINT DD SYSOUT=*                                               
+****** **************************** Bottom of Data *************************
+
+Solution:
+
+ EDIT       MATESE.T6.SORT                                  Columns 00001 000
+ Command ===>                                                  Scroll ===> CS
+ ****** ***************************** Top of Data ***************************
+ 000001 EMP001 RAMESH         01011991 M SCIENCE KA 123456789                
+ 000002 EMP002 KALEEL         01011999 M COMMERC KA 123456789                
+ 000003 EMP003 KRISHNA        01011993 M SCIENCE TN 123456789                
+ 000004 EMP004 RAMESH         01011994 M COMMERC KA 123456789                
+ 000005 EMP006 HITESH         01011996 M SCIENCE AP 123456789                
+ 000006 EMP008 SATISH         01011998 M SCIENCE TN 123456789                
+ 000007 EMP009 HARI           01011992 M COMMERC AP 123456789                
+ 000008 EMP011 CHETAN         01012001 M SCIENCE TN 123456789                
+ ****** **************************** Bottom of Data *************************
+
+
+4. TO SORT THE DATA USING OMIT CONDION SORT PROGRAM
+=================================================================
+
+ EDIT       MATESE.T6.JCL.PDS(SORT) - 01.00                 Columns 00001 00072 
+ Command ===>                                                  Scroll ===> CSR  
+ =COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
+ ****** ***************************** Top of Data ******************************
+ 000001 //MATESE09 JOB NOTIFY=&SYSUID                                           
+ 000002 //STEP1 EXEC PGM=SORT                                                   
+ 000003 //SORTIN DD DSN=MATESE.T6.JCL.PS1,DISP=SHR                              
+ 000004 //SORTOUT DD DSN=MATESE.T6.SORT,DISP=(NEW,CATLG,DELETE),                
+ 000005 //           SPACE=(TRK,(1,1),RLSE),                                    
+ 000006 //           DCB=(RECFM=FB,LRECL=80,BLKSIZE=800),UNIT=SYSDA             
+ 000007 //SYSIN   DD *                                                          
+ 000008   SORT FIELDS=(1,6,CH,A)                                                
+ 000009   OMIT COND=(32,1,CH,EQ,C'M')                                           
+ 000010 /*                                                                      
+ 000011 //SYSOUT DD SYSOUT=*                                                    
+ 000012 //SYSPRINT DD SYSOUT=*                                                  
+ ****** **************************** Bottom of Data ****************************
+
+ EDIT       MATESE.T6.SORT                                  Columns 00001 00072 
+ Command ===>                                                  Scroll ===> CSR  
+ ****** ***************************** Top of Data ******************************
+ 000001 EMP005 VINITHA        01011995 F SCIENCE AP 123456789                   
+ 000002 EMP007 CHINNU         01011997 F COMMERC KA 123456789                   
+ 000003 EMP010 VINITHA        01012000 F COMMERC TN 123456789                   
+ ****** **************************** Bottom of Data ****************************
+
+5. TO SORT THE DATA AND REMOVE DUPLICATES USING SORT PROGRAM
+=================================================================
+
+ EDIT       MATESE.T6.JCL.PS1                                    Data set saved 
+ Command ===>                                                  Scroll ===> CSR  
+ ****** ***************************** Top of Data ******************************
+ 000001 EMP001 RAMESH         01011991 M SCIENCE KA 123456789                   
+ 000002 EMP001 RAMESH         01011991 M SCIENCE KA 123456789                   
+ 000003 EMP001 RAMESH         01011991 M SCIENCE KA 123456789                   
+ 000004 EMP009 HARI           01011992 M COMMERC AP 123456789                   
+ 000005 EMP003 KRISHNA        01011993 M SCIENCE TN 123456789                   
+ 000006 EMP004 RAMESH         01011994 M COMMERC KA 123456789                   
+ 000007 EMP004 RAMESH         01011994 M COMMERC KA 123456789                   
+ 000008 EMP005 VINITHA        01011995 F SCIENCE AP 123456789                   
+ 000009 EMP006 HITESH         01011996 M SCIENCE AP 123456789                   
+ 000010 EMP007 CHINNU         01011997 F COMMERC KA 123456789                   
+ 000011 EMP007 SATISH         01011998 M SCIENCE TN 123456789                   
+ 000012 EMP002 KALEEL         01011999 M COMMERC KA 123456789                   
+ 000013 EMP010 VINITHA        01012000 F COMMERC TN 123456789                   
+ 000014 EMP011 CHETAN         01012001 M SCIENCE TN 123456789                   
+ ****** **************************** Bottom of Data ****************************
+
+EDIT       MATESE.T6.JCL.PDS(SORT) - 01.00                 Columns 00001 00072 
+Command ===>                                                  Scroll ===> CSR  
+=COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
+****** ***************************** Top of Data ******************************
+000001 //MATESE09 JOB NOTIFY=&SYSUID                                           
+000002 //STEP1 EXEC PGM=SORT                                                   
+000003 //SORTIN DD DSN=MATESE.T6.JCL.PS1,DISP=SHR                              
+000004 //SORTOUT DD DSN=MATESE.T6.SORT,DISP=(NEW,CATLG,DELETE),                
+000005 //           SPACE=(TRK,(1,1),RLSE),                                    
+000006 //           DCB=(RECFM=FB,LRECL=80,BLKSIZE=800),UNIT=SYSDA             
+000007 //SYSIN   DD *                                                          
+000008   SORT FIELDS=(1,6,CH,A)                                                
+000009   SUM FIELDS=NONE                                                       
+000010 /*                                                                      
+000011 //SYSOUT DD SYSOUT=*                                                    
+000012 //SYSPRINT DD SYSOUT=*                                                  
+****** **************************** Bottom of Data ****************************
+
+
+Solution:
+
+ EDIT       MATESE.T6.SORT                                  Columns 00001 00072 
+ Command ===>                                                  Scroll ===> CSR  
+ ****** ***************************** Top of Data ******************************
+ 000001 EMP001 RAMESH         01011991 M SCIENCE KA 123456789                   
+ 000002 EMP002 KALEEL         01011999 M COMMERC KA 123456789                   
+ 000003 EMP003 KRISHNA        01011993 M SCIENCE TN 123456789                   
+ 000004 EMP004 RAMESH         01011994 M COMMERC KA 123456789                   
+ 000005 EMP005 VINITHA        01011995 F SCIENCE AP 123456789                   
+ 000006 EMP006 HITESH         01011996 M SCIENCE AP 123456789                   
+ 000007 EMP007 CHINNU         01011997 F COMMERC KA 123456789                   
+ 000008 EMP009 HARI           01011992 M COMMERC AP 123456789                   
+ 000009 EMP010 VINITHA        01012000 F COMMERC TN 123456789                   
+ 000010 EMP011 CHETAN         01012001 M SCIENCE TN 123456789                   
+ ****** **************************** Bottom of Data ****************************
+
+
+
+ EDIT       MATESE.T6.JCL.PDS(SORT) - 01.00                 Columns 00001 0007
+ Command ===>                                                  Scroll ===> CSR
+ =COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7
+ ****** ***************************** Top of Data ****************************
+ 000001 //MATESE09 JOB NOTIFY=&SYSUID                                         
+ 000002 //STEP1 EXEC PGM=SORT                                                 
+ 000003 //SORTIN DD DSN=MATESE.T6.JCL.PS1,DISP=SHR                            
+ 000004 //SORTOF01 DD DSN=MATESE.T6.SORT,DISP=(NEW,CATLG,DELETE),             
+ 000005 //            SPACE=(TRK,(1,1),RLSE),                                 
+ 000006 //            DCB=(RECFM=FB,LRECL=80,BLKSIZE=800),UNIT=SYSDA          
+ 000007 //SORTOF02 DD DSN=MATESE.T6.SOR,DISP=(NEW,CATLG,DELETE),              
+ 000008 //           SPACE=(TRK,(1,1),RLSE),                                  
+ 000009 //           DCB=(RECFM=FB,LRECL=80,BLKSIZE=800),UNIT=SYSDA           
+ 000010 //SYSIN   DD *                                                        
+ 000011   SORT FIELDS=(1,6,CH,A)                                              
+ 000012   OUTFIL FILES=01,INCLUDE=(42,2,CH,EQ,C'AP')                          
+ 000013   OUTFIL FILES=02,INCLUDE=(42,2,CH,EQ,C'TN')                          
+ 000014 /*                                                                    
+ 000015 //SYSOUT DD SYSOUT=*                                                  
+000016 //SYSPRINT DD SYSOUT=*                                                  
+****** **************************** Bottom of Data ****************************
+
+Solution:
+ -----------------------------------------------------------------------------
+ EDIT       MATESE.T6.SOR                                   Columns 00001 0007
+ Command ===>                                                  Scroll ===> CSR
+ ****** ***************************** Top of Data ****************************
+ 000001 EMP003 KRISHNA        01011993 M SCIENCE TN 123456789                 
+ 000002 EMP007 SATISH         01011998 M SCIENCE TN 123456789                 
+ 000003 EMP010 VINITHA        01012000 F COMMERC TN 123456789                 
+ 000004 EMP011 CHETAN         01012001 M SCIENCE TN 123456789                 
+ ****** **************************** Bottom of Data **************************
+
+  EDIT       MATESE.T6.SORT                                  Columns 00001 0007
+  Command ===>                                                  Scroll ===> CSR
+  ****** ***************************** Top of Data ****************************
+  000001 EMP005 VINITHA        01011995 F SCIENCE AP 123456789                 
+  000002 EMP006 HITESH         01011996 M SCIENCE AP 123456789                 
+  000003 EMP009 HARI           01011992 M COMMERC AP 123456789                 
+  ****** **************************** Bottom of Data **************************
+  
