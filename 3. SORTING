@@ -317,3 +317,500 @@ Solution:
  000002 EMP004 RAMESH         01011994 M COMMERC KA 123456789                   
  000003 EMP005 VINITHA        01011995 F SCIENCE AP 123456789                   
  ****** **************************** Bottom of Data ****************************
+
+
+9. Sorting and adding sequence no:
+=============================================
+ EDIT       MATESE.T6.JCL.PS2                               Columns 00001 00072 
+ Command ===>                                                  Scroll ===> CSR  
+ ****** ***************************** Top of Data ******************************
+ 000001 001 STUDENTNAME1     CLASS1                                             
+ 000002 003 STUDENTNAME3     CLASS2                                             
+ 000003 004 STUDENTNAME4     CLASS1                                             
+ 000004 005 STUDENTNAME5     CLASS2                                             
+ 000005 002 STUDENTNAME2     CLASS3                                             
+ ****** **************************** Bottom of Data ****************************
+
+
+ EDIT       MATESE.T6.JCL.PDS(INREC) - 01.00                Columns 00001 00072 
+ Command ===>                                                  Scroll ===> CSR  
+ =COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
+ ****** ***************************** Top of Data ******************************
+ 000001 //MATESE09 JOB NOTIFY=&SYSUID                                           
+ 000002 //STEP1 EXEC PGM=SORT                                                   
+ 000003 //SORTIN DD DSN=MATESE.T6.JCL.PS2,DISP=SHR                              
+ 000004 //SORTOUT DD DSN=MATESE.T6.SORT,DISP=(NEW,CATLG,DELETE),                
+ 000005 //           SPACE=(TRK,(1,1),RLSE),                                    
+ 000006 //           DCB=(RECFM=FB,LRECL=80,BLKSIZE=800),UNIT=SYSDA             
+ 000007 //SYSIN   DD *                                                          
+ 000008   SORT FIELDS=(1,3,ZD,A)                                                
+ 000009   OUTREC  FIELDS=(1:SEQNUM,4,ZD,6:22,6,15:1,3,25:5,12)                  
+ 000010 //SYSOUT DD SYSOUT=*                                                    
+ 000011 //SYSPRINT DD SYSOUT=*                                                  
+ ****** **************************** Bottom of Data ****************************
+                                                                                
+
+Solution:
+ EDIT       MATESE.T6.SORT                                  Columns 00001 00072 
+ Command ===>                                                  Scroll ===> CSR  
+ ****** ***************************** Top of Data ******************************
+ 000001 0001 CLASS1   001       STUDENTNAME1                                    
+ 000002 0002 CLASS3   002       STUDENTNAME2                                    
+ 000003 0003 CLASS2   003       STUDENTNAME3                                    
+ 000004 0004 CLASS1   004       STUDENTNAME4                                    
+ 000005 0005 CLASS2   005       STUDENTNAME5                                    
+ ****** **************************** Bottom of Data ****************************
+
+
+
+10. Giving space
+=======================================
+ EDIT       MATESE.T6.JCL.PDS(SORT) - 01.02                 Columns 00001 00
+ Command ===>                                                  Scroll ===> C
+ ****** ***************************** Top of Data **************************
+ 000001 //MATESE09 JOB NOTIFY=&SYSUID                                       
+ 000002 //STEP1 EXEC PGM=SORT                                               
+ 000003 //SORTIN DD DSN=MATESE.T6.JCL.PS1,DISP=SHR                          
+ 000004 //SORTOUT  DD DSN=MATESE.T6.SORT,DISP=(NEW,CATLG,DELETE),           
+ 000005 //            SPACE=(TRK,(1,1),RLSE),                               
+ 000006 //            DCB=(RECFM=FB,LRECL=80,BLKSIZE=800),UNIT=SYSDA        
+ 000007 //SYSIN   DD *                                                      
+ 000008   SORT FIELDS=COPY                                                  
+ 000009   OUTREC FIELDS=(1,6,6X,8,10,23,30)                                 
+ 000010 /*                                                                  
+ 000011 //SYSOUT DD SYSOUT=*                                                
+ 000012 //SYSPRINT DD SYSOUT=*                                              
+ ****** **************************** Bottom of Data ************************
+Input:
+---------------------------------------------------------------------------
+EDIT       MATESE.T6.JCL.PS1                               Columns 00001 00
+Command ===>                                                  Scroll ===> C
+****** ***************************** Top of Data **************************
+000001 EMP001 RAMESH         01011991 M SCIENCE KA 123456789               
+000002 EMP001 RAMESH         01011991 M SCIENCE KA 123456789               
+000003 EMP001 RAMESH         01011991 M SCIENCE KA 123456789               
+000004 EMP009 HARI           01011992 M COMMERC AP 123456789               
+000005 EMP003 KRISHNA        01011993 M SCIENCE TN 123456789               
+000006 EMP004 RAMESH         01011994 M COMMERC KA 123456789               
+000007 EMP004 RAMESH         01011994 M COMMERC KA 123456789               
+000008 EMP005 VINITHA        01011995 F SCIENCE AP 123456789               
+000009 EMP006 HITESH         01011996 M SCIENCE AP 123456789               
+000010 EMP007 CHINNU         01011997 F COMMERC KA 123456789               
+000011 EMP007 SATISH         01011998 M SCIENCE TN 123456789               
+000012 EMP002 KALEEL         01011999 M COMMERC KA 123456789               
+000013 EMP010 VINITHA        01012000 F COMMERC TN 123456789               
+000014 EMP011 CHETAN         01012001 M SCIENCE TN 123456789               
+****** **************************** Bottom of Data ************************
+                                                                           
+
+Solution:
+
+EDIT       MATESE.T6.SORT                                  Columns 00001 00
+Command ===>                                                  Scroll ===> C
+****** ***************************** Top of Data **************************
+000001 EMP001      RAMESH    01011991 M SCIENCE KA 12345678                
+000002 EMP001      RAMESH    01011991 M SCIENCE KA 12345678                
+000003 EMP001      RAMESH    01011991 M SCIENCE KA 12345678                
+000004 EMP009      HARI      01011992 M COMMERC AP 12345678                
+000005 EMP003      KRISHNA   01011993 M SCIENCE TN 12345678                
+000006 EMP004      RAMESH    01011994 M COMMERC KA 12345678                
+000007 EMP004      RAMESH    01011994 M COMMERC KA 12345678                
+000008 EMP005      VINITHA   01011995 F SCIENCE AP 12345678                
+000009 EMP006      HITESH    01011996 M SCIENCE AP 12345678                
+000010 EMP007      CHINNU    01011997 F COMMERC KA 12345678                
+000011 EMP007      SATISH    01011998 M SCIENCE TN 12345678                
+000012 EMP002      KALEEL    01011999 M COMMERC KA 12345678                
+000013 EMP010      VINITHA   01012000 F COMMERC TN 12345678                
+000014 EMP011      CHETAN    01012001 M SCIENCE TN 12345678                
+****** **************************** Bottom of Data ************************
+
+11.OUTREC FIELDS OR OUTREC BUILD:
+======================================
+
+To covert the input data from lower case to upper case.
+
+TRAN=LTOU, can be used to convert data from lower case to upper case
+TRAN=UTOL, can be used to convert data from upper case to lower case
+
+EDIT       MATESE.T6.JCL.PDS(OUTREC) - 01.00               Columns 00001 00072 
+Command ===>                                                  Scroll ===> CSR  
+=COLS> ----+----1----+----2----+----3----+----4----+----5----+----6----+----7--
+****** ***************************** Top of Data ******************************
+000001 //MATESE09 JOB NOTIFY=&SYSUID                                           
+000002 //SORTSTEP EXEC PGM=SORT                                                
+000003 //SORTIN   DD DSN=MATESE.T6.JCL.PS3,DISP=SHR                            
+000004 //SORTOUT  DD DSN=MATESE.T6.SORT,DISP=OLD                               
+000005 //SYSOUT   DD SYSOUT=*                                                  
+000006 //SYSPRINT DD SYSOUT=*                                                  
+000007 //SYSIN    DD *                                                         
+000008   SORT FIELDS=COPY                                                      
+000009   OUTREC BUILD=(1,10,TRAN=UTOL,11,3,      -                             
+000010                      CHANGE=(10,          -                             
+000011                      C'SUN',C'SUNDAY',    -                             
+000012                      C'MON',C'MONDAY',    -                             
+000013                      C'TUE',C'TUESDAY',   -                             
+000014                      C'WED',C'WEDNESDAY', -                             
+000015                      C'THU',C'THURSDAY',  -                             
+000016                      C'FRI',C'FRIDAY',    -                             
+000017                      C'SAT',C'SATURDAY'), -                             
+000018                      NOMATCH=(11,3),                                    
+000019                      21,10)                                             
+000020 /*                                                                      
+
+Input:
+-----
+EDIT       MATESE.T6.JCL.PS3                               Columns 00001 00072 
+Command ===>                                                  Scroll ===> CSR  
+****** ***************************** Top of Data ******************************
+000001 JOHN      MON            08000                                          
+000002 AKSHAY    TUE            10000                                          
+000003 SMITH     WED            25000                                          
+000004 JOHN      THU            28000                                          
+000005 STEVE     MON            20000                                          
+000006 VIJAY     XXX            24000                                          
+000007 VIJAY     SUN            30000                                          
+****** **************************** Bottom of Data ****************************
+
+
+Solution:
+
+ -------------------------------------------------------------------------------
+ EDIT       MATESE.T6.SORT                                  Columns 00001 00072 
+ Command ===>                                                  Scroll ===> CSR  
+ ****** ***************************** Top of Data ******************************
+ 000001 john      MONDAY         08000                                          
+ 000002 akshay    TUESDAY        10000                                          
+ 000003 smith     WEDNESDAY      25000                                          
+ 000004 john      THURSDAY       28000                                          
+ 000005 steve     MONDAY         20000                                          
+ 000006 vijay     XXX            24000                                          
+ 000007 vijay     SUNDAY         30000                                          
+ ****** **************************** Bottom of Data ****************************
+
+
+
+==================================================
+12.
+SORT FIELDS=COPY
+OUTREC FIELDS= (1:1,20,C’TOTAL’,26:5Z,31:21,10)
+
+
+Let’s assume the input record is as follows (80-character record length):
+
+Copy code
+123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+How this would be processed:
+1:1,20: Copy positions 1 to 20 from the input record:
+
+From the input: 12345678901234567890
+C'TOTAL': Insert the string TOTAL after the first 20 characters:
+
+Output: TOTAL will be inserted, and any remaining space will be filled with blanks.
+So, starting from position 21 to 25, the output becomes: TOTAL (padded to 10 characters total).
+26:5Z: Copy positions 5 to 9 from the input and suppress any leading zeros.
+
+From the input (assuming the input has leading zeros): 00005
+Output: 5 (leading zeros are suppressed).
+31:21: Copy positions 31 to 51 from the input.
+
+From the input: 345678901234567890123
+Output: This portion of the input will be included as-is.
+10: Pad the output with 10 spaces at the end.
+
+Final Output:
+If the input record looks like:
+
+Copy code
+123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+Then the processed output (assuming the input has the correct fields in the specified positions) would look like this:
+
+Copy code
+12345678901234567890TOTAL          534567890123456789012310        
+===================================================================
+
+
+13. OUTRECE Hexadicmal
+=========================
+OUTREC BUILD=(1,10,HEX)
+
+Example
+Let’s walk through an example. Suppose the input record looks like this (with an 80-byte record length):
+
+Copy code
+1234567890ABCDE1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ
+Step-by-step explanation:
+1,10: This specifies that we are interested in the first 10 characters of the input record, which are:
+
+Copy code
+1234567890
+HEX: Convert the selected 10 characters into their hexadecimal representation.
+
+The hexadecimal representation of each character is as follows:
+
+1 → 31
+2 → 32
+3 → 33
+4 → 34
+5 → 35
+6 → 36
+7 → 37
+8 → 38
+9 → 39
+0 → 30
+So, the first 10 characters 1234567890 are converted into the following hexadecimal representation:
+
+Copy code
+31323334353637383930
+Output Record:
+The resulting output record (after applying the OUTREC BUILD=(1,10,HEX) statement) will look like this:
+
+Copy code
+31323334353637383930
+
+
+
+14.OUTREC OVERLAY
+=======================
+Example 1:-
+
+Input file:-
+
+----+----1----+----2----+----3
+JOHN      MON            08000
+AKSHAY    TUE            10000
+SMITH     WED            25000
+JOHN      THU            28000
+STEVE     MON            20000
+VIJAY     XXX            24000
+VIJAY     SUN            30000
+Requirement: Need to copy all records from input file to output file, however while writing output records, field at position 11 to 20 needs to be converted to lower case letters
+
+JCL Code - Solution:-
+
+//SORTSTEP EXEC PGM=SORT                            
+//SORTIN   DD DSN=DEPT.EMPL.DATA.OUTPUT1,DISP=SHR
+//SORTOUT  DD DSN=DEPT.EMPL.DATA.OUTPUT2,        
+//            DISP=(,CATLG,DELETE),                 
+//            DCB=(RECFM=FB,LRECL=30,BLKSIZE=0),    
+//            UNIT=TEST,SPACE=(CYL,(50,10),RLSE)    
+//SYSOUT   DD SYSOUT=*                              
+//SYSPRINT DD SYSOUT=*                              
+//SYSIN    DD *                                     
+ SORT FIELDS=COPY                                   
+ OUTREC OVERLAY=(11:11,10,TRAN=UTOL)                
+/*                                                 
+Output file:
+
+----+----1----+----2----+----3
+JOHN      mon            08000
+AKSHAY    tue            10000
+SMITH     wed            25000
+JOHN      thu            28000
+STEVE     mon            20000
+VIJAY     xxx            24000
+VIJAY     sun            30000
+
+Example 2:-
+
+Input file:-
+
+----+----1----+----2----+----3
+JOHN      MON            08000
+AKSHAY    TUE            10000
+SMITH     WED            25000
+JOHN      THU            28000
+STEVE     MON            20000
+VIJAY     XXX            24000
+VIJAY     SUN            30000
+Requirement: Need to calculate yearly salary from field at position (26-30 i.e. length=5) of input file and should be written at 41th position of output file
+
+JCL Code Soution:
+
+//SORTSTEP EXEC PGM=SORT                                
+//SORTIN   DD DSN=DEPT.EMPL.DATA.OUTPUT1,DISP=SHR    
+//SORTOUT  DD DSN=DEPT.EMPL.DATA.OUTPUT2,            
+//            DISP=(,CATLG,DELETE),                     
+//            DCB=(RECFM=FB,LRECL=50,BLKSIZE=0),        
+//            UNIT=TEST,SPACE=(CYL,(50,10),RLSE)        
+//SYSOUT   DD SYSOUT=*                                  
+//SYSPRINT DD SYSOUT=*                                  
+//SYSIN    DD *                                         
+ SORT FIELDS=COPY                                       
+ OUTREC FIELDS=(1,30,41:26,5,ZD,MUL,+12,TO=FS,LENGTH=10)
+/*     
+Output file:
+
+----+----1----+----2----+----3----+----4----+----5
+JOHN      MON            08000              +96000
+AKSHAY    TUE            10000             +120000
+SMITH     WED            25000             +300000
+JOHN      THU            28000             +336000
+STEVE     MON            20000             +240000
+VIJAY     XXX            24000             +288000
+VIJAY     SUN            30000             +360000
+
+
+15 OUTREC FINDREP
+=========================================
+Reformat each record by doing various types of find and replace operations.
+
+Example :-
+
+Input file:-
+
+----+----1----+----2----+----3
+JOHN      MON            08000
+AKSHAY    TUE            10000
+SMITH     WED            25000
+JOHN      THU            28000
+STEVE     MON            20000
+VIJAY     XXX            24000
+VIJAY     SUN            30000
+Requirement: Find if day-of-week is SUN, then replace it with ‘XXX’ and write it to output file
+
+JCL Code Solution:-
+
+//SORTSTEP EXEC PGM=SORT                            
+//SORTIN   DD DSN=DEPT.EMPL.DATA.OUTPUT1,DISP=SHR
+//SORTOUT  DD DSN=DEPT.EMPL.DATA.OUTPUT2,        
+//            DISP=(,CATLG,DELETE),                 
+//            DCB=(RECFM=FB,LRECL=30,BLKSIZE=0),    
+//            UNIT=TEST,SPACE=(CYL,(50,10),RLSE)    
+//SYSOUT   DD SYSOUT=*                              
+//SYSPRINT DD SYSOUT=*                              
+//SYSIN    DD *                                     
+ SORT FIELDS=COPY                                   
+ OUTREC FINDREP=(IN=C'SUN',OUT=C'XXX')              
+/*                                                  
+Output file:
+
+----+----1----+----2----+----3
+******************************
+JOHN      MON            08000
+AKSHAY    TUE            10000
+SMITH     WED            25000
+JOHN      THU            28000
+STEVE     MON            20000
+VIJAY     XXX            24000
+VIJAY     XXX            30000
+
+
+16.SUM FIELDS
+===================================
+It is used to sum up numeric data in the records that have the same control field values, after sorting.
+
+Syntax:-
+
+
+
+Let’s have look at examples to understand
+
+Example 1:-
+
+Input file:-
+
+----+----1----+----2----+----3----+----4----+----5
+88888JOHN                     PURCHASING     08000
+11111AKSHAY                   HR             10000
+77777VIJAY                    FINANCE DEPT   24000
+55555SMITH                    R&D            25000
+88888JOHN                     PURCHASING     08000
+44444STEVE                    HR             20000
+77777VIJAY                    FINANCE DEPT   30000
+44444STEVE                    HR             20000
+Requirement: Sum up the expenses (field at position 46-50) if records are same
+
+SYSIN Control card:
+
+//SYSIN    DD *          
+ SORT FIELDS=(1,45,CH,A) 
+ SUM FIELDS=(46,5,ZD)    
+/*                       
+Output file:
+
+----+----1----+----2----+----3----+----4----+----5
+11111AKSHAY                   HR             10000
+44444STEVE                    HR             40000
+55555SMITH                    R&D            25000
+77777VIJAY                    FINANCE DEPT   54000
+88888JOHN                     PURCHASING     16000
+Explanation: In above case role of statement ‘SORT FIELDS=(1,45,CH,A) ’ is to sort the records in ascending order based on data at position 1-45. Next statement i.e. ‘SUM FIELDS=(46,5,ZD)‘ is used to indicate that data at position 45-50 is in zoned decimal format and should be added up if data at position 1-45 matches up
+
+Example 2:-
+
+Input file:-
+
+----+----1----+----2----+----3----+----4----+----5
+88888JOHN                     PURCHASING     08000
+11111AKSHAY                   HR             10000
+77777VIJAY                    FINANCE DEPT   24000
+55555SMITH                    R&D            25000
+88888JOHN                     PURCHASING     08000
+44444STEVE                    HR             20000
+77777VIJAY                    FINANCE DEPT   30000
+44444STEVE                    HR             20000
+Requirement: Remove duplicate records from input file
+
+SYSIN Control card:
+
+//SYSIN    DD *          
+ SORT FIELDS=(1,50,CH,A) 
+ SUM FIELDS=NONE         
+/*  
+Output file:
+
+----+----1----+----2----+----3----+----4----+----5
+11111AKSHAY                   HR             10000
+44444STEVE                    HR             20000
+55555SMITH                    R&D            25000
+77777VIJAY                    FINANCE DEPT   24000
+77777VIJAY                    FINANCE DEPT   30000
+88888JOHN                     PURCHASING     08000
+Example 3:-
+
+Input file:-
+
+----+----1----+----2----+----3----+----4----+----5
+88888JOHN                     PURCHASING     08000
+11111AKSHAY                   HR             10000
+77777VIJAY                    FINANCE DEPT   24000
+55555SMITH                    R&D            25000
+88888JOHN                     PURCHASING     08000
+44444STEVE                    HR             20000
+77777VIJAY                    FINANCE DEPT   30000
+44444STEVE                    HR             20000
+Requirement: Identify records which has duplicate names at position (6-30) and the eliminated duplicate records should be moved to some other file
+
+JCL code:
+
+//SORTSTEP EXEC PGM=SORT                            
+//SORTIN   DD DSN=DEPT.EMPL.DATA.INPUT20,DISP=SHR
+//SORTOUT  DD DSN=DEPT.EMPL.DATA.OUTPUT1,        
+//            DISP=(,CATLG,DELETE),                 
+//            DCB=(RECFM=FB,LRECL=50,BLKSIZE=0),    
+//            UNIT=TEST,SPACE=(CYL,(50,10),RLSE)    
+//SORTXSUM DD DSN=DEPT.EMPL.DATA.DUPLCAT,        
+//            DISP=(,CATLG,DELETE),                 
+//            DCB=(RECFM=FB,LRECL=50,BLKSIZE=0),    
+//            UNIT=TEST,SPACE=(CYL,(50,10),RLSE)    
+//SYSOUT   DD SYSOUT=*                              
+//SYSPRINT DD SYSOUT=*                              
+//SYSIN    DD *                                     
+ SORT FIELDS=(6,25,CH,A)                            
+ SUM FIELDS=NONE,XSUM                               
+/*                
+OUTPUT File SORTOUT:-
+
+----+----1----+----2----+----3----+----4----+----5
+11111AKSHAY                   HR             10000
+88888JOHN                     PURCHASING     08000
+55555SMITH                    R&D            25000
+44444STEVE                    HR             20000
+77777VIJAY                    FINANCE DEPT   30000
+OUTPUT File SORTXSUM (this is where eliminated records are saved):-
+
+----+----1----+----2----+----3----+----4----+----5
+88888JOHN                     PURCHASING     08000
+44444STEVE                    HR             20000
+77777VIJAY                    FINANCE DEPT   24000
+
