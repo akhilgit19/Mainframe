@@ -1,1 +1,93 @@
 
+Introduction To Mainframe:
+================================
+Mainframe:
+------------
+- Handling large amount of transfers
+- processing
+- bank transfers
+- large amount of data
+- security of realtime
+
+Store of data
+-------------
+1.File system - QSAM, VSAM
+2.Database system - IMS, DB2, IDMS, OTHERS
+
+Processing of data
+-------------------
+1.Batch processing
+2.Online processing
+
+Batch:
+------
+1.huge of amount
+2.scheduled
+3.without user interaction
+4.thr jcl
+Ex:
+----
+1.Billing system,credit card,telecompost and bank statements
+- I have a credit card- Billing date- 10th of each month
+@ System -create a monthly bill -- all cust whose bill data is on 10th - dec 10th next month bill --> jan10th
+
+Online system:
+----------------
+1.Short information of data
+2.unscheduled
+3. with user interaction
+4. thr CICS/IMS
+Ex: ATM/SWIPE CARD POS---> Next transactions are unscheduled 
+                      ----> User needed --> yes
+
+Batch Application:
+------------------
+->cobol --PGM lang--coding--condition business -calucaltion
+
+1.Policy --->Dec10 2021 ----> Dec 092022 ==1 year---1,00,000
+@ On case claim
+           CASE1: On jan 10 2022- 2,00,000--- partial approved
+           CASE2: 50,000 on dc 10 2022 approved-->Rejected
+2.JCL--> Execution
+3.File-> DB2- to store the data
+
+Online Application:
+----------------------
+1.Cobol
+2.CICS-->Execution
+3.File-->DB2--> to store of the data
+
+Batch--> Cobol,JCL,DB2
+Online--> Cobol,CICS,DB2
+
+COBOL:
+--------
+4 Divisions--section--paragraphs--statements(Instructions given to the system telling what to do)
+
+Division:
+-----------
+4 dvisions
+ 1.Identification division
+ 2.Environment fivision
+ 3.Data division
+ 4.Procedure division
+
+Identification Division:
+---------------------------
+ ID DIVISION.
+ PROGRAM-ID. NAME OF THE PGM.
+ AUTHOR. URNAME.
+ DATA-WRITTEN. TODAY DATE
+ DATE-COMPLETED. SAMES TODAY'S DATE.
+ INSTALLATION. TEAM/APPLICATION NAME.
+ SECURITY. WARNING MESSAGE IF ANY.
+- Used to provide in PGM documentation details
+- 6 para in this division
+-
+
+
+
+
+
+
+
