@@ -31,6 +31,17 @@ Step3: Operation Field
  
 3.TIME(1,0)Min,seconds IF it is execeeds abend s322
 
+Column Range	Purpose	Example
+1–2	//	//
+3–10	Statement name (optional)	STEP01 (padded with spaces)
+11–15	Operation field	EXEC
+16+	Parameters	PGM=IEFBR14
+
+Col:  1         10        20        30        40        50        60        70
+      |.........|.........|.........|.........|.........|.........|.........|
+
+000100 //IBMUSER JOB (1234),'AKHIL',NOTIFY=IBMUSER,TIME=(1,0)
+000200 //STEP01   EXEC PGM=IEFBR14
 
  -------------------------------------------------------------------------------
  EDIT       ZA0917.AKHIL.JCL.SRCLIB(SAMPJCL) - 01.03        Columns 00001 00072 
@@ -57,7 +68,8 @@ ABNORMAL:CATLG,DELETE,UNCATLG,KEEP
 //DD1 DD DSN=ZA0917.Y.Z,DISP=(NEW,CATLG,DELETE)
 
 
-Note:*****error-The 806 or S806 error is the operating system reporting that it can not find the program. The program that is being executed should reside in the linklib the application is pointing to. 
+Note:*****error-The 806 or S806 error is the operating system reporting that it can not find the program. The program that is being executed should reside in the linklib the application is pointing to. .,
+
 
 
  EDIT       ZA0917.AKHIL.JCL.SRCLIB(CPSPDS) - 01.03         Columns 00001 00072 
@@ -317,8 +329,6 @@ Length of the file    CNO        CNAME      CADD       CBAL
 
 
 
-
-
  -------------------------------------------------------------------------------
  EDIT       ZA0917.AKHIL.JCL.SRCLIB(SORT) - 01.04           Columns 00001 00072 
  ****** ***************************** Top of Data ******************************
@@ -541,83 +551,78 @@ COND=(RC,RO,PREVIOUSSTEP)
 RC=0-4093
 R0= EQ, NE, GT,GE,LT,LE
 
-  ---------------------------------------------------
-  EDIT       VENKATB.B13.JCLS.SRCLIB2(COND) - 01.00  
-  Command ===>                                       
-  ****** ***************************** Top of Data **
-  000001 //VENKATB JOB NOTIFY=&SYSUID,RESTART=STEP3  
-  000002 //STEP1 EXEC PGM=IEFBR14                    
-  000003 //STEP2 EXEC PGM=IEFBR14                    
-  000004 //STEP3 EXEC PGM=IEFBR14                    
-  000005 //STEP4 EXEC PGM=IEFBR14                    
-  000006 //STEP5 EXEC PGM=IEFBR14                    
-  ****** **************************** Bottom of Data                                                                    
+EDIT       VENKATB.B13.JCLS.SRCLIB2(COND) - 01.00
+Command ===>                                                  Scroll ===> CSR
+****** ***************************** Top of Data ******************************
+000001 //VENKATB JOB NOTIFY=&SYSUID,RESTART=STEP3
+000002 //STEP1 EXEC PGM=IEFBR14                     <-- RETURNS RC=00
+000003 //STEP2 EXEC PGM=IEFBR14                     <-- EXECUTES (RC=00)
+000004 //STEP3 EXEC PGM=IEFBR14                     <-- EXECUTES (RC=00)
+000005 //STEP4 EXEC PGM=IEFBR14                     <-- EXECUTES (RC=00)
+000006 //STEP5 EXEC PGM=IEFBR14                     <-- EXECUTES (RC=00)
+****** **************************** Bottom of Data ****************************                                                             Max cc=000
 
 
- EDIT       VENKATB.B13.JCLS.SRCLIB2(COND) - 01.02          Columns 00001 00072 
- Command ===>                                                  Scroll ===> CSR  
- ****** ***************************** Top of Data ******************************
- ==MSG> -Warning- The UNDO command is not available until you change            
- ==MSG>           your edit profile using the command RECOVERY ON.              
- 000001 //VENKATB JOB NOTIFY=&SYSUID                                            
- 000002 //STEP1 EXEC PGM=IEBGENER   //*WILL EXECUTE WITH 12                                          
- 000003 //STEP2 EXEC PGM=IEFBR14,COND=(0,LE,STEP1) //* WILL NOT EXECUTE         
- 000004 //STEP3 EXEC PGM=IEFBR14,COND=(12,NE,STEP1) //* WILL EXECUTE            
- 000005 //STEP4 EXEC PGM=IEFBR14                                                
- 000006 //STEP5 EXEC PGM=IEFBR14                                                
- ****** **************************** Bottom of Data ****************************
+EDIT       VENKATB.B13.JCLS.SRCLIB2(COND) - 01.02
+Command ===>                                                  Scroll ===> CSR
+****** ***************************** Top of Data ******************************
+000001 //VENKATB JOB NOTIFY=&SYSUID
+000002 //STEP1 EXEC PGM=IEBGENER                     <-- RETURNS RC=12
+000003 //STEP2 EXEC PGM=IEFBR14,COND=(0,LE,STEP1)    <-- EXECUTES (RC=12 ≠ 0) → CONDITION FALSE
+000004 //STEP3 EXEC PGM=IEFBR14,COND=(12,NE,STEP1)   <-- SKIPPED (RC=12 → COND TRUE)
+000005 //STEP4 EXEC PGM=IEFBR14                      <-- EXECUTES (No COND)
+000006 //STEP5 EXEC PGM=IEFBR14                      <-- EXECUTES (No COND)
+****** **************************** Bottom of Data ****************************
+Max=cc==0012
 
 
+EDIT       VENKATB.B13.JCLS.SRCLIB2(COND2) - 01.01
+Command ===>                                                  Scroll ===> CSR
+****** ***************************** Top of Data ******************************
+000001 //VENKATB JOB NOTIFY=&SYSUID
+000002 //STEP1 EXEC PGM=IEBGENER                     <-- RETURNS RC=12
+000003 //STEP2 EXEC PGM=IEFBR14,COND=(0,GE,STEP1)    <-- EXECUTES (RC=12 > 0 → COND FALSE)
+000004 //STEP3 EXEC PGM=IEFBR14,COND=(12,EQ,STEP1)   <-- SKIPPED (RC=12 → COND TRUE)
+000005 //STEP4 EXEC PGM=IEFBR14,COND=(0,GE,STEP1)    <-- EXECUTES (COND FALSE)
+000006 //STEP5 EXEC PGM=IEFBR14,COND=(0,GE,STEP1)    <-- EXECUTES (COND FALSE)
+000007 //STEP6 EXEC PGM=IEFBR14,COND=(12,NE,STEP1)   <-- SKIPPED (RC=12 → COND FALSE)
+****** **************************** Bottom of Data ****************************
+max cc=0012
 
- EDIT       VENKATB.B13.JCLS.SRCLIB2(COND2) - 01.01         Columns 00001 0007
- Command ===>                                                  Scroll ===> CSR
- ****** ***************************** Top of Data ****************************
- 000001 //VENKATB JOB NOTIFY=&SYSUID                                          
- 000002 //STEP1 EXEC PGM=IEBGENER //*WILL EXECUTE WITH 12                     
- 000003 //STEP2 EXEC PGM=IEFBR14,COND=(0,GE,STEP1) //*WILL EXECUTE            
- 000004 //STEP3 EXEC PGM=IEFBR14,COND=(12,EQ,STEP1) //*WILL NOT EXE           
- 000005 //STEP4 EXEC PGM=IEFBR14,COND=(0,GE,STEP1) //*WILL EXECUTE            
- 000006 //STEP5 EXEC PGM=IEFBR14,COND=(0,GE,STEP1) //*WILL EXECUTE            
- 000007 //STEP6 EXEC PGM=IEFBR14,COND=(12,NE,STEP1) //*WILL EXECUTE           
- ****** **************************** Bottom of Data **************************
-
-
-  EDIT       VENKATB.B13.JCLS.SRCLIB3(COND3) - 01.00         Columns 00001 00072 
-  Command ===>                                                  Scroll ===> CSR  
-  ****** ***************************** Top of Data ******************************
-  000100 //VENKATB JOB NOTIFY=&SYSUID,COND=(0,EQ)                                
-  000200 //STEP1 EXEC PGM=IEBGENER  //*WILL      EXECUTE 12                      
-  000300 //STEP2 EXEC PGM=IEFBR14,COND=(12,EQ,STEP1) //*WILL  NOTEXECUTE         
-  000400 //STEP3 EXEC PGM=IEFBR14,COND=(12,NE,STEP1)  //*WILL  NOT EXECUTE =0        
-  000500 //STEP4 EXEC PGM=IEFBR14  //*WILL NOT EXECUTE                       
-  000600 //STEP5 EXEC PGM=IEFBR14  //*WILL NOT EXECUTE                           
-  ****** **************************** Bottom of Data ****************************
+EDIT       VENKATB.B13.JCLS.SRCLIB3(COND3) - 01.00
+Command ===>                                                  Scroll ===> CSR
+****** ***************************** Top of Data ******************************
+000100 //VENKATB JOB NOTIFY=&SYSUID,COND=(0,EQ)         <-- Job-level: If any step returns RC=0, skip remaining
+000200 //STEP1 EXEC PGM=IEBGENER                        <-- RETURNS RC=12
+000300 //STEP2 EXEC PGM=IEFBR14,COND=(12,EQ,STEP1)      <-- SKIPPED (RC=12 → COND TRUE)
+000400 //STEP3 EXEC PGM=IEFBR14,COND=(12,NE,STEP1)      <-- EXECUTES (RC=12 → COND FALSE)
+000500 //STEP4 EXEC PGM=IEFBR14                         <-- EXECUTES (No COND)
+000600 //STEP5 EXEC PGM=IEFBR14                         <-- EXECUTES (No COND)
+****** **************************** Bottom of Data ****************************
 
 
 
 EDIT       VENKATB.B13.JCLS.SRCLIB3(CON4) - 01.00            Member CON4 saved
 Command ===>                                                  Scroll ===> CSR 
 ****** ***************************** Top of Data *****************************
-000100 //VENKATB JOB NOTIFY=&SYSUID,COND=(0,EQ)                               
-000200 //STEP1 EXEC PGM=IEBGENER  //*WILL      EXECUTE 12                     
-000300 //STEP2 EXEC PGM=IEFBR14,COND=(12,EQ,STEP1) //*WILL NOT EXECUTE        
-000400 //STEP3 EXEC PGM=IEBGENER,COND=(12,EQ,STEP1)  //*WILL NOT  EXECUTE =12     
-000500 //STEP4 EXEC PGM=IEFBR14  //*WILL  EXECUTE    =0                   
-000600 //STEP5 EXEC PGM=IEFBR14  //*WILL NOT EXECUTE                          
+000100 //VENKATB JOB NOTIFY=&SYSUID,COND=(0,EQ)
+000200 //STEP1 EXEC PGM=IEBGENER              <-- RETURNS RC=12
+000300 //STEP2 EXEC PGM=IEFBR14,COND=(12,EQ,STEP1)  <-- SKIPPED (RC=12)
+000400 //STEP3 EXEC PGM=IEBGENER,COND=(12,EQ,STEP1) <-- SKIPPED (RC=12)
+000500 //STEP4 EXEC PGM=IEFBR14                    <-- EXECUTES (RC=0)
+000600 //STEP5 EXEC PGM=IEFBR14                    <-- SKIPPED (RC=0 from STEP4 triggers job-level COND)    
                                                                                  
                                                                                  
-                                                                                 
-DIT       VENKATB.B13.JCLS.SRCLIB2(COND) - 01.00  
-  Command ===>                                       
-  ****** ***************************** Top of Data **
-  000001 //VENKATB JOB NOTIFY=&SYSUID,RESTART=STEP3  
-  000002 //STEP1 EXEC PGM=IEFBR14  //WILL EXCUTE ==0                  
-  000003 //STEP2 EXEC PGM=P1         //WILL ABEND 806          
-  000004 //STEP3 EXEC PGM=IEFBR14,COND=EVEN // WILL EXECUTE                 
-  000005 //STEP4 EXEC PGM=IEFBR14,COND=ONLY   //WILL EXECUTE IF  ONLY PREVIOUS STEPS ABENDED                 
-  000006 //STEP5 EXEC PGM=IEFBR14        // WILL NOT EXECUTE           
-  ****** **************************** Bottom of Data            
-
+EDIT       VENKATB.B13.JCLS.SRCLIB2(COND) - 01.00
+Command ===>                                                  Scroll ===> CSR
+****** ***************************** Top of Data ******************************
+000001 //VENKATB JOB NOTIFY=&SYSUID,RESTART=STEP3
+000002 //STEP1 EXEC PGM=IEFBR14                     <-- EXECUTES, RETURNS RC=0
+000003 //STEP2 EXEC PGM=P1                          <-- ABENDS WITH S806 (Program not found)
+000004 //STEP3 EXEC PGM=IEFBR14,COND=EVEN           <-- EXECUTES (EVEN = run regardless of abend)
+000005 //STEP4 EXEC PGM=IEFBR14,COND=ONLY           <-- EXECUTES (ONLY = run since STEP2 abended)
+000006 //STEP5 EXEC PGM=IEFBR14                     <-- SKIPPED (Prior abend prevents further exec)
+****** **************************** Bottom of Data ****************************
 
 =========================
 
